@@ -506,7 +506,8 @@
     </form>
 </div>
  </div>
- <script src="controller/ctrl/mm_agendamiento.ctrl.js" type="text/javascript"></script>
+<script src="controller/min/mm_agendamiento.ctrl.min.js" type="text/javascript"></script>  
+
 <script>
 $('ul.tabs').each(function(){
   // For each set of tabs, we want to keep track of

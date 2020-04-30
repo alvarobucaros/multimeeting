@@ -1,11 +1,36 @@
 <?php
+include_once("../bin/cls/clsConection.php");
+$objClase = new DBconexion();
+$con = $objClase->conectar();
+$data = json_decode(file_get_contents("php://input")); 
+$op = mysqli_real_escape_string($con, $data->op);
 
-    include_once("../bin/cls/clsConection.php");
-    $objClase = new DBconexion();
-    $con = $objClase->conectar();
-    $data = json_decode(file_get_contents("php://input")); 
-    $op = mysqli_real_escape_string($con, $data->op);
-   
+
+//    include_once("../bin/cls/clsConection.php");
+//    $objClase = new DBconexion();
+//    $con = $objClase->conectar();
+//    $data = json_decode(file_get_contents("php://input")); 
+//    $op = mysqli_real_escape_string($con, $data->op);
+  
+switch ($op)
+{
+    case 'r':
+        leeRegistros($data);
+        break;
+    case 'b':
+        borra($data);
+        break;
+    case 'a':
+        actualiza($data);
+        break; 
+    case 'u':
+        unRegistro($data);
+        break;
+}
+
+function  leeRegistros($data){
+    $objClase = new DBconexion(); 
+    $con = $objClase->conectar(); 
     $empresa = $data->empresa;
     $fd = fopen('../bin/cls/mm.ctl', 'r');
 
@@ -26,7 +51,9 @@
       if ($con){
        {
             $query = "SELECT empresa_versionPrd, empresa_versionBd, empresa_clave, " . 
-                     "empresa_nombre, empresa_nit FROM mm_empresa WHERE empresa_id = '" . $empresa ."'";                 
+                     "empresa_nombre, empresa_nit FROM mm_empresa WHERE empresa_id = '" . $empresa ."'"; 
+            
+
             $result = mysqli_query($con, $query);
             if(mysqli_num_rows($result) != 0) 
                 {
@@ -39,6 +66,7 @@
                 }              
             echo $ctrl;
        }
+    }
     }
     
     function funde($txt){

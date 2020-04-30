@@ -46,40 +46,18 @@ switch ($op)
         $objClase = new DBconexion(); 
         $con = $objClase->conectar(); 
         $agenda = $data->agenda;
-        $query="SELECT anexos_anexo,anexos_ruta FROM mm_agendaanexos WHERE anexos_agendaid = ".$agenda;
-   
+        $query="SELECT anexos_id, anexos_anexo, anexos_ruta FROM mm_agendaanexos WHERE anexos_agendaid = ".$agenda;
         $result = mysqli_query($con, $query); 
+        $arr = array(); 
         if(mysqli_num_rows($result) != 0)  
-        { 
-            while($row = mysqli_fetch_assoc($result)) { 
-                $pdf=$row['anexos_ruta'];
-                $anexo=$row['anexos_anexo'];
-                if (file_exists($pdf)) {
-//                    echo "El fichero $anexo existe";
-//                    header('Content-type: application/pdf');
-//                    header('Content-Disposition: attachment; filename="'.$pdf.'"');
-//                    readfile($pdf);
-                    $tam = filesize($pdf);
-//                    header("Content-type: application/pdf");
-//                    header("Content-Length: $tam"); 
-//                    header("Content-Disposition: inline; filename=".$pdf);
-                    //$file='./ficheros/proyecto.pdf';
-                    readfile($pdf);
-                } else {
-                    echo "El fichero $anexo no existe";
-                
-                    
-
-                
-//                header('Content-type: application/pdf');
-//                header('Content-Disposition: attachment, filename:"'. $pdf.'"');
-//                readfile($pdf);
-           } 
-        } 
-//echo  'Ok';
-    }
-    }   
-    
+            { 
+                while($row = mysqli_fetch_assoc($result)) { 
+                    $arr[] = $row; 
+                } 
+            } 
+        echo $json_info = json_encode($arr);
+       } 
+  
     function  leeRegistros($data) 
     { 
         $empresa = $data->empresa;
@@ -197,12 +175,16 @@ switch ($op)
  
 	 
     function lista0($data) 
-    { 
+    {       
         $objClase = new DBconexion(); 
         $con = $objClase->conectar();
-         $empresa = $data->empresa;
-         $query = "SELECT comite_id, comite_nombre FROM mm_comites WHERE comite_empresa = " . $empresa ." ORDER BY comite_nombre";
-//echo $query;
+        $usuario = $data->user;
+        $empresa = $data->empresa;
+        $query = "SELECT comite_id,  comite_nombre FROM mm_comites WHERE  comite_empresa = " . $empresa .
+                 " AND comite_activo = 'A' " .
+                 " AND comite_id IN (SELECT uc_comiteId FROM mm_usuario_comites WHERE uc_empresa  = " . 
+                  $empresa . "  AND uc_usuarioId = " . $usuario . ")".
+                 " ORDER BY  comite_nombre";
          $result = mysqli_query($con, $query); 
          $arr = array(); 
          if(mysqli_num_rows($result) != 0)

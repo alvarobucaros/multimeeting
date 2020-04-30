@@ -139,10 +139,14 @@ switch ($op)
     function lista0($data) 
     { 
         $empresa = $data->empresa;
+        $usuario = $data->user;
         $objClase = new DBconexion(); 
         $con = $objClase->conectar();	 
-         $query = "SELECT comite_id,  comite_nombre FROM mm_comites  WHERE  comite_Activo = 'A' AND comite_empresa = ".$empresa .
-                 " ORDER BY comite_nombre";  
+        $query = "SELECT comite_id,  comite_nombre FROM mm_comites WHERE  comite_empresa = " . $empresa .
+                 " AND comite_activo = 'A' " .
+                 " AND comite_id IN (SELECT uc_comiteId FROM mm_usuario_comites WHERE uc_empresa  = " . 
+                  $empresa . "  AND uc_usuarioId = " . $usuario . ")".
+                 " ORDER BY  comite_nombre";
          $result = mysqli_query($con, $query); 
          $arr = array(); 
          if(mysqli_num_rows($result) != 0)

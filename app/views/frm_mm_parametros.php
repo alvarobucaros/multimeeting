@@ -69,6 +69,6 @@
     </div><!-- End of Modal body -->           
 </div>
 
+<script src="controller/min/mm_parametros.ctrl.min.js" type="text/javascript"></script>
 
-<script src="controller/mm_parametros.ctrl.js" type="text/javascript"></script>
 

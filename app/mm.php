@@ -25,9 +25,9 @@ $cr=$datos[7];  // conjunto residencial
 $ctrl=$datos[9];  // conjunto residencial
 $avatar = 'photo/'.$datos[6]; // avatar
 $logo = 'reports/images/'.$datos[8]; // logo empresa
-$idioma="lenguage".$datos[10].".php";
+$idioma="lenguage".trim($datos[10]).".php";
 include_once 'inc/'.$idioma;
-
+// echo 'inc/'.$idioma;
 if (!isset($_GET['op'])){
     $op='ini';
  }

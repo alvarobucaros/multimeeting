@@ -102,12 +102,10 @@
                     <select id='usuario_perfil' name='usuario_perfil' ng-model='registro.usuario_perfil' >
                         <option ng-selected="Null">--Elige perfil--</option>
                         <option ng-repeat='operator0 in operators0' 
-                             value = " {{operator0.perfil_codigo}}">{{operator0.perfil_nombre}}</option>
-                     
-                    </select>
+                             value = "{{operator0.perfil_codigo}}">{{operator0.perfil_nombre}}</option>
+                     </select>
                     </div>
                 </div> 
-                
                 <div class="form-group">
                     <label class="control-label milabel col-md-4" for="usuario_avatar">{{form_usuario_avatar}}</label>
                    <div class="col-md-6">
@@ -145,16 +143,39 @@
                                  ng-click="clearInfo(registro)" 
                                  id="send_btnC">{{form_btnAnula}}</button> 
                     </div>
+                    <div class="col-md-1">
+                        <button type="button" value="Cerrar" class="btn btn-custom pull-right btn-xs" 
+                                 ng-click="miembroComites(registro)" 
+                                 id="send_btnC">{{form_btnMiembro}}</button> 
+                    </div>
                 </div>       
                 <div style='display: none'>
                     <input type="text"	 ng-model="registro.usuario_id" id ='usuario_id'  name ='usuario_id' value="{{registro.usuario_id}}"/>
                     <input type="password" class="form-control mitexto" id="usuario_password" name="usuario_password"
                         ng-model="registro.usuario_password" required Placeholder="{{form_Phusuario_password}}" 
                         value="{{registro.usuario_password}}" />
-   
+                    <input type="text" ng-model="idx" id ='idx'  name ='idx' value="{{idx}}"/>
+             
                 </div>
+                    <div id="miModal" ng-show="mimodal">
+            <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">{{titleModal}}</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div id = 'dataModal'>
+                <div  id="data"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+            
             </form>
+            
 	</div>
+
 	<div class="clearfix"></div>
         <div class="col-md-10">
             <!-- Table to show employee detalis -->
@@ -186,7 +207,7 @@
                     <td>{{detail.usuario_fechaCreado}}</td>
                     <td>{{detail.usuario_fechaActualizado}}</td>
                     <td>{{detail.usuario_estado}}</td>
-                    <td>{{detail.usuario_perfil}}</td>
+                    <td>{{detail.perfil_nombre}}</td>
                     <td>{{detail.usuario_avatar}}</td>
                     <td>{{detail.usuario_user}}</td>
                     <td>{{detail.usuario_celular}}</td>
@@ -213,8 +234,8 @@
         </div>
 </div>
 
-
-
 <script src="controller/min/mm_usuarios.ctrl.min.js" type="text/javascript"></script>
-	 
-<!-- >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Tuesday,Oct 24, 2017 11:30:34   <<<<<<< -->
+<script src="controller/min/mm_modal.ctrl.min.js" type="text/javascript"></script>
+
+ 
+<!-- >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Tuesday,Oct 24, 2017 11:30:34   <<<<<<< 

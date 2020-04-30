@@ -556,4 +556,5 @@
 
 </div>
 
-<script src="controller/ctrl/mm_agendaSegumiento.ctrl.js" type="text/javascript"></script>
+<script src="controller/ctrls/mm_agendaSegumiento.ctrl.js" type="text/javascript"></script>
+<!-- <script src="controller/min/mm_agendaSegumiento.ctrl.min.js" type="text/javascript"></script> -->

@@ -96,9 +96,7 @@
         </form>
     </div>
 </div>
-<!--
+
 <script src="controller/min/mm_cargas.ctrl.min.js" type="text/javascript"></script>     
-<script src="controller/min/mm_agendaanexos.ctrl.min.js" type="text/javascript"></script>  
--->
-<script src="controller/ctrl/mm_agendaanexos.ctrl.js" type="text/javascript"></script>
-<script src="controller/ctrl/mm_cargas.ctrl.js" type="text/javascript"></script>
+<!-- script src="controller/min/mm_agendaanexos.ctrl.min.js" type="text/javascript"></script -->  
+<script src="controller/ctrls/mm_agendaanexos.ctrl.js" type="text/javascript"></script>
