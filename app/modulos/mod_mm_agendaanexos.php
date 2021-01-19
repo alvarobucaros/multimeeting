@@ -46,7 +46,7 @@ switch ($op)
         $objClase = new DBconexion(); 
         $con = $objClase->conectar(); 
         $agenda = $data->agenda;
-        $query="SELECT anexos_id, anexos_anexo, anexos_ruta FROM mm_agendaanexos WHERE anexos_agendaid = ".$agenda;
+        $query="SELECT anexos_id, concat( anexos_anexo,' ; ',anexos_descripcion) anexos_anexo, anexos_ruta FROM mm_agendaanexos WHERE anexos_agendaid = ".$agenda;
         $result = mysqli_query($con, $query); 
         $arr = array(); 
         if(mysqli_num_rows($result) != 0)  
@@ -64,14 +64,15 @@ switch ($op)
         $comite = $data->comite;
         $agenda = $data->agenda;
         
-      $objClase = new DBconexion(); 
-      $con = $objClase->conectar(); 
+       $objClase = new DBconexion(); 
+       $con = $objClase->conectar(); 
        { 
             $query = "SELECT anexos_id,anexos_empresa, anexos_comiteid, anexos_agendaid, anexos_usuario, anexos_anno," .
                     " anexos_anexo, anexos_ruta, anexos_fecha, anexos_descripcion ".
                     " FROM mm_agendaanexos WHERE anexos_empresa = " .$empresa . 
                     "  AND anexos_comiteid = " . $comite . " AND  anexos_agendaid = " . $agenda .
                     "  ORDER BY anexos_anexo ";   
+        
             $result = mysqli_query($con, $query); 
             $arr = array(); 
 

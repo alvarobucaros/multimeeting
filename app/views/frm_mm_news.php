@@ -4,13 +4,7 @@
     <div class="container "  ng-controller="mainController">
         <h3 class="text-left">{{form_title1}}<strong>{{form_title2}}</strong></h3>
         <h4 class="text-left">{{form_subTitle}}</h4>
-        <nav class="navbar navbar-default navbar-mm col-md-8 col-md-offset-1">
-            <div class="navbar-header">
-                <div class="alert alert-default navbar-brand search-box">
-                    {{form_version}}
-                 </div>
-            </div>
-        </nav>
+
         <div class="col-md-8 col-md-offset-1">
 
             <form class="form-horizontal alert alert-mm color-palette-set" name="nameForm" id="idForm">
@@ -48,29 +42,27 @@
 
             </form>
         </div>
+        <nav class="navbar navbar-default navbar-mm col-md-8 col-md-offset-1">
+            <div class="navbar-header">
+                <div class="alert alert-default navbar-brand search-box ">
+                    {{form_version}}
+                 </div>
+            </div>
+        </nav>
         <div class="clearfix"></div>
-        <div class="col-md-6 col-md-offset-2">
+        <div class="col-md-12">
             <!-- Table to show employee detalis -->
             <div class="table-responsive">
-                <table class="table table-hover">
-
-                    <tr ng-repeat="detail in details| filter:search_query">
-                    <td>{{detail.grupo_id}}</td>                   
-                    <td>{{detail.empresa_nombre}}</td>
-                    <td>{{detail.empresa_clave}}</td>
-                    <td>{{detail.grupo_comite}}</td>
-                    <td>{{detail.grupo_activo}}</td>
+                <table class="table table-hover mitexto1">
+                    <tr ng-repeat="detail in details| filter:search_query" >
+                    <td class="col-md-8">{{detail.actu_texto}}</td>                   
+                    <td class="col-md-2">{{detail.actu_fechaopera}}</td>
                     <td>
-                    <button class="btn btn-warning btn-xs" ng-click="editInfo(detail)" title="{{form_btnEdita}}"><span class="glyphicon glyphicon-edit"></span></button>
-                    </td>
-                    <td>
-                    <button class="btn btn-danger btn-xs" ng-click="deleteInfo(detail)" 
-                            confirm="Está seguro ?, {{form_btnElimina}}?" title="{{form_btnElimina}}"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
+
 <script src="controller/min/mm_news.ctrl.min.js" type="text/javascript"></script>
 

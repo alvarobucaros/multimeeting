@@ -132,5 +132,5 @@
         <div id="miExcel" style='display: none'>
     </div> 
 </div>
-
-<script src="controller/min/mm_consultas.ctrl.min.js" type="text/javascript"></script>
+<script src="controller/ctrls/mm_consultas.ctrl.js" type="text/javascript"></script>
+<!--script src="controller/min/mm_consultas.ctrl.min.js" type="text/javascript"></script-->

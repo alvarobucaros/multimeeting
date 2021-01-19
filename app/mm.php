@@ -153,7 +153,7 @@ if (!isset($_GET['op'])){
             <li><a href="mm.php?op=agSgmnto"><i class="fa fa-circle-o"></i>Agenda a seguir</a></li>
             <li><a href="mm.php?op=loadActa"><i class="fa fa-upload"></i>Carga documentos</a></li>
             <li><a href="mm.php?op=agActas"><i class="fa fa-pencil"></i>Acta de reunión</a></li>
-           
+            <li><a href="mm.php?op=pndnte"><i class="fa fa-bell-o"></i>Temas pendientes</a></li>
           </ul>
         </li>
         ';
@@ -176,6 +176,7 @@ if (!isset($_GET['op'])){
           <ul class="treeview-menu">
             <li><a href="mm.php?op=empr"><i class="fa fa-crosshairs"></i> <span>La empresa</span></a></li>
             <li><a href="mm.php?op=users"><i class="fa fa-user"></i> <span>Usuarios</span></a></a></li>
+<!--            <li><a href="mm.php?op=uscom"><i class="fa fa-dashboard"></i> <span>Usuario comité</span></a></a></li>-->
             <li><a href="mm.php?op=logo"><i class="fa fa-child"></i> <span> Logo Avatar</span></a></li>
           </ul>
         </li>  
@@ -325,6 +326,10 @@ if (!isset($_GET['op'])){
         if ($op ==  'perfi'){
             include_once 'views/frm_datos.php';
         }
+        if ($op ==  'pndnte'){
+            include_once 'views/frm_mm_agendapendientes.php';
+        }
+        
         if ($op ==  'salon'){
             include_once 'views/frm_mm_salones.php';
         }
@@ -336,6 +341,9 @@ if (!isset($_GET['op'])){
         }
         if ($op ==  'users'){
             include_once 'views/frm_mm_usuarios.php';
+        }
+        if ($op ==  'uscom'){
+            include_once 'views/frm_mm_usuario_comites.php';
         }
         if ($op ==  'Docum'){
             include_once 'views/frm_mm_documentacion.php';

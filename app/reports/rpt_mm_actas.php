@@ -17,7 +17,6 @@
         $obj = new  DBconexion();
         $empresa=$_GET['em'];
         $resultado = $obj->cargaEmpresa($empresa);
-        $empre = array();
         $empre = explode('||', $resultado);
         $nomEmpre = $empre[1];         
         $nit = 'NIT : ' .$empre[2];
@@ -78,9 +77,7 @@
         $resultado = $obj->traeComite($comite_td);
         $reg = array();         
         $reg = explode('||', $resultado);
-    //    ACADEMICO||1||PROFESORES PRIMARIA||Reunión mes de Abril||Primer piso||2019-04-15 07:30:00||2019-04-15 09:00:00||mayo 12 de 2019||1
-   //     ACADEMICO||1||PROFESORES PRIMARIA||Reunión mes de Abril||Primer piso||2019-04-15 07:30:00||2019-04-15 09:00:00||mayo 12 de 2019||1
-            
+      
         $comite_nombre = $reg[0]; 
         $comite_consecActa = $reg[1];  
         $salon_nombre = $reg[2]; 
@@ -305,9 +302,8 @@
             }            
             $ln=$pdf->GetY();
             $pdf->SetXY(30,$ln);
-            $pdf->MultiCell(160, 6, $anexos); 
-            
-            
+            $pdf->MultiCell(160, 6, utf8_decode($anexos)); 
+        
         }
 $pdf->close();
 $pdf->Output($pdf->archivo.'.pdf','D'); 

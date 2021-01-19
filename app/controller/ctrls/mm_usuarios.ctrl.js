@@ -1,5 +1,6 @@
-var app = angular.module('app', []);
-app.controller('mainController',['$scope','$http', function($scope,$http){
+var app = angular.module('app', ['ui.bootstrap']);
+app.controller('mainController',['$scope','$http','$modal', function($scope,$http, $modal, $log){
+        
     $scope.form_title = 'Lista de usuarios';
     $scope.form_btnNuevo = 'Nuevo registro';
     $scope.form_btnEdita = 'Edita';
@@ -60,7 +61,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     var defaultForm= {
         usuario_id:0,
         usuario_nombre:'',
-        usuario_empresa:'',
+        usuario_empresa:$scope.empresa,
         usuario_email:'',
         usuario_password:'',
         usuario_tipo_acceso:'',
@@ -74,23 +75,22 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         usuario_celular:''
    };
     
-    getCombos();
+    getCombos($scope.empresa);
     
-    getInfo();
+    getInfo($scope.empresa);
     
-    function getInfo(){
-        empresa=$scope.empresa;
-        $http.post('modulos/mod_mm_usuarios.php?op=r',{'op':'r', empresa:empresa}).success(function(data){        
+    function getInfo(empresa){
+        $http.post('modulos/mod_mm_usuarios.php?op=r',{'op':'r', empresa:empresa}).success(function(data){ 
+ //           alert(data);
         $scope.details = data;
-        $scope.registro.usuario_perfil = data[0].perfil_nombre;  
+//        $scope.registro.usuario_perfil = data[0].perfil_nombre;  
         $scope.configPages();
         });       
     }
 
-    function getCombos(){
-        empresa=$scope.empresa;
+    function getCombos(empresa){
          $http.post('modulos/mod_mm_usuarios.php?op=0',{'op':'0', empresa:empresa}).success(function(data){
-//alert(data);
+
          $scope.operators0 = data;
          });
 } 
@@ -184,42 +184,6 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
             });
          }
     };
-
-    $scope.miembroComites = function(info){
-        $scope.mimodal = true;
-        empresa=$scope.empresa;
-        usuario = $scope.registro.usuario_id;
-             $http.post('modulos/mod_mm_usuarios.php?op=m',{'op':'m', empresa:empresa, usuario:usuario}).success(function(data){
-                 dt = data.split('||');
-             $scope.idx = dt[1];
-            $('#data').html(dt[0]);//$scope.data = data;
-        });
-    }
-
-    $scope.cancel = function(){
-       $scope.mimodal = false;  
-    }
-    
-    $scope.ok = function(){
-        valoresCheck = [];
-        usuario=$scope.usuario;
-        empresa=$scope.empresa;
-        $("input[type=checkbox]:checked").each(function(){
-            valoresCheck.push(this.value);
-        });
-        cond=''
-        for (var x=0; x < valoresCheck.length; x++) {
-           cond += valoresCheck[x] + ";"; 
-        }
-  
-        $http.post('modulos/mod_mm_usuarios.php?op=k',{'op':'k', usuario:usuario,empresa:empresa,condicion:cond}).success(function(data){
-            if (data === 'Ok') {
-            alert('Miembro de comités actualizados');
-        }
-        });
-
-        $scope.mimodal = false;  
-    }
     
     $scope.updateInfo = function(info)
     {        
@@ -263,6 +227,56 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         console.log('empty');
         $('#idForm').slideToggle();
     };
+
+ 
+    $scope.miembroComites = function(info){
+        size='md';
+        empresa = $scope.empresa;
+        usuario = $('#usuario_id').val();
+        var modalInstance = $modal.open({
+        templateUrl: 'myModalComites.html',
+        controller: function ($scope, $modalInstance, items) {
+            $scope.titleModal= 'Miembro de los comités';  
+            $http.post('modulos/mod_mm_usuarios.php?op=m',{'op':'m', 'empresa':empresa, 'usuario':usuario}).success(function(data){
+            $('#data').html(data);
+        });
+            
+        $scope.cancel = function(){
+            $modalInstance.dismiss();
+        }; 
+        
+        $scope.ok = function(){
+            valoresCheck = [];
+            empresa = $('#e').val();
+            usuario = $('#usuario_id').val();
+            $("input[type=checkbox]:checked").each(function(){
+                valoresCheck.push(this.value);
+            });
+            cond='';
+            for (var x=0; x < valoresCheck.length; x++) {
+               cond += valoresCheck[x] + ";"; 
+            }
+
+            $http.post('modulos/mod_mm_usuarios.php?op=k',{'op':'k', usuario:usuario,empresa:empresa,condicion:cond}).success(function(data){
+                if (data === 'Ok') {
+                 alert('Miembro de comités actualizados');
+                 $modalInstance.dismiss();
+            }
+            });
+
+            $scope.mimodal = false;  
+        };
+        },
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+        });
+    };   
+    
+
 
 }]);
 

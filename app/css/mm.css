@@ -16,6 +16,11 @@ h1{
 .mitexto{
     font-size: 14px;  height: 22px; padding-top: 2px; 
 }
+
+.mitexto1{
+    font-size: 12px;  height: 22px; padding-top: 2px; 
+}
+
 .mitexto2{
     font-size: 14px; width: 5px;  height: 2em; padding-top: 2px; 
 }
@@ -70,12 +75,12 @@ h1{
 .modal {position:fixed;top: 40px;}
 .modal-header,
 .btn-custom {	background: #3c8dbc;	color: #FFF;}
-.modal-body {	background: #afc7d5;}
+.modal-body2 {	background: #afc7d5;}
 .popover   {	background-color: #e74c3c;	color: #000;	width: 120px;}
 .popover.right .arrow:after {	border-right-color: #e74c3c;}
 .input-group[class*="col-"] {    padding-right: 15px;    padding-left: 15px;}
-.amplio {height: 200px;}
-
+.amplio {height: 150px;}
+.amplioMedio {height: 250px;}
 glyphicon-edit {
     font-size: 0.8em;
 }
@@ -272,4 +277,9 @@ close {
 }
 .semaforogreen{
     background-color:green;
+}
+.mmodal-bodyMe {
+    background: #fff; height: 500;
+    margin: 40px;
+    padding: 20px;
 }

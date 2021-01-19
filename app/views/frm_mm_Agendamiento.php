@@ -10,7 +10,7 @@
   <li><a href='#tab5'> Confirmar </a></li>
 </ul>
   
-     <!--  Modifica datos del invitado  -->
+<!--  Formulario del invitado  -->
      
     <div class="col-md-8 col-md-offset-1">
         <form class="form-horizontal alert alert-mm color-palette-set" name="tercero2Form" id="terceroForm"
@@ -107,8 +107,108 @@
 
         </form>
     </div>      
-     
-        <!--    Formulario principal      -->
+ 
+ <!--  Formulario de temas -->           
+     <div class="col-md-8 col-md-offset-1">
+        <form class="form-horizontal alert alert-mm color-palette-set" name="tema2Form" id="tema2Form">
+            <div class="table-responsive"  ng-show="temaNuevo"  >
+                <h4 class="text-left">{{form_titleTema}}</h4> 
+                <div class="form-group" >
+                    <label class=" milabel col-md-2" for="tema_titulo">{{form_tema_titulo}}</label>
+                   <div class="col-md-6">
+                    <input type="text" class="form-control mitexto" id="tema_titulo" name="tema_titulo"
+                         ng-model="registro4.tema_titulo" required Placeholder="{{form_Phtema_titulo}}" 
+                         value="{{registro4.tema_titulo}}" />
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class=" milabel col-md-2" for="tema_detalle">{{form_tema_detalle}}</label>
+                   <div class="col-md-6">
+                    <textarea rows="4" cols="50" class="form-control mitexto" id="tema_detalle" name="tema_detalle"
+                         ng-model="registro4.tema_detalle" required Placeholder="{{form_Phtema_detalle}}" 
+                         value="{{registro4.tema_detalle}}" >            
+                    </textarea>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class="milabel col-md-4" for="tema_tipo">{{form_tema_tipo}}</label>
+                    <div class="btn-group  col-md-8"  data-toggle="buttons">
+                   <label>
+                      <input type="radio" name ="tema_tipo" ng-model="registro4.tema_tipo" 
+                            class="btn media-bottom"  value="G" >{{form_temag}}
+                   </label>
+                   <label>
+                      <input type="radio" name ="tema_tipo" ng-model="registro4.tema_tipo" 
+                            class="btn media-bottom"  value="P" >{{form_temap}}
+                   </label>
+                    </div>
+                </div>  
+
+                <div class="form-group">
+                    <label class=" milabel col-md-2" for="tema_responsable">{{form_tema_responsable}}</label>
+                   <div class="col-md-6">
+                    <input type="text" class="form-control mitexto" id="tema_responsable" name="tema_responsable"
+                         ng-model="registro4.tema_responsable" required Placeholder="{{form_Phtema_responsable}}" 
+                         value="{{registro4.tema_responsable}}" />
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class=" milabel col-md-2" for="tema_fechaAsigna">{{form_tema_fechaAsigna}}</label>
+                   <div class="col-md-3">
+                    <input type="date" width="12" class="form-control mitexto fa fa-calendar fa-lg" id="tema_fechaAsigna" name="tema_fechaAsigna"
+                         ng-model="registro4.tema_fechaAsigna" required Placeholder="{{form_Phtema_fechaAsigna}}" 
+                         value="{{registro4.tema_fechaAsigna}}"   />
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class=" milabel col-md-2" for="tema_estado">{{form_tema_estado}}</label>
+                    <div class="btn-group  col-md-6"  data-toggle="buttons">
+                   <label>
+                      <input type="radio" name ="tema_estado" ng-model="registro4.tema_estado" value="I" >{{form_Activo90}}
+                   </label>
+                   <label>
+                      <input type="radio" name ="tema_estado" ng-model="registro4.tema_estado" value="A" >{{form_Activo91}}
+                   </label>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <label class=" milabel col-md-4" for="tema_orden">{{form_asistente_orden}}</label>
+                    <div class="col-md-2">
+                        <input type="text"  width="2" class="form-control mitexto" id="tema_orden" name="tema_orden"
+                               ng-model="registro4.tema_orden"   value="{{registro4.tema_orden}}"   >  
+                    </div>
+                </div>             
+            
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <button type="button" value="Actualizar" class="btn btn-custom pull-right btn-xs" 
+                                 ng-click="updateTema(registro4)" id="btnActualiza">{{form_btnActualiza}}</button>
+                     </div>  
+                    <div class="col-md-1">
+                        <button type="button" value="Cerrar" class="btn btn-custom pull-right btn-xs" 
+                                 ng-click="cierraTema(registro4)" 
+                                 id="btnAnula">{{form_btnAnula}}</button> 
+                    </div>
+                </div> 
+            
+                <div style='display: none'>
+                    <input type="text" ng-model="registro4.tema_id" id ='tema_id'  name ='tema_id' value="{{registro4.tema_id}}"/>
+                    <input type="text" ng-model="registro4.tema_agendaId" id="tema_agendaId" name="tema_agendaId"  value="{{registro4.tema_agendaId}}" />
+                    <input type="text" ng-model="registro4.tema_empresa"   id="tema_empresa" name="tema_empresa"   value="{{registro4.tema_empresa}}" />
+                    <input type="text" ng-model="registro4.tema_comite" id ='tema_comite'  name ='tema_comite' value="{{registro4.tema_comite}}"/>
+                </div>
+            
+            </div>  
+        </form>
+    </div>
+  
+
+<!-- tab1    Formulario principal      -->
      
 <div id='tab1' class="col-md-11 col-md-offset-1">
      <form class="form-horizontal alert alert-mm color-palette-set" name="formato1" id="idForm1"
@@ -215,7 +315,7 @@
             </div>
         </div>    
    
-         <div ng-show="ppal"> 
+    <div ng-show="ppal"> 
         <input type="text" ng-model="registro1.invitado_id" id ='invitado_id'  name ='invitado_id' value="{{registro1.invitado_id}}"/> 
         <input type="text" ng-model="registro1.agenda_empresa" id ='empresa_id'  name ='empresa_id' value="<?php $e ?>"/> 
         <input type="text" ng-model="registro1.comite_id" id ='comite_id'  name ='comite_id' value="{{registro1.comite_id}}"/> 
@@ -248,8 +348,10 @@
 
     </form>
 </div>
+
+
      
-     
+<!-- tab3  grilla invitado -->     
 <div id='tab3' class="col-md-10">
     <form class="form-horizontal alert alert-mm color-palette-set" name="formato" id="idForm3"
     ng-submit="insertInfo(registro3);"  ng-show="modelTab3">
@@ -294,220 +396,123 @@
        </div>  
     </form>
 </div>
-   
-            
-     <div class="col-md-8 col-md-offset-1">
-        <form class="form-horizontal alert alert-mm color-palette-set" name="tema2Form" id="tema2Form">
-        <div class="table-responsive"  ng-show="temaNuevo"  >
-            <div class="form-group" >
-                <label class=" milabel col-md-2" for="tema_titulo">{{form_tema_titulo}}</label>
-               <div class="col-md-6">
-                <input type="text" class="form-control mitexto" id="tema_titulo" name="tema_titulo"
-                     ng-model="registro4.tema_titulo" required Placeholder="{{form_Phtema_titulo}}" 
-                     value="{{registro4.tema_titulo}}" />
-                </div>
-            </div> 
 
-            <div class="form-group">
-                <label class=" milabel col-md-2" for="tema_detalle">{{form_tema_detalle}}</label>
-               <div class="col-md-6">
-                <textarea rows="4" cols="50" class="form-control mitexto" id="tema_detalle" name="tema_detalle"
-                     ng-model="registro4.tema_detalle" required Placeholder="{{form_Phtema_detalle}}" 
-                     value="{{registro4.tema_detalle}}" >            
-                </textarea>
-                </div>
-            </div> 
+ <!--Tab4 grilla temas -->
 
-            <div class="form-group">
-                <label class="milabel col-md-4" for="tema_tipo">{{form_tema_tipo}}</label>
-                <div class="btn-group  col-md-8"  data-toggle="buttons">
-               <label>
-                  <input type="radio" name ="tema_tipo" ng-model="registro4.tema_tipo" 
-                        class="btn media-bottom"  value="G" >{{form_temag}}
-               </label>
-               <label>
-                  <input type="radio" name ="tema_tipo" ng-model="registro4.tema_tipo" 
-                        class="btn media-bottom"  value="P" >{{form_temap}}
-               </label>
-                </div>
-            </div>  
+    <div id='tab4' class="col-md-10" > 
+        <form class="form-horizontal alert alert-mm color-palette-set" name="formato4" id="idForm4d"
+                  ng-submit="insertInfo(registro4);"  ng-show="modelTab4" >
+            <p>{{form_agenda_comiteId}} : {{comite_nombreResul}}</p>
+            <p>{{form_agenda_Descripcion}} : {{agenda_Descripcion}}</p>
+            <p>{{form_agenda_salonId}} : {{salon_nombreResul}}</p>
 
-            <div class="form-group">
-                <label class=" milabel col-md-2" for="tema_responsable">{{form_tema_responsable}}</label>
-               <div class="col-md-6">
-                <input type="text" class="form-control mitexto" id="tema_responsable" name="tema_responsable"
-                     ng-model="registro4.tema_responsable" required Placeholder="{{form_Phtema_responsable}}" 
-                     value="{{registro4.tema_responsable}}" />
-                </div>
-            </div> 
+            <button class="btn btn-primary btn-xs mibottom" ng-click="createNuevoTema(registro4)" title="{{form_btnAdd}}">{{form_nuevotema}}</button>
+            <br/>         
+                <div class="table-responsive"  style="overflow-y: scroll;">
+    <!--                <div class="alert alert-default navbar-brand search-box">
+                        <button class="btn btn-primary btn-xs" ng-show="show_form4" 
+                        ng-click="createNuevoTema()">{{form_btnNuevo}}<span class="glyphicon" aria-hidden="true"></span></button>
+                    </div>-->
 
-            <div class="form-group">
-                <label class=" milabel col-md-2" for="tema_fechaAsigna">{{form_tema_fechaAsigna}}</label>
-               <div class="col-md-3">
-                <input type="date" width="12" class="form-control mitexto fa fa-calendar fa-lg" id="tema_fechaAsigna" name="tema_fechaAsigna"
-                     ng-model="registro4.tema_fechaAsigna" required Placeholder="{{form_Phtema_fechaAsigna}}" 
-                     value="{{registro4.tema_fechaAsigna}}"   />
-                </div>
-            </div> 
+                    <table class="table table-hover tablex">                    
+                        <tr>
+                            <th>ORDEN</th>
+                            <th>TITULO</th>
+                            <th>DETALLE</th>
+                            <th>TIPO</th>
+                            <th>RESPONSABLE</th>
+                            <th>FECHA ASIGNA</th>
+                            <th>ESTADO</th>
+                        </tr>
 
-            <div class="form-group">
-                <label class=" milabel col-md-2" for="tema_estado">{{form_tema_estado}}</label>
-                <div class="btn-group  col-md-6"  data-toggle="buttons">
-               <label>
-                  <input type="radio" name ="tema_estado" ng-model="registro4.tema_estado" value="I" >{{form_Activo90}}
-               </label>
-               <label>
-                  <input type="radio" name ="tema_estado" ng-model="registro4.tema_estado" value="A" >{{form_Activo91}}
-               </label>
+                        <tr ng-repeat="detail4 in detail4s| filter:search_query">
+                            <td>{{detail4.tema_orden}}</td>
+                            <td>{{detail4.tema_titulo}}</td>
+                            <td>{{detail4.tema_detalle}}</td>
+                            <td>{{detail4.tema_tipo}}</td>
+                            <td>{{detail4.tema_responsable}}</td>
+                            <td>{{detail4.tema_fechaAsigna}}</td>
+                            <td>{{detail4.tema_estado}}</td>
+                            <td>
+                            <button class="btn btn-warning btn-xs" ng-click="editTema(detail4)" title="{{form_btnEdita}}"><span class="glyphicon glyphicon-edit"></span></button>
+                            </td>
+                            <td>
+                            <button class="btn btn-danger btn-xs" ng-click="deleteInfo(detail4)" 
+                                    confirm="Está seguro ?, {{form_btnElimina}}?" title="{{form_btnElimina}}"><span class="glyphicon glyphicon-trash"></span></button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            </div> 
+        </form>  
+    </div> 
 
-            <div class="form-group">
-                <label class=" milabel col-md-4" for="tema_orden">{{form_asistente_orden}}</label>
-                <div class="col-md-2">
-                    <input type="text"  width="2" class="form-control mitexto" id="tema_orden" name="tema_orden"
-                         ng-model="registro4.tema_orden"   value="{{registro4.tema_orden}}"                            
-                </div>
-                </div>
-            </div>             
-            
-            <div class="form-group">
-                <div class="col-md-5">
-                    <button type="button" value="Actualizar" class="btn btn-custom pull-right btn-xs" 
-                             ng-click="updateTema(registro4)" id="btnActualiza">{{form_btnActualiza}}</button>
-                 </div>  
-                <div class="col-md-1">
-                    <button type="button" value="Cerrar" class="btn btn-custom pull-right btn-xs" 
-                             ng-click="cierraTema(registro4)" 
-                             id="btnAnula">{{form_btnAnula}}</button> 
-                </div>
-            </div> 
-            
-            <div style='display: none'>
-                <input type="text" ng-model="registro4.tema_id" id ='tema_id'  name ='tema_id' value="{{registro4.tema_id}}"/>
-                <input type="text" ng-model="registro4.tema_agendaId" id="tema_agendaId" name="tema_agendaId"  value="{{registro4.tema_agendaId}}" />
-                <input type="text" ng-model="registro4.tema_empresa"   id="tema_empresa" name="tema_empresa"   value="{{registro4.tema_empresa}}" />
-                <input type="text" ng-model="registro4.tema_comite" id ='tema_comite'  name ='tema_comite' value="{{registro4.tema_comite}}"/>
-            </div>
-            
-    </div>  
-    </form>
-    </div>
-  
-<!-- crea nuevos temas -->       
-<div id='tab4' class="col-md-10"  ng-show="modelTab4" > 
-    <form class="form-horizontal alert alert-mm color-palette-set" name="formato4" id="idForm4d"
-              ng-submit="insertInfo(registro4);" >
-        <p>{{form_agenda_comiteId}} : {{comite_nombreResul}}</p>
-        <p>{{form_agenda_Descripcion}} : {{agenda_Descripcion}}</p>
-        <p>{{form_agenda_salonId}} : {{salon_nombreResul}}</p>
         
-        <button class="btn btn-primary btn-xs mibottom" ng-click="createNuevoTema(registro4)" title="{{form_btnAdd}}">{{form_nuevotema}}</button>
-        <br/>         
-        <div class="col-md-10">
-            <div class="table-responsive">
-                <div class="alert alert-default navbar-brand search-box">
-                    <button class="btn btn-primary btn-xs" ng-show="show_form4" 
-                    ng-click="createNuevoTema()">{{form_btnNuevo}}<span class="glyphicon" aria-hidden="true"></span></button>
+<!-- tab5  Confirmar : Cita o anula registro -->  
+
+    <div id='tab5' class="col-md-12 col-md-offset-1">
+        <form class="form-horizontal alert alert-mm color-palette-set" name="formato" id="idForm5"
+            ng-submit="insertInfo(registro5);"  ng-show="modelTab5">
+            <h3>Actualiza, cierra y agenda reunión</h3>
+            <p>{{form_agenda_comiteId}} : {{comite_nombreResul}}</p>
+            <p>{{form_agenda_Descripcion}} : {{registro1.agenda_Descripcion}}</p>
+            <p>{{form_agenda_salonId}} : {{salon_nombreResul}}</p>
+            <p>{{form_agenda_fechaDesde}} : {{registro1.agenda_fechaDesde}}  {{form_agenda_hora}} : {{registro1.agenda_horaDesde}}</p>
+            <p>{{form_agenda_fechaHasta}} : {{registro1.agenda_fechaHasta}}  {{form_agenda_hora}} : {{registro1.agenda_horaHasta}}</p>
+            <p>{{form_agenda_reservadoPor}} : {{registro1.agenda_reservadoPor}}</p>      
+
+            <nav class="">
+                <div class="">
+                    <div class="alert alert-default navbar-brand search-box">
+                        <button class="btn btn-primary btn-xs"
+                        ng-click="haceCitacion()">{{form_btnCitacion}}</button>
+
+                        <button class="btn btn-primary btn-xs"
+                        ng-click="anulaRegistro()">{{form_btnAnulaRegistro}}</button>                    
+
+                    </div>  
+
                 </div>
-                
-                <table class="table table-hover tablex">                    
-                    <tr>
-                        <th>ORDEN</th>
-                        <th>TITULO</th>
-                        <th>DETALLE</th>
-                        <th>TIPO</th>
-                        <th>RESPONSABLE</th>
-                        <th>FECHA ASIGNA</th>
-                        <th>ESTADO</th>
-                    </tr>
-                   
-                    <tr ng-repeat="detail4 in detail4s| filter:search_query">
-                    <td>{{detail4.tema_orden}}</td>
-                    <td>{{detail4.tema_titulo}}</td>
-                    <td>{{detail4.tema_detalle}}</td>
-                    <td>{{detail4.tema_tipo}}</td>
-                    <td>{{detail4.tema_responsable}}</td>
-                    <td>{{detail4.tema_fechaAsigna}}</td>
-                    <td>{{detail4.tema_estado}}</td>
-                    <td>
-                    <button class="btn btn-warning btn-xs" ng-click="editTema(detail4)" title="{{form_btnEdita}}"><span class="glyphicon glyphicon-edit"></span></button>
-                    </td>
-                    <td>
-                    <button class="btn btn-danger btn-xs" ng-click="deleteInfo(detail4)" 
-                            confirm="Está seguro ?, {{form_btnElimina}}?" title="{{form_btnElimina}}"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
-                    </tr>
-                </table>
-            </div>
-       
-        </div>
- 
-    </form>
-  
-</div>    
-<!-- Cita o anula registro -->   
-<div id='tab5' class="col-md-12 col-md-offset-1">
-    <form class="form-horizontal alert alert-mm color-palette-set" name="formato" id="idForm5"
-        ng-submit="insertInfo(registro5);"  ng-show="modelTab5">
-        <h3>Actualiza, cierra y agenda reunión</h3>
-        <p>{{form_agenda_comiteId}} : {{comite_nombreResul}}</p>
-        <p>{{form_agenda_Descripcion}} : {{registro1.agenda_Descripcion}}</p>
-        <p>{{form_agenda_salonId}} : {{salon_nombreResul}}</p>
-        <p>{{form_agenda_fechaDesde}} : {{registro1.agenda_fechaDesde}}  {{form_agenda_hora}} : {{registro1.agenda_horaDesde}}</p>
-        <p>{{form_agenda_fechaHasta}} : {{registro1.agenda_fechaHasta}}  {{form_agenda_hora}} : {{registro1.agenda_horaHasta}}</p>
-        <p>{{form_agenda_reservadoPor}} : {{registro1.agenda_reservadoPor}}</p>      
-     
-        <nav class="">
-            <div class="">
-                <div class="alert alert-default navbar-brand search-box">
-                    <button class="btn btn-primary btn-xs"
-                    ng-click="haceCitacion()">{{form_btnCitacion}}</button>
+             </nav>
+                <div style='display: none'>
+                    <input type="text" ng-model="registro5.agenda_Id" id="registro5agenda_Id" name="registro5agenda_Id"  value="{{registro5.agenda_Id}}" />
+                </div>
+            <div class="form-group" ng-show="anula">
+               <label class=" milabel col-md-4" for="comiteCausaAnulacion">{{form_agenda_comiteCausaAnulacion}}</label>
+               <div class="col-md-6">
 
-                    <button class="btn btn-primary btn-xs"
-                    ng-click="anulaRegistro()">{{form_btnAnulaRegistro}}</button>                    
-                   
-                </div>  
+                    <textarea rows="4"  class="form-control mitexto" id="comiteCausaAnulacion" name="comiteCausaAnulacion"
+                         ng-model="registro5.agenda_comiteCausaAnulacion"  value="{{registro5.agenda_comiteCausaAnulacion}}" >            
+                    </textarea>             
+                </div>
+               <button class="btn btn-primary btn-xs"
+                        ng-click="vaAnularRegistro(registro5)">{{form_btnConfirmar}}</button> 
+            </div>            
 
-            </div>
-         </nav>
-            <div style='display: none'>
-                <input type="text" ng-model="registro5.agenda_Id" id="registro5agenda_Id" name="registro5agenda_Id"  value="{{registro5.agenda_Id}}" />
-            </div>
-        <div class="form-group" ng-show="anula">
-           <label class=" milabel col-md-4" for="comiteCausaAnulacion">{{form_agenda_comiteCausaAnulacion}}</label>
-           <div class="col-md-6">
 
-                <textarea rows="4"  class="form-control mitexto" id="comiteCausaAnulacion" name="comiteCausaAnulacion"
-                     ng-model="registro5.agenda_comiteCausaAnulacion"  value="{{registro5.agenda_comiteCausaAnulacion}}" >            
-                </textarea>             
-            </div>
-           <button class="btn btn-primary btn-xs"
-                    ng-click="vaAnularRegistro(registro5)">{{form_btnConfirmar}}</button> 
-        </div>            
-            
-  
-        <div class="form-group" ng-show="enviaMail">
-           <label class=" milabel col-md-4" for="comiteEnviaCitacion">{{form_agenda_comiteEnviaCitacion}}</label>
-           <div class="col-md-6">
-                <textarea rows="4"  class="form-control mitexto" id="comiteEnviaCitacion" name="comiteEnviaCitacion"
-                     ng-model="registro5.agenda_comiteNotaCitacion"  value="{{registro5.agenda_comiteNotaCitacion}}" >            
-                </textarea>  
-            </div>
-                   <button class="btn btn-primary btn-xs"
-                ng-click="vaAcitarRegistro(registro5)">{{form_btnConfirmar}}</button> 
-           <div class="col-md-8" >
-               <span> {{registro5.respuestaMail}}</span>
-           </div>
-           <div class="col-md-2" ng-show="enviaImg" >
-               <img src="img/loader.gif" alt=""/>
-           </div>
-        </div>            
-    </form>
-</div>
+            <div class="form-group" ng-show="enviaMail">
+               <label class=" milabel col-md-4" for="comiteEnviaCitacion">{{form_agenda_comiteEnviaCitacion}}</label>
+               <div class="col-md-6">
+                    <textarea rows="4"  class="form-control mitexto" id="comiteEnviaCitacion" name="comiteEnviaCitacion"
+                         ng-model="registro5.agenda_comiteNotaCitacion"  value="{{registro5.agenda_comiteNotaCitacion}}" >            
+                    </textarea>  
+                </div>
+                       <button class="btn btn-primary btn-xs"
+                    ng-click="vaAcitarRegistro(registro5)">{{form_btnConfirmar}}</button> 
+               <div class="col-md-8" >
+                   <span> {{registro5.respuestaMail}}</span>
+               </div>
+               <div class="col-md-2" ng-show="enviaImg" >
+                   <img src="img/loader.gif" alt=""/>
+               </div>
+            </div>            
+        </form>
+    </div>
+
+
+
  </div>
-<script src="controller/min/mm_agendamiento.ctrl.min.js" type="text/javascript"></script>  
-
+<!--script src="controller/min/mm_agendamiento.ctrl.min.js" type="text/javascript"></script-->  
+<script src="controller/ctrls/mm_agendamiento.ctrl.js" type="text/javascript"></script>
 <script>
 $('ul.tabs').each(function(){
   // For each set of tabs, we want to keep track of

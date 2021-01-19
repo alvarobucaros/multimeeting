@@ -48,7 +48,7 @@ app.controller('mainController',['$scope','$http',  function($scope,$http){
     function getCombos(empresa){
          var user = $('#u').val();
          $http.post('modulos/mod_mm_asistentes.php?op=0',{'op':'0','empresa':empresa, 'user': user}).success(function(data){
-         $scope.operators0 = data;
+             $scope.operators0 = data;
          });
          
          $http.post('modulos/mod_mm_asistentes.php?op=1',{'op':'1','empresa':empresa}).success(function(data){
@@ -96,22 +96,15 @@ app.controller('mainController',['$scope','$http',  function($scope,$http){
 
       $scope.changeUser = function() {
         $http.post('modulos/mod_mm_asistentes.php?op=su',{'op':'su','asistente_usuarioId':$scope.registro.asistente_usuarioId}).success(function(data){
-            var n = data.length;
-            var res = data.substring(1,n-2);
-            var obj = JSON.parse(res, function (key, value) {
-            if (key == "fecha") {
-                return new Date(value);
-                } else {
-                    return value;
-                }});
-            $scope.registro.asistente_nombre=obj.usuario_nombre; 
-            $scope.registro.asistente_empresa=obj.empresa_nombre; 
-            $scope.registro.asistente_email=obj.usuario_email; 
-            $scope.registro.asistente_celuar=obj.usuario_celular; 
+            rec = data.split('||');
+            $scope.registro.asistente_nombre=rec[0]; 
+            $scope.registro.asistente_empresa=rec[2]; 
+            $scope.registro.asistente_email=rec[3]; 
+            $scope.registro.asistente_celuar=rec[4]; 
+            $scope.registro.asistente_titulo==rec[5];
         });
       };
       
-
 $scope.show_form = true;
 
 $scope.formToggle =function(){
@@ -127,9 +120,9 @@ $scope.formToggle =function(){
     
     $scope.editInfo =function(info)
     {  
-        $scope.registro =  info;
-        $scope.registro.asistente_titulo = info.asistente_titulo.substr(0, 1);
-        $scope.AsistenteForm=true;
+        $scope.registro =  info;  
+        $('#idForm').slideToggle();
+       $scope.AsistenteForm=true;
     };
 
     $scope.deleteInfo =function(info)
@@ -146,19 +139,21 @@ $scope.formToggle =function(){
          }
     };
 
-    $scope.updateInfo =function(info)
+
+    $scope.updateInfo = function(info)
     {
         er='';
         $scope.empresa = $('#e').val();
+        if(info.asistente_comite===''){{er+='falta seleccionar comité\n';}}
         if($('#asistente_id').val()===''){er+='falta id\n';}
         if($scope.registro.asistente_comite===0){er+='falta comité\n';}
+        if($scope.registro.asistente_titulo===''){er+='falta titulo reunión\n';}
         if($('#asistente_nombre').val()===''){er+='falta nombre\n';}
         if($('#asistente_empresa').val()===''){er+='falta empresa\n';}
         if($('#asistente_cargo').val()===''){er+='falta cargo\n';}
         if($('#asistente_celuar').val()===''){er+='falta celular\n';}
         if($('#asistente_email').val()===''){er+='falta e_mail\n';}
-        if(info.asistente_titulo===undefined){info.asistente_titulo='N';}
-        if(info.asistente_titulo===''){info.asistente_titulo='N';}
+        if(info.asistente_titulo===''){er+='falta titulo reunión\n';}
         if (er===''){
         $http.post('modulos/mod_mm_asistentes.php?op=a',{'op':'a', 'asistente_id':info.asistente_id, 'asistente_comite':info.asistente_comite,
             'asistente_usuarioId':info.asistente_usuarioId, 'asistente_nombre':info.asistente_nombre, 'asistente_empresa':info.asistente_empresa, 

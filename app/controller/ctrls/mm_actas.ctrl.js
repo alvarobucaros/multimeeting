@@ -4,14 +4,14 @@ app.controller('mainController',['$scope','$http', function($scope,$http, $modal
     
     $scope.form_btnEdita = 'Edita';
     $scope.form_btnPrint = 'Imprime';
-    $scope.form_btnActualiza = 'Habilita'
-    $scope.form_btnCierra = 'Cierra Acta'
-    $scope.form_btnRegreso = 'Cancela'
+    $scope.form_btnActualiza = 'Habilita';
+    $scope.form_btnCierra = 'Cierra Acta';
+    $scope.form_btnRegreso = 'Cancela';
     $scope.form_agenda_comiteId = 'COMITE';
     $scope.tituloFormulario='';
     $scope.printConAnexos=' Incluye anexos ';
     $scope.printSinAnexos=' Solo el acta ';
-    $scope.titVentana='DESCARGA E IMPRIME ACTA Y SOPORTES';
+    $scope.titVentana='DESCARGA E IMPRIME ANEXOS SOPORTE';
     $scope.detail = {};
     
     $scope.empresa = $('#e').val();
@@ -22,12 +22,11 @@ app.controller('mainController',['$scope','$http', function($scope,$http, $modal
     $scope.formato = '';
     $scope.btnActualiza = true;
     
-     $scope.modalShown = false;
-     
+     $scope.modalShown = false;     
      
     var defaultForm= {
         agenda_comiteId:0
-   };
+    };
 
          
     getCombos($scope.empresa);
@@ -57,8 +56,8 @@ app.controller('mainController', ['modalService',function(modalService){
   
   app.controller('modalController',['modalService','$scope',function(modalService, $scope){
     var vm=this;
-    vm.show=modalService.modalOn;							// Flag to show or hide the modal
-    vm.returnValue=modalService.returnValue;	// Reference to the service function to resolve the promise
+    vm.show=modalService.modalOn;		
+    vm.returnValue=modalService.returnValue;	
     
     $scope.$on('MODAL_OPEN',function(){
       vm.show=modalService.modalOn;
@@ -102,7 +101,7 @@ app.controller('mainController', ['modalService',function(modalService){
     };
     
     function getInfo(){
-      // alert($scope.empresa);
+       
     }
 
   $scope.toggleModal = function(detail) {
@@ -131,26 +130,27 @@ app.controller('mainController', ['modalService',function(modalService){
     function traeAgendamientos(){
         comite=$scope.agenda_comiteId;
         empresa=$scope.empresa;
-        $http.post('modulos/mod_mm_agendamiento.php?op=rc',{'op':'rc', 'comite_Id':comite,'empresa':empresa,'param':'excluye'}).success(function(data){
- //alert(data);           
-            if(data == 'No Hay'){
-            alert('Este comité no tiene reuniones convocadas');
+        $http.post('modulos/mod_mm_agendamiento.php?op=rc',{'op':'rc', 'comite_Id':comite,'empresa':empresa,'param':'excluye'}).success(function(data){       
+            if(data != 'No Hay'){
+                $scope.details = data;
+        }else{
+            $scope.details = null;
+             alert('Este comité no tiene reuniones convocadas');
         }
-        else{
-          $scope.details = data;
-        }
+         
        });
     }
     
     $scope.cierraActa = function(detail){
         agenda=$scope.agenda_id;        
-        param=$scope.parametro; 
-   
+        param=$scope.parametro;    
         aviso = 'Cierra acta ' + $scope.acta + ' ' + $scope.nota;     
         if (confirm(aviso+' continua?')) {  
             empresa=$scope.empresa;
             $http.post('modulos/mod_mm_agendamiento.php?op=cra',{'op':'cra','empresa':empresa,'agenda':agenda}).success(function(data){ 
             alert (data);
+            $scope.btnActualiza = false;
+            $scope.tituloFormulario='';
              });
         }
     }
@@ -175,6 +175,8 @@ app.controller('mainController', ['modalService',function(modalService){
     
     $scope.anulaRegistro = function(){
         $scope.showEdit = false;
+        $scope.btnActualiza = false;
+        $scope.tituloFormulario='';
     }
     
     $scope.actualizaRegistro = function(detail){
@@ -187,6 +189,8 @@ app.controller('mainController', ['modalService',function(modalService){
             if(data === 'Ok'){
                 traeAgendamientos();
                 alert('Comité habilitado. ');
+                  $scope.btnActualiza = false;
+                  $scope.tituloFormulario='';
             }
             else{
               alert(data);
@@ -194,20 +198,22 @@ app.controller('mainController', ['modalService',function(modalService){
            }); 
        }
     };
+    $scope.cierraVen = function(){
+        $scope.modalShown = false;
+    };
     
     $scope.printInfo = function(tipo){ 
         desc = $scope.details[0].agenda_Descripcion;
         $scope.titVentana='IMPRIME ACTA '+ desc;
         agenda = $scope.details[0].agenda_id;
         
-        var formato='';
         empresa=$scope.empresa;
         $http.post('modulos/mod_mm_agendamiento.php?op=rfa',{'op':'rfa','empresa':empresa,'agenda':agenda}).success(function(data){ 
         $scope.formato = data; 
-        formato = data; // formato de impresion de actas
+    
          });  
         location.href="reports/rpt_mm_actas.php?op="+agenda+"&em="+empresa+"&em="+empresa+"&frm="+$scope.formato+"&tp="+tipo;
-        if(tipo=='C'){
+        if(tipo==='C'){
             $http.post('modulos/mod_mm_agendaanexos.php?op=pr',{'op':'pr','empresa':empresa,'agenda':agenda}).success(function(data){ 
          }); 
         }

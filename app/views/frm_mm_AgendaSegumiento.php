@@ -3,8 +3,9 @@
         <h3 class="text-left">{{form_title}}</h3>
     </div>
 
+    <!--  Crea un nuevo invitado  -->
        <div class="col-md-8 col-md-offset-1">
-<!--  Crea un nuevo invitado  -->
+
             <form class="form-horizontal alert alert-mm color-palette-set" name="terForm" id="idForm"
                   ng-submit="insertInfoTr(registroTr);" ng-show="tercForm">
                 <h4 class="text-left">{{form_titleTerc}}</h4>
@@ -55,7 +56,7 @@
                      <label class="control-label milabel col-md-4" for="asistente_titulo">{{form_asistente_titulo}}</label>
                      <div class="btn-group  col-md-8"  data-toggle="buttons">
                     <label>
-                       <input type="radio" name ="asistente_titulo" ng-model="registroTr.asistente_titulo" 
+                       <input type="radio" name ="asistente_titulo" ng-model="registroTr.asistente_titulo" id ="asistente_titulo"
                                class="btn media-bottom" value="P" >{{form_tituloP}}
                     </label>
                     <label>
@@ -100,7 +101,7 @@
     
      <!--  Modifica datos del invitado  -->
         <div class="col-md-8 col-md-offset-1">
-            <form class="form-horizontal alert alert-mm color-palette-set" name="tercero2Form" id="terceroForm"
+            <form class="form-horizontal alert alert-mm color-palette-set" name="tercero2Form" id="tercero2Form"
                  ng-submit="insertInfoTr(registroTercero);" ng-show="terceroForm">
                 <h4 class="text-left">{{form_titleTercero}}</h4> 
                   
@@ -257,24 +258,13 @@
                 <p>{{resultado}}</p>      
                 </div>
             </div>
+             
+             
 
-            <div class="form-group col-md-10 miDiv"  ng-show="Convocatoria">
-                
-                <div class="col-md-10">                
-                    <label class="control-label milabel col-md-4" for="convocatoria">{{form_convocatoria}}</label>
-                    <div class="col-md-7 ">
-                        <input type="text"  width="2" class="form-control mitexto" id="convocatoria" name="convocatoria"
-                               ng-model="registroTercero.convocatoria"   value="{{registroTercero.convocatoria}}"   >                         
-     
-                    </div>
-                    <div  class="col-md-2">
-                    <button type="button" value="Actualizar" class="btn btn-custom pull-right btn-xs" 
-                             ng-click="convocatoria(registroTercero)" title="{{form_btnAcepta}}">{{form_btnAcepta}}
-                   </button>                        
-                    </div>
-                                 
-                </div>
-            </div>             
+<!--             <modal title="Login form" visible="showModal">
+                  
+             </modal>-->
+          
              
              <div class="form-group col-md-10"  ng-show="responseDiv">
                  
@@ -324,6 +314,10 @@
                 </div>              
                 <br/>
              </div>
+                <div style='display: none'>
+                    <input type="text" ng-model="comiteId" id ='comiteId'  name ='comiteId' />
+                    <input type="text" ng-model="agendaId" id ='agendaId'  name ='agendaId' />
+                </div>
          </form>
         </div> 
            
@@ -387,7 +381,7 @@
 <!--  Temas  Temas    -->
        
        
-            <div class="col-md-8 col-md-offset-1"  ng-focus="focusfnTema()" ng-blur="blurfnTema()" >
+            <div class="col-md-8 col-md-offset-1"  ng-focus="focusfnTema()" ng-blur="blurfnTema()" id='divTema'>
 
             <form class="form-horizontal alert alert-mm color-palette-set" name="addtemaForm" id="addtemaForm"
                   ng-submit="insertInfoTr(registroAddTema);" ng-show="addtemaTema">
@@ -556,5 +550,80 @@
 
 </div>
 
+<div id="Modal"  visible="showModal">
+    <script  type="text/ng-template" id="myModalPendiente.html">
+        <div class="modal-header">
+            <h4 class="modal-title">{{titulin}}</h4>
+        </div>
+        <div class="modal-body amplioMedio">
+            <form class="form-horizontal" name="idFormPndt" id="idFormPndt" ng-submit="aceptar(registro);">
+                 <div class="form-group">
+                    <label class="milabel col-md-3" for="responsable">{{temaResponsable}}</label>
+                    <div class="col-md-6">
+                    <input type="text" class=" mitexto" id="responsable" name="responsable"
+                         ng-model="registro.responsable" value="{{responsable}}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class=" milabel col-md-3" for="temaCausa">{{temaDetalle}}</label>
+                    <div class="col-md-6">
+                       <textarea rows="2"  cols="55" id="temaCausa" name="temaCausa"
+                         ng-model="registro.temaCausa" >
+                       </textarea>
+                    </div> 
+                   </div>
+                  <div class="form-group">
+                    <label class=" milabel col-md-3" for="fechaCumple">{{temaFechaCumple}}</label>
+                    <div class="col-md-6">
+                    <input type="date" class="mitexto fa fa-calendar fa-lg" id="fechaCumple" name="fechaCumple"
+                         ng-model="registro.fechaCumple" value="{{fechaCumple}}" />
+                    </div> 
+                </div>                       
+                 <div class="form-group"> 
+                    <div class="col-md-2">
+                        <button type="button" value="Cerrar" class="btn btn-custom pull-right btn-xs" 
+                                 ng-click="aceptar(registro)" 
+                                 id="send_btna">{{form_btnAceptar}}</button> 
+                    </div>
+                </div>                     
+            </form>
+         </div>   
+    </script>
+    
+    <script type="text/ng-template" id="myModalActa.html">
+        <div class="modal-header">
+            <h4 class="modal-title">{{titulin}}</h4>
+        </div>
+        <div class="modal-body amplio">
+            <form class="form-horizontal" name="idFormDup" id="idFormDup">
+                <div class="col-md-10">                
+                    <label class="milabel col-md-4" for="convocatoriaFecha">{{form_convocatoriaFecha}}</label>
+                    <div class="col-md-6 ">
+                         <input type="date" width="12" class="form-control mitexto fa fa-calendar fa-lg" id="convocatoria" name="convocatoria"
+                          ng-model="convocatoria.Fecha"     />
+                    </div>
+
+                </div>
+                    <div class="col-md-10">   
+                        <label class="milabel col-md-4" for="agenda_horaHasta">{{form_convocatoriaHora}}</label>
+                        <div class="col-md-6">
+                        <select id='convocatoriaHora' name='convocatoriaHora' ng-model='convocatoria.Hora' >
+                        <option ng-repeat='operatorhd in operatorshd' value = "{{operatorhd.hora}}">{{operatorhd.detalle}}</option>
+                        </select>
+                        </div>             
+                    </div>
+                    <div class="col-md-10"> 
+                        <div  class="col-md-4">
+                            <button type="button" value="Actualizar" class="btn btn-custom pull-right btn-xs" 
+                                ng-click="convocatoria(convocatoria)" title="{{form_btnAcepta}}">{{form_btnAcepta}}
+                            </button>                        
+                       </div>
+                    </div>
+            </form>
+         </div>   
+    </script>
+</div>
+
+<script src="js/ui-bootstrap-tpls-0.11.0.js" type="text/javascript"></script>
+<!--script src="controller/min/mm_agendaSegumiento.ctrl.min.js" type="text/javascript"></script--> 
 <script src="controller/ctrls/mm_agendaSegumiento.ctrl.js" type="text/javascript"></script>
-<!-- <script src="controller/min/mm_agendaSegumiento.ctrl.min.js" type="text/javascript"></script> -->

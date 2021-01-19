@@ -114,6 +114,13 @@
                 $ln = linea($ln,$pdf);
                 $pdf->SetXY(12, $ln);
                 $pdf->Cell(180,6, 'COMITE : '.utf8_decode($row['comite_nombre']) .' ' . utf8_decode($row['agenda_Descripcion']) .' - '. $fecha  ,0,1,'L');
+//                $ln=$pdf->GetY()+4;
+//                $ln = linea($ln,$pdf);
+                $ln += 4;
+                $pdf->SetXY(12, $ln);
+                $pdf->Cell(180,6, 'ACTA : ' ,0,1,'L');
+                $pdf->SetXY(28,$ln);
+                $pdf->Cell(180,6, $row['agenda_acta'] .' ,  Cerrada ' . $row['agenda_cierraActa']  ,0,1,'L');
             }
             if($row['tp'] == 'Tema'){
                 $ln=$pdf->GetY();

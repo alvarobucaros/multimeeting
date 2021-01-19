@@ -4,8 +4,7 @@
         <nav class="navbar navbar-default navbar-mm col-md-8 col-md-offset-1">
             <div class="navbar-header">
                   <?php if($pf=='A'){
-                      echo '
-                  
+                      echo '                  
                 <div class="alert alert-default navbar-brand search-box">
                     <button class="btn btn-primary btn-xs" ng-show="show_form" 
                     ng-click="formToggle()">{{form_btnNuevo}}<span class="glyphicon" aria-hidden="true"></span></button>
@@ -155,23 +154,9 @@
                         ng-model="registro.usuario_password" required Placeholder="{{form_Phusuario_password}}" 
                         value="{{registro.usuario_password}}" />
                     <input type="text" ng-model="idx" id ='idx'  name ='idx' value="{{idx}}"/>
-             
+         
                 </div>
-                    <div id="miModal" ng-show="mimodal">
-            <div class="modal-header">
-            <h3 class="modal-title" id="modal-title">{{titleModal}}</h3>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <div id = 'dataModal'>
-                <div  id="data"></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
-            </div>
-        </div>
-            
+           
             </form>
             
 	</div>
@@ -234,8 +219,27 @@
         </div>
 </div>
 
-<script src="controller/min/mm_usuarios.ctrl.min.js" type="text/javascript"></script>
-<script src="controller/min/mm_modal.ctrl.min.js" type="text/javascript"></script>
+<div id="Modal"  visible="showModal">
+    <script type="text/ng-template" id="myModalComites.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">{{titleModal}}</h3>
+        </div>
+        <div class="modal-body amplio">
+            <form class="form-horizontal" name="idFormDup" id="idFormDup">                                 
+                <div id = 'dataModal'>
+                    <div  id="data"></div>
+                </div>                    
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                    <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
+                </div>                
+            </form>
+         </div>   
+    </script>
+</div>
 
- 
-<!-- >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Tuesday,Oct 24, 2017 11:30:34   <<<<<<< 
+
+<script src="js/ui-bootstrap-tpls-0.11.0.js" type="text/javascript"></script>
+<!--script src="controller/min/mm_usuarios.ctrl.min.js" type="text/javascript"></script-->
+<script src="controller/ctrls/mm_usuarios.ctrl.js" type="text/javascript"></script>
+<!-- >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Tuesday,Oct 24, 2017 11:30:34   <<<<<<< -->

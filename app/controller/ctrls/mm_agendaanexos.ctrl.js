@@ -38,7 +38,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     getInfo();
     
     function getInfo(){
-     $scope.datosOcultos = false;
+        $scope.datosOcultos = false;
     }
 
     function getCombos(){
@@ -54,7 +54,6 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
        $scope.comiteId = $scope.registro.agenda_comiteId;
        $scope.registro.comiteId = $scope.comiteId;    
        $http.post('modulos/mod_mm_agendaanexos.php?op=1',{'op':'1','comite':$scope.comiteId, 'empresa':empresa}).success(function(data){
-//alert(data);
         $scope.operators1 = data;
         });      
     };
@@ -67,7 +66,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         $scope.registro.anno = data;
         empresa = $scope.empresa;
         $http.post('modulos/mod_mm_agendaanexos.php?op=r',{'op':'r','empresa':empresa, 'comite':$scope.comiteId, 'agenda':$scope.agendaId}).success(function(data){          
- //       alert(data);
+        alert(data);
             $scope.details = data;
         }); 
         leeAnexos($scope.comiteId, $scope.agendaId);
@@ -76,20 +75,22 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
  
     function leeAnexos(comite, agenda){
         empresa = $scope.empresa;
+        comite = $scope.comiteId; 
+        agenda = $scope.agendaId;
         $http.post('modulos/mod_mm_agendaanexos.php?op=r',{'op':'r','empresa':empresa, 'comite':comite, 'agenda':agenda}).success(function(data){          
         $scope.details = data;
         });  
     }
  
-    function actualiza(id, comiteid, agendaid , anexo, descripcion, empresa){  
-        $http.post('modulos/mod_mm_agendaanexos.php?op=a',{'op':'a', 'anexos_id':id, 'anexos_comiteid':comiteid, 'anexos_agendaid':agendaid, 
-            'anexos_anexo':anexo, 'anexos_descripcion':descripcion, 'anexos_empresa':empresa}).success(function(data){
-        if (data === 'Ok') {
-            leeAnexos($scope.comiteId, $scope.agendaId);
-            $scope.anexos_descripcion='';
-        }
-        });
-     };
+//    function actualiza(id, comiteid, agendaid , anexo, descripcion, empresa){  
+//        $http.post('modulos/mod_mm_agendaanexos.php?op=a',{'op':'a', 'anexos_id':id, 'anexos_comiteid':comiteid, 'anexos_agendaid':agendaid, 
+//            'anexos_anexo':anexo, 'anexos_descripcion':descripcion, 'anexos_empresa':empresa}).success(function(data){
+//        if (data === 'Ok') {
+//            leeAnexos($scope.comiteId, $scope.agendaId);
+//            $scope.anexos_descripcion='';
+//        }
+//        });
+//     };
  
      $scope.botonOk = function(){
         $scope.btnCarga = true;
@@ -104,12 +105,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
      $scope.actualizaLista = function(){
         $('#btnReCarga').hide();
         $('#message').val('');
-        $scope.btnActualiza=false;
-        empresa = $scope.empresa;
-        $http.post('modulos/mod_mm_agendaanexos.php?op=r',{'op':'r','empresa':empresa, 'comite':$scope.comiteId, 'agenda':$scope.agendaId}).success(function(data){          
-        $scope.details = data;
-        
-        });
+        leeAnexos($scope.comiteId, $scope.agendaId)
      };
      
     $scope.leeDatosComite = function(registro){
@@ -158,11 +154,7 @@ $('#idForm').css('display', 'none');
             }else{
                 msg='El archivo físico ya no existe en la carpeta ';
             }
-                empresa = $scope.empresa;
-                $http.post('modulos/mod_mm_agendaanexos.php?op=r',{'op':'r','empresa':empresa, 'comite':comite, 'agenda':agenda}).success(function(data){          
-                $scope.details = data;
-                alert(msg);
-                });
+            leeAnexos($scope.comiteId, $scope.agendaId)
             });
          }
     };

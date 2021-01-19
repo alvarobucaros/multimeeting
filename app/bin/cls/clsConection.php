@@ -115,11 +115,12 @@ class DBconexion{
                         " empresa_logo, empresa_autentica, empresa_lenguaje, empresa_cresidencial,  " .
                         " empresa_ctrl,usuario_celular FROM mm_usuarios " .
                         " INNER JOIN mm_empresa ON empresa_id = usuario_empresa WHERE " . $where;
-               $result = ''; 
+                $result = ''; 
+echo $strSql;                
                 $resultado =  mysqli_query($con, $strSql);
                 $totRec =   $resultado->num_rows;  ///$número_filas = mysql_num_rows($resultado);  
                 if ($totRec > 0) {
-                    $usuario = mysqli_fetch_array($resultado, MYSQL_ASSOC);
+                    $usuario = mysqli_fetch_assoc($resultado);
                     $claveOk = md5($clave);
                     if($usuario['usuario_estado']==='A'){
                         date_default_timezone_set('America/New_York');
@@ -200,7 +201,7 @@ class DBconexion{
                 $sql='SELECT empresa_id, empresa_nombre, empresa_nit, empresa_web, empresa_direccion, empresa_telefonos, '.
                      'empresa_ciudad, empresa_logo, empresa_autentica, empresa_lenguaje FROM mm_empresa  WHERE  empresa_id = '. $empresa ;
                 $result =  mysqli_query($con, $sql);
-                while( $reg = mysqli_fetch_array($result, MYSQL_ASSOC) )
+                while( $reg = mysqli_fetch_assoc($result) )
                 {
                     $retorno = $reg['empresa_id'].'||'.$reg['empresa_nombre'].'||'.$reg['empresa_nit'].'||'.$reg['empresa_web'].'||'.$reg['empresa_direccion'].'||'.
                             $reg['empresa_telefonos'].'||'.$reg['empresa_ciudad'].'||'.$reg['empresa_logo'].'||'.$reg['empresa_autentica'].'||'.

@@ -12,16 +12,16 @@
                      " INNER JOIN mm_salones  ON agenda_salonId = salon_id " .
                      " WHERE agenda_id = " . $agenda_id;
             $result = mysqli_query($con, $query); 
-                      
-            while( $reg = mysqli_fetch_array($result, MYSQL_ASSOC) )
-            {
+ echo $query;                     
+            
+            while($reg = mysqli_fetch_assoc($result)) { 
                 $retorno = $reg['comite_nombre'].'||'.$reg['comite_consecActa'].'||'.
                         $reg['salon_nombre'].'||'.$reg['agenda_Descripcion'].'||'.
                         $reg['salon_ubicacion'].'||'.
                         $reg['agenda_fechaDesde'].'||'.$reg['agenda_fechaHasta'].'||'.$reg['agenda_ProxCitacion'].'||'.
                         $reg['comite_id'];  
-            }
-         //   echo $retorno;
+            }   
+echo $retorno;
             return $retorno;   
         }
         
@@ -121,16 +121,16 @@
         $query = " SELECT agenda_id, agenda_Descripcion, agenda_fechaDesde, agenda_fechaHasta, agenda_enFirme, " .
                 " agenda_conCitacion, agenda_acta, agenda_estado ,agenda_causal , comite_nombre , comite_id, 'Tema' as tp," .
                 " CONCAT(tema_tipo, ': ', tema_titulo, ' ', tema_detalle) tema,  tema_desarrollo,  tema_responsable, " .
-                " CONCAT(tema_fechaAsigna, ' ', tema_fechaCumple) fechaDesde_Hasta, tema_agendaId,  agenda_empresa empresa  " .
-                " FROM mm_agendamiento  " . 
+                " CONCAT(tema_fechaAsigna, ' ', tema_fechaCumple) fechaDesde_Hasta, tema_agendaId,  agenda_empresa empresa,  " .
+                " agenda_cierraActa FROM mm_agendamiento  " . 
                 " LEFT JOIN mm_agendatemas ON tema_agendaId = agenda_id  " .
                 " LEFT JOIN mm_comites ON comite_id = agenda_comiteId" .
                 $whereTema . 
                 " UNION  " .
                 " SELECT agenda_id, agenda_Descripcion, agenda_fechaDesde, agenda_fechaHasta, agenda_enFirme,   " .
                 " agenda_conCitacion, agenda_acta, agenda_estado ,agenda_causal ,  comite_nombre ,invitado_comite, 'Invitado' as tp, invitado_nombre,  " .
-                " invitado_cargo, invitado_celuar, Concat(invitado_asistio,'|',invitado_causa), invitado_agendaId,  agenda_empresa empresa  " .
-                " FROM mm_agendamiento  " .
+                " invitado_cargo, invitado_celuar, Concat(invitado_asistio,'|',invitado_causa), invitado_agendaId,  agenda_empresa empresa,  " .
+                " agenda_cierraActa FROM mm_agendamiento  " .
                 " LEFT JOIN mm_agendainvitados ON invitado_agendaId = agenda_id  " . 
                 " LEFT JOIN mm_comites ON comite_id = agenda_comiteId" .
                 $whereInvitado ;
@@ -138,8 +138,8 @@
                 $query .= " UNION  " .
                 " SELECT agenda_id, agenda_Descripcion, agenda_fechaDesde, agenda_fechaHasta, agenda_enFirme,   " .
                     " agenda_conCitacion, agenda_acta, agenda_estado ,agenda_causal , comite_nombre , anexos_comiteid, 'Anexo' as tp, anexos_anexo,  " .
-                    " anexos_descripcion, '' as a, '' as b , anexos_agendaid ,  agenda_empresa empresa " .
-                    " FROM mm_agendamiento  " .
+                    " anexos_descripcion, '' as a, '' as b , anexos_agendaid ,  agenda_empresa empresa, " .
+                    " agenda_cierraActa FROM mm_agendamiento  " .
                     " LEFT JOIN mm_agendaanexos ON anexos_agendaid = agenda_id  "  .
                     " LEFT JOIN mm_comites ON comite_id = agenda_comiteId" ;
                 }

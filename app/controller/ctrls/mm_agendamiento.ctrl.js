@@ -287,16 +287,16 @@ function getIni()
     function traeInvitados(agendaId){
         $http.post('modulos/mod_mm_agendamiento.php?op=ti',{'op':'ti','agenda_id':agendaId,'empresa':$scope.empresa}).success(function(data){ 
             if(data !== 'No Hay'){          
-            $scope.detailAsistes = data;
+                $scope.detailAsistes = data;
             }
          });  
     }
     
     function traeTemas(agendaId){
         $http.post('modulos/mod_mm_agendamiento.php?op=tt',{'op':'tt','agenda_id':agendaId,'empresa':$scope.empresa}).success(function(data){  
-        if(data !== 'No Hay'){   
-            $scope.detail4s = data;
-        }
+            if(data !== 'No Hay'){   
+                $scope.detail4s = data;
+            }
         });  
     }
     
@@ -353,11 +353,13 @@ function getIni()
       };
 
     $scope.createNuevoTema = function(){
+        $scope.form_titleTema='Adiciona nuevo tema a tratar';
         $scope.temaNuevo = true;
         $scope.registro4 = {};
         $scope.registro4.tema_tipo = 'G';
         $scope.registro4.tema_estado = 'A';
         $scope.registro4.tema_id=0;
+        $scope.registro4.tema_fechaAsigna = $scope.registro1.agenda_fechaDesde;
         $scope.registro4.tema_empresa = $('#e').val();
         $scope.registro4.tema_comite=$scope.comite_id;
         $scope.registro4.tema_agendaId =  $scope.registro1.agenda_id;
@@ -395,9 +397,7 @@ function getIni()
         tema_responsable = $scope.registro4.tema_responsable;
         if(tema_responsable===undefined){tema_responsable='';}
         tema_fechaAsigna = $scope.registro4.tema_fechaAsigna;
-        if(tema_fechaAsigna===undefined){tema_fechaAsigna=$scope.fechaHoy}
-        var n = tema_fechaAsigna.indexOf("T");
-        tema_fechaAsigna = tema_fechaAsigna.substr(0, n);
+        if(tema_fechaAsigna===undefined){tema_fechaAsigna=$scope.fechaHoy;}
         var datos = $scope.registro4.tema_id+'||'+$scope.agenda_id+'||'+ $scope.empresa+'||'+
                     $scope.registro1.agenda_comiteId+'||'+$scope.registro4.tema_titulo+'||'+$scope.registro4.tema_detalle+'||'+
                     $scope.registro4.tema_tipo+'||'+tema_responsable+'|| ||'+
@@ -413,7 +413,7 @@ function getIni()
         
         
     $scope.updateComite = function() {  
-      empresa=$scope.empresa
+      empresa=$scope.empresa;
       $scope.btnBuscaReg=false;
       $scope.btnActualizar=true;
       $scope.listaComite=false;
@@ -491,7 +491,7 @@ function getIni()
     
     $scope.haceCitacion = function(){
        $scope.anula = false;  
-        if (confirm('Deja en firme esta invitación, Envia citaciones a las personas invitadas, al mensaje del correo se le puede adicionar un mensaje ')) {  
+        if (confirm('Deja en firme esta invitación y le envia las citaciones a las personas convocadas. Al mensaje de correo se le puede adicionar un texto  ')) {  
             $scope.enviaMail = true;
             $scope.registro5.agenda_comiteNotaCitacion='Citación comité '+$scope.registro1.agenda_Descripcion;
         }   

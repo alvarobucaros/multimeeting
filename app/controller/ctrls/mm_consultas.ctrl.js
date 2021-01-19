@@ -13,8 +13,8 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     $scope.form_AnexoN = 'No';
     $scope.form_AnexoS = 'Si';
     $scope.form_titAnexoDescripcion= 'Anexo sobre:';
-    $scope.form_titAsistente = "Invitados :"
-    $scope.form_imprime = "Imprime Consulta :"
+    $scope.form_titAsistente = "Invitados :";
+    $scope.form_imprime = "Imprime Consulta :";
     $scope.chk=true;
     $scope.ventana = true;
     var hoy = new Date();
@@ -28,6 +28,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     $scope.registro1.agenda_actaDesde = 0000;
     $scope.registro1.agenda_actaHasta = 9999;
     $scope.registro1.tema='';
+    
     getCombos($scope.empresa);
     
     getInfo();       
@@ -37,7 +38,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     }    
         
       function getCombos(empresa){
-           var user = $('#u').val();
+        var user = $('#u').val();
         $http.post('modulos/mod_mm_agendamiento.php?op=1',{'op':'1','empresa':empresa,'user': user}).success(function(data){
         $scope.operators1 = data;
       });     
@@ -75,7 +76,8 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         +'||'+$scope.registro1.agenda_fechaHasta+'||'+$scope.registro1.tema+'||'+$scope.empresa+'||'+anexoDescripcion  +'||'+asistente 
         +'||'+anexos+'||P';
         $http.post('modulos/mod_mm_agendamiento.php?op=cnslta',{'op':'cnslta','dato':dato}).success(function(data){ 
-         $scope.detailResponses = data;
+     
+            $scope.detailResponses = data;
          });
          document.getElementById('tableToExport').scrollIntoView({
             behavior: 'smooth'
@@ -83,10 +85,10 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     };   
 
     $scope.exportToExcel = function(registro1){
-        if ($scope.comiteId==0){
-            alert('Requiere seleccionar un comité');
-            return
-        }
+//        if ($scope.comiteId==0){
+//            alert('Requiere seleccionar un comité');
+//            return
+//        }
         anexoDescripcion = $scope.registro1.anexoDescripcion;
         if( anexoDescripcion === undefined){anexoDescripcion = "";}
         asistente= $scope.registro1.asistente;

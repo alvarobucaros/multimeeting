@@ -11,7 +11,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     $scope.form_estado51 = 'ONLINE';
 
     $scope.form_id = 'ID';
-    $scope.form_servidor = 'SERVIDOR'
+    $scope.form_servidor = 'SERVIDOR';
     $scope.form_basedatos = 'BASEDATOS';
     $scope.form_usuario = 'USUARIO';
     $scope.form_password = 'PASSWORD';
@@ -84,7 +84,7 @@ $('#idForm').slideToggle();
         if($('#usuario').val()===''){er+='falta usuario\n';}
      //   if($('#password').val()===''){er+='falta password\n';}
         if($('#estado').val()===''){er+='falta estado\n';}
-        if (er==''){
+        if (er===''){
             $scope.procesa = true;
  //   Estaslineas las dejo pendientes mientras arreglo como crear la BD directamente           
  //           $http.post('app/modulos/mod_mm_instala.php?op=a',{'op':'a', 'id':info.id, 

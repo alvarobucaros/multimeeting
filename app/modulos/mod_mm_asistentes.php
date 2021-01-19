@@ -42,7 +42,7 @@ switch ($op)
             $query = "SELECT  asistente_id, asistente_comite, comite_nombre, asistente_usuarioId, ".
                 "CASE asistente_usuarioId WHEN 0 THEN 'NO' ELSE 'SI' END  AS usuario_nombre, asistente_nombre, ".
                 " asistente_empresa, asistente_cargo, asistente_celuar, asistente_email, " .
-                " CASE  WHEN asistente_titulo = 'P' THEN 'Presidente' WHEN  asistente_titulo = 'S' THEN 'Secretario' WHEN asistente_titulo ='T' THEN 'Transcriptor' ELSE '' END AS asistente_titulo  ".             
+                " CASE  WHEN asistente_titulo = 'P' THEN 'Presidente' WHEN  asistente_titulo = 'S' THEN 'Secretario' WHEN asistente_titulo ='T' THEN 'Transcriptor' ELSE '' END AS asistente_Nomtitulo  ".             
 		" FROM mm_asistentes INNER JOIN mm_comites ON asistente_comite = comite_id  WHERE asistente_empresaId = '" .  $empresa ."' " .     
                 " ORDER BY comite_nombre, asistente_nombre";  
             $result = mysqli_query($con, $query); 
@@ -93,12 +93,11 @@ switch ($op)
            $query .= "  VALUES ('" . $asistente_comiteId."', '".$asistente_usuarioId."', '".
                    $asistente_nombre."', '".$asistente_empresa."', '".$asistente_cargo."', '".
                    $asistente_celuar."', '".$asistente_email."'," . $empresa . ",'" . $asistente_titulo. "')";          
-           mysqli_query($con, $query);
-           echo 'Ok';
            }
            else
            {
-               echo 'Ya se ha creado un asistente con este nombre para este comite '; 
+               echo 'Ya se ha creado un asistente con este nombre para este comite ';
+               return;
            }
         } 
         else 
@@ -109,10 +108,9 @@ switch ($op)
                     "', asistente_celuar = '".$asistente_celuar."', asistente_email = '".$asistente_email.
                     "',  asistente_titulo = '".$asistente_titulo.
                     "' WHERE asistente_id = ".$asistente_id;
-            mysqli_query($con, $query); 
-            echo 'Ok';
         }
-   //echo $query;     
+        mysqli_query($con, $query);
+        echo 'Ok';     
     } 
  
     function unRegistro($data) 
@@ -146,7 +144,7 @@ switch ($op)
                  " AND comite_activo = 'A' " .
                  " AND comite_id IN (SELECT uc_comiteId FROM mm_usuario_comites WHERE uc_empresa  = " . 
                   $empresa . "  AND uc_usuarioId = " . $usuario . ")".
-                 " ORDER BY  comite_nombre";
+                 " ORDER BY  comite_nombre";        
          $result = mysqli_query($con, $query); 
          $arr = array(); 
          if(mysqli_num_rows($result) != 0)
@@ -180,20 +178,21 @@ switch ($op)
     {  
         $objClase = new DBconexion(); 
         $con = $objClase->conectar();
-        $query = "SELECT usuario_nombre, usuario_empresa, empresa_nombre, usuario_email, usuario_celular, usuario_titulo " .
-                 " FROM mm_usuarios, mm_empresa ".
+        $dato='';
+        $query = "SELECT usuario_nombre, usuario_empresa, empresa_nombre, usuario_email, usuario_celular, ". 
+                 " 'N' AS usuario_titulo FROM mm_usuarios, mm_empresa ".
                  " WHERE  empresa_id = usuario_empresa AND usuario_id = ". $data->asistente_usuarioId;
+       
         $result = mysqli_query($con, $query); 
-        
-        $arr = array(); 
         if(mysqli_num_rows($result) != 0)  
         { 
             while($row = mysqli_fetch_assoc($result)) { 
-                $arr[] = $row;
+               $dato =  $row['usuario_nombre'].'||'.$row['usuario_empresa'].'||'.$row['empresa_nombre'].'||'.
+                       $row['usuario_email'].'||'.$row['usuario_celular'].'||'.$row['usuario_titulo']; 
            } 
         }
        
-        echo $json_info = json_encode($arr); 
-        echo '.';
+        
+        echo $dato;
     }
 // >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Friday,Oct 27, 2017 7:40:45   <<<<<<< 

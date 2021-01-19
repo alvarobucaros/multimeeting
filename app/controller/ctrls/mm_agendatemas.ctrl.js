@@ -54,7 +54,6 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     
     function getInfo(empresa){
         $http.post('modulos/mod_mm_agendatemas.php?op=r',{'op':'r','empresa':$scope.empresa}).success(function(data){
-            alert(data);
         $scope.details = data;
         });       
     }
@@ -139,7 +138,10 @@ $('#idForm').slideToggle();
         if($('#tema_fechaAsigna').val()===''){er+='falta fechaasigna\n';}
         if($('#tema_estado').val()===''){er+='falta estado\n';}
         if (er==''){
-        $http.post('modulos/mod_mm_agendatemas.php?op=a',{'op':'a', 'tema_id':info.tema_id, 'tema_agendaId':info.tema_agendaId, 'tema_empresa':info.tema_empresa, 'tema_comite':info.tema_comite, 'tema_titulo':info.tema_titulo, 'tema_detalle':info.tema_detalle, 'tema_tipo':info.tema_tipo, 'tema_responsable':info.tema_responsable, 'tema_fechaAsigna':info.tema_fechaAsigna, 'tema_estado':info.tema_estado}).success(function(data){
+        $http.post('modulos/mod_mm_agendatemas.php?op=a',{'op':'a', 'tema_id':info.tema_id, 'tema_agendaId':info.tema_agendaId, 
+            'tema_empresa':info.tema_empresa, 'tema_comite':info.tema_comite, 'tema_titulo':info.tema_titulo, 
+            'tema_detalle':info.tema_detalle, 'tema_tipo':info.tema_tipo, 'tema_responsable':info.tema_responsable, 
+            'tema_fechaAsigna':info.tema_fechaAsigna, 'tema_estado':info.tema_estado}).success(function(data){
         if (data === 'Ok') {
             getInfo($scope.empresa);
             alert ('Registro Actualizado ');

@@ -1,9 +1,10 @@
-var app = angular.module('app', []);
-app.controller('mainController',['$scope','$http', function($scope,$http){
+var app = angular.module('app', ['ui.bootstrap']);
+app.controller('mainController',['$scope','$http','$modal', function($scope,$http, $modal, $log){
+        
     $scope.form_title = 'Seguimiento de reunión (Desarrollo)';
 
     $scope.form_nuevaActa= ' Crea acta ';
-    $scope.form_reorganiza=' Renumera invitados/temas'
+    $scope.form_reorganiza=' Renumera invitados/temas';
     $scope.form_titleTerc='Adiciona participanteCambios en el tercero';
     $scope.form_titleTercero='Modifica datos del invitado';
     $scope.form_titleaddTema='Modifica tema ';
@@ -41,7 +42,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     $scope.form_tema_tipo = 'Tipo tema';
     $scope.form_tema_fechaAsigna = 'Fecha asignado';
     $scope.form_tema_fechaCumple = 'Fecha cumplido';
-    $scope.form_temag = 'Tema general';
+    $scope.form_temag = 'Tema ejecutado';
     $scope.form_temap = 'Tema pendiente';
     $scope.form_tema_desarrollo='Desarrollo';
     $scope.form_tema_estado="Activo ?";
@@ -75,14 +76,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
 
     function getIni()
         {
-            hoy = new Date();
-            var mes = hoy.getMonth() + 1;
-            fechaHoy = hoy.getFullYear()+'-';
-            if (mes < 10) {fechaHoy +='0';}
-            fechaHoy += mes+'-';
-            if (hoy.getDate() < 10) {fechaHoy +='0';}
-            fechaHoy +=  hoy.getDate();
-            $scope.hoy = fechaHoy;
+            $scope.hoy = fechar();
             $scope.responseDiv = 'false';
             $scope.tercForm = 'false';
         }
@@ -94,6 +88,16 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
          });    
     }
   
+  function fechar(){
+       hoy = new Date();
+       var mes = hoy.getMonth() + 1;
+       fechaHoy = hoy.getFullYear()+'-';
+       if (mes < 10) {fechaHoy +='0';}
+       fechaHoy += mes+'-';
+       if (hoy.getDate() < 10) {fechaHoy +='0';}
+       fechaHoy +=  hoy.getDate();  
+       return fechaHoy;
+  }
 
     $scope.focusfn = function () {
     $scope.focus = true;
@@ -115,7 +119,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
           empresa = $scope.empresa.trim();
           comite = $scope.sgmnto_comiteId;
           $http.post('modulos/mod_mm_agendamiento.php?op=dc',{'op':'dc', 'comiteId':comite,'empresa':empresa}).success(function(data){
-          if(data=='NO HAY'){
+          if(data==='NO HAY'){
             alert ('No hay seguimiento para esta reunión pues el comité no tiene agendamiento pendiente');
             $scope.responseDiv = false;
             $scope.frmTercero1 = false;
@@ -127,7 +131,9 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
             res = data.split("||");
             $scope.resultado = res[0];
             $scope.comite_id=res[1];
+            $scope.comiteId  = $scope.sgmnto_comiteId;
             $scope.agenda_id = res[1];
+            $scope.agendaId = res[1];
             $scope.responseDiv = true;
             $scope.frmTercero1 = true;
             $scope.frmTemas = true;
@@ -189,7 +195,6 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     };  
     
     $scope.editDetailTema = function(detailTema){
-    //    alert(JSON.stringify(detailTema)); 
         datos = detailTema.tema_id+'||'+detailTema.tema_agendaId+'||'+detailTema.tema_comite+'||'+detailTema.tema_tipo;
         datos += detailTema.tema_titulo+'||'+detailTema.tema_detalle+'||'+detailTema.tema_desarrollo+'||'+detailTema.tema_responsable+'||';
         datos += detailTema.tema_estado+'||'+detailTema.tema_orden+'||'+detailTema.tema_fechaAsigna+'||'+detailTema.tema_fechaCumple;
@@ -206,9 +211,13 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         $scope.registroAddTema.tema_orden = detailTema.tema_orden;
         $scope.registroAddTema.tema_tipo = str.substring(0, 1);
         $scope.registroAddTema.tema_fechaAsigna = detailTema.tema_fechaAsigna;
+        if(detailTema.tema_fechaCumple ===  null || detailTema.tema_fechaCumple === undefined)
+        {detailTema.tema_fechaCumple = $scope.hoy = fechar();}
         $scope.registroAddTema.tema_fechaCumple = detailTema.tema_fechaCumple;
-        if (detailTema.tema_fechaCumple.substr(0, 4)=='0000'){
+        if( detailTema.tema_fechaCumple === null){detailTema.tema_fechaCumple = $scope.hoy}
+        if (detailTema.tema_fechaCumple.substr(0, 4)==='0000'){
             $scope.registroAddTema.tema_fechaCumple = $scope.hoy ; 
+            $('#divTema').focus();
         }
         
         $scope.registroAddTema.tema_id = detailTema.tema_id;
@@ -297,7 +306,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         celular='';
         email='';
         titulo=$scope.registroTr.asistente_titulo;
-        if(titulo===undefined){titulo='N'}
+        if(titulo===undefined){titulo='N'};
         empresa = $scope.empresa.trim();
         if($scope.registroTr.asistente_celuar !== undefined){celular=$scope.registroTr.asistente_celuar;} 
         if($scope.registroTr.asistente_email !== undefined){email=$scope.registroTr.asistente_email;}  
@@ -354,7 +363,10 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         });
       };
       
-      $scope.updateInfoAddTema= function (registroTema) {
+      $scope.updateInfoAddTema= function (info) {
+        if($scope.registroAddTema.tema_tipo === 'P'){
+            $scope.temaPdnte();
+        } 
         desarrollo = $scope.registroAddTema.tema_desarrollo;
         if(desarrollo===undefined){desarrollo='';}
         tema_responsable =  $scope.registroAddTema.tema_responsable;
@@ -373,30 +385,15 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         });
       };
       
-      $scope.createActa = function(registro){
+      $scope.createActaOld = function(registro){
            var datos =  $scope.sgmnto_comiteId+'||'+$scope.comite_id+'||'+$scope.empresa; // comite, agenda, empresa
            $scope.Convocatoria = true;
       };
       
-      $scope.convocatoria = function(){
-        empresa = $scope.empresa.trim();
-        var datos =  $scope.sgmnto_comiteId+'||'+$scope.comite_id+'||'+empresa+'||'+$scope.registroTercero.convocatoria;
-        $http.post('modulos/mod_mm_agendamiento.php?op=conv',{'op':'conv', 'datos':datos}).success(function(data){
-//alert(data);            
-        res = data.split("||");
-        if (res[0] === 'Ok') {            
-            alert (res[1]);
-        }
-         $scope.Convocatoria = false;
-         $scope.vistaReorganiza  = true;
-        });
-      };
-      
-      
     function traeTemas(agendaId){
          empresa = $scope.empresa;
          $http.post('modulos/mod_mm_agendamiento.php?op=tt',{'op':'tt','agenda_id':agendaId,'empresa':empresa}).success(function(data){     
-          if(data=='NO HAY'){
+          if(data==='NO HAY'){
              alert ('No hay temas definidos');
           }
           else
@@ -410,7 +407,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
         empresa = $scope.empresa;
         $http.post('modulos/mod_mm_agendamiento.php?op=ti',{'op':'ti','agenda_id':agendaId,'empresa':empresa}).success(function(data){
 //alert (data);        
-            if(data=='NO HAY'){
+            if(data==='NO HAY'){
              alert ('No hay invitados a la reunión definidos');
           }
           else
@@ -419,9 +416,104 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
      }
          });  
     }
+    
+    $scope.temaPdnte = function(info){        
+        size='md';
+        var modalInstance = $modal.open({
+        templateUrl: 'myModalPendiente.html',
+        controller: function ($scope, $modalInstance, items) {
+            $scope.items = items;
+            $scope.registro = [];
+            r=($('#tema_responsable2').val());
+            f=($('#tema_fechaCumple').val());
+            $scope.items = items;
+            $scope.titulin= 'Tema pendiente ';
+            $scope.temaDetalle = 'Causa';
+            $scope.temaResponsable='Responsable';
+            $scope.temaFechaCumple='Cumplimiento en';
+            $scope.form_btnAceptar='Aceptar';
+            $scope.registro.responsable = r; 
+            $scope.registro.fechaCumple=f;
+            $scope.registro.temaCausa='';
+            
+            $scope.aceptar = function(info){
+                pendiente_id=0;
+                pendiente_agendaId=$('#agendaId').val();
+                pendiente_comite=$('#comiteId').val();
+                pendiente_empresa = $('#e').val();
+                pendiente_tema=$('#tema_id').val();
+                pendiente_detalle=info.temaCausa;
+                pendiente_responsable =info.responsable;
+                pendiente_fecha=info.fechaCumple;
+                pendiente_estado='P';
+              
+                $http.post('modulos/mod_mm_agendapendientes.php?op=a',{'op':'a','pendiente_id':pendiente_id,'pendiente_agendaId':pendiente_agendaId,
+                'pendiente_comite':pendiente_comite,'pendiente_empresa':pendiente_empresa,'pendiente_tema':pendiente_tema,
+                'pendiente_detalle':pendiente_detalle,'pendiente_responsable':pendiente_responsable,'pendiente_fecha':pendiente_fecha,
+                'pendiente_estado':pendiente_estado}).success(function(data){
+ alert(data);
+                });
+                $modalInstance.dismiss();
+            };
+        },
+            
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+        });
+    };
+    
+    $scope.createActa = function(info){
+        size='md';
+        empresa = $scope.empresa;
+        var modalInstance = $modal.open({
+        templateUrl: 'myModalActa.html',
+        controller: function ($scope, $modalInstance, items) {
+            $scope.items = items;
+            $scope.titulin= 'Fecha y hora  próxima reunión';
+            $scope.form_convocatoriaFecha = 'Fecha';
+            $scope.form_convocatoriaHora = 'Hora';
+            $scope.form_btnAcepta = 'Continuar';
+            
+            $http.post('modulos/mod_mm_agendamiento.php?op=hr',{'op':'hr','empresaId':empresa}).success(function(data){
+            $scope.operatorshd = data;
+            }); 
+            
+            
+      $scope.convocatoria = function(convocatoria){
+        empresa =  $('#e').val();
+        comiteId = $('#comiteId').val();
+        agendaId =  $('#agendaId').val();
+        er='';
+        if(convocatoria.Fecha===undefined){er+='Falta la Fecha \n';}
+        if(convocatoria.Hora===undefined){er+='Falta la Hora \n';}
+        if(er===''){
+            var datos = convocatoria.Fecha+'||'+convocatoria.Hora+'||'+empresa+'||'+comiteId + '||' + agendaId ;
+            //var datos =  $scope.sgmnto_comiteId+'||'+$scope.comite_id+'||'+empresa+'||'+$scope.registroTercero.convocatoria;
+            $http.post('modulos/mod_mm_agendamiento.php?op=conv',{'op':'conv', 'datos':datos}).success(function(data){           
+            res = data.split("||");
+            if (res[0] === 'Ok') {            
+                alert (res[1]);
+            }
+                $modalInstance.dismiss();
+            });
+        }else{
+            alert(er);
+        }
+      };            
+        },
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+        });
+    };   
+    
     }]);
 
-
 // >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Saturday,Jan 6, 2018 9:41:16   <<<<<<< 
-
-

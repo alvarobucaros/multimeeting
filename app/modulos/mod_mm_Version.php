@@ -17,8 +17,8 @@ switch ($op)
     case 'r':
         leeRegistros($data);
         break;
-    case 'b':
-        borra($data);
+    case 'n':
+        leeNews($data);
         break;
     case 'a':
         actualiza($data);
@@ -78,3 +78,37 @@ function  leeRegistros($data){
         }
         return $ret;
     }
+
+    function leeNews($data){
+        $empresa = $data->empresa;    
+        ini_set('track_errors', 1);
+        $fd = fopen('../bin/cls/atm.ctl', 'r');
+
+        $datos=fread($fd,filesize('../bin/cls/atm.ctl')); 
+        $data =explode('~',$datos);
+        fclose($fd);
+        $servidor = funde($data[0]);
+        $baseDatos = funde($data[1]);
+        $usuario = funde($data[2]);
+        $clave = funde($data[3]);
+        $con = new mysqli($servidor,$usuario,$clave, $baseDatos);
+        if (mysqli_connect_errno()) {
+            printf("Conexión fallida: %s\n", mysqli_connect_error());
+            return false;
+        }  
+        else { 
+            mysqli_set_charset($con,"utf8"); 
+             { 
+            $query = "SELECT  actu_id, actu_empresa, actu_tipo, actu_texto, actu_fechacrea, actu_fechaopera, " .
+                 " actu_fechavence, actu_estado, actu_app FROM actualizaciones WHERE actu_empresa = " . $empresa .
+                 " AND  actu_app = 'MM' ORDER BY actu_fechaopera DESC ";   
+
+            $result = mysqli_query($con, $query); 
+            $arr = array();  
+            while($row = mysqli_fetch_assoc($result)) { 
+                $arr[] = $row; 
+            }             
+            echo $json_info = json_encode($arr); 
+            }  
+        }
+    }  

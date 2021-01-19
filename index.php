@@ -33,8 +33,8 @@
                             </div>
                             <div class="col-md-3">
                                 <ul class="social">
-                                    <li><a href="https://www.facebook.com/fb.me/multimeeting"><i class="icon-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-instagram"></i></a></li>
+                                    <li><a href="https://www.facebook.com/fb.me/multimeeting" alt="facebook" title="facebook"><i class="icon-facebook"></i></a></li>
+                                    <li><a href="https://atomingenieria.blogspot.com/" alt="BlogSpot"  title="Blog"><i class="icon-bookmark"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -131,11 +131,7 @@
             </div>
       
     </section>
-
-
- 
-                    
-		</section>
+</section>
 
             <section id="acercade">
                     <div class="container">
@@ -173,11 +169,11 @@
 
                                             <div class="col-md-10">
                                                     <div class="post animate-box">
-                                                            <a href="#"><img src="app/img/calibra.png" alt="Calibración"></a>
+                                                            <a href="#"><img src="app/img/contable.jpg" alt="Contabilidad"></a>
                                                             <div>									
-                                                                <p><strong>Sistema de control y seguimiento para el mantenimiento de maquinaria y equipos</strong></p>
-                                                            <p>Esta APP está diseñada para empresas que ofrecen mantenimiento de maquinaria o equipos, permite su ingreso, genera orden de servico, requerimeintos de repuestos, control de repuestos, facturación y entrega del elemento. Por medio del flujo de trabajo el cliente puede hacerle seguimiento al estado de su equipo. Puede integrar datos a la contabilidad <strong>
-                                                            </stromg>. La APP está en desarrollo</p>
+                                                                <p><strong>Sistema contable para mipymes</strong></p>
+                                                            <p> Permite llevar la contabilidad de conjuntos residenciales aunque puede usarse de manera independiente para mipymes <strong>
+                                                            </stromg>. Esta integrada al sistema de conjuntos residenciales</p>
                                                             </div>
                                                     </div>
                                             </div>
@@ -221,5 +217,3 @@
         <script src="app/controller/min/mm_contactoIni.ctrl.min.js" type="text/javascript"></script>
 	</body>
 </html>
-
-

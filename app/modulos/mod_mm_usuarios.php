@@ -38,12 +38,12 @@ switch ($op)
       $con = $objClase->conectar(); 
       $empresa = $data->empresa;
        { 
-            $query = "SELECT  usuario_id, usuario_nombre, usuario_empresa, usuario_email, 
-         usuario_password, usuario_tipo_acceso, usuario_fechaCreado, 
-          usuario_fechaActualizado, usuario_estado, usuario_perfil, perfil_nombre,
-          usuario_avatar, usuario_user, usuario_celular
-          FROM mm_usuarios INNER JOIN mm_perfiles ON usuario_perfil = perfil_codigo
-          WHERE usuario_empresa = '" . $empresa . "' AND  usuario_empresa = perfil_empresa ORDER BY usuario_nombre";   
+        $query = "SELECT  usuario_id, usuario_nombre, usuario_empresa, usuario_email, 
+        usuario_password, usuario_tipo_acceso, usuario_fechaCreado, 
+        usuario_fechaActualizado, usuario_estado, usuario_perfil, perfil_nombre,
+        usuario_avatar, usuario_user, usuario_celular
+        FROM mm_usuarios INNER JOIN mm_perfiles ON usuario_perfil = perfil_codigo
+        WHERE usuario_empresa = '" . $empresa . "' AND  usuario_empresa = perfil_empresa ORDER BY usuario_nombre";   
    //  echo $query;
             $result = mysqli_query($con, $query); 
             $arr = array(); 
@@ -147,7 +147,6 @@ switch ($op)
         $con = $objClase->conectar();
         $empresa = $data->empresa;
         $query = "SELECT perfil_codigo, perfil_nombre FROM mm_perfiles WHERE perfil_empresa = '" .$empresa . "' ORDER BY   perfil_nombre";
- //    echo $query;
          $result = mysqli_query($con, $query); 
          $arr = array(); 
          if(mysqli_num_rows($result) != 0)
@@ -168,7 +167,7 @@ switch ($op)
         $query = "DELETE FROM mm_usuario_comites WHERE uc_empresa = '" .
                  $empresa . "' AND uc_usuarioId = '" . $usuario. "' AND uc_id > 0";
         mysqli_query($con, $query); 
-echo $query+' '+$condicion; 
+
         $rec = explode(";",$condicion);
         foreach ($rec as $value) {
             if ($value > 0){
@@ -177,7 +176,7 @@ echo $query+' '+$condicion;
             mysqli_query($con, $query); 
             }
         }  
-echo $query+' ';
+
         echo 'Ok';
     }
     
@@ -190,7 +189,6 @@ echo $query+' ';
                 $empresa . "' ORDER BY  comite_nombre";
         $result1 = mysqli_query($con, $query); 
         $res='';
-        $ids='';
         $n=0;
    
         while($row = mysqli_fetch_assoc($result1)) {
@@ -200,17 +198,16 @@ echo $query+' ';
                     $comite_id . "' AND uc_empresa = '". $empresa . "' AND uc_usuarioId = '" . $usuario ."' ";
             $result2 = mysqli_query($con, $query);
    
-             while($rec = mysqli_fetch_assoc($result2)) {
+            while($rec = mysqli_fetch_assoc($result2)) {
                if ($rec['Nr'] != '0'){$chk='checked';}  
-             }
-            
+            }            
 
             $res.= '<input type="checkbox" name="cbox" id="cbox' .$n .'" value="' . $row['comite_id'] .
-                  '" ' .$chk . '> <label for="cbox' .$row['comite_id'] .'" >' . $row['comite_nombre'] .' </label>  ';
-            $ids .= $row['comite_id'].';';
+                  '" ' .$chk . '> <label for="cbox' .$row['comite_id'] .'" >' . $row['comite_nombre'] .' </label> </br> ';
             $n+=1;
        }
-       echo $res;    
+       echo $res.'';    
     }
  
+
 // >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Tuesday,Oct 24, 2017 11:30:34   <<<<<<< 

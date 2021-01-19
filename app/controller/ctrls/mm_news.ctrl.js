@@ -14,7 +14,7 @@ app.controller("mainController",['$scope','$http', function($scope,$http){
     $scope.empresa_BaseDatos = '';
     $scope.empresa_version ='';
     
-    $scope.form_version     = 'Noticias...';
+    $scope.form_version     = 'Noticias:';
     $scope.form_empresa_nombre     = 'Concedida a';
     $scope.form_empresa_clave      = 'Código';    
     $scope.form_empresa_versionPrd = 'Versión Aplicación';
@@ -26,7 +26,8 @@ app.controller("mainController",['$scope','$http', function($scope,$http){
     $scope.vista=false;
     getInfo();
  
-
+    getNews();
+ 
     function getInfo(){
         empresa = $('#e').val();
         $http.post('modulos/mod_mm_Version.php?op=r',{'op':'r', 'empresa':empresa}).success(function(data){
@@ -40,7 +41,15 @@ app.controller("mainController",['$scope','$http', function($scope,$http){
     $scope.empresa_baseDatos = dato[6]; 
     $scope.empresa_version =dato[9];       
         });       
-    }        
+    }
+    
+        function getNews(){
+        empresa = $('#e').val();
+        $http.post('modulos/mod_mm_Version.php?op=n',{'op':'n', 'empresa':empresa}).success(function(data){
+        $scope.details = data;
+        });       
+    }
+    
 }]);
 
 

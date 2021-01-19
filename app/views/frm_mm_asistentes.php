@@ -16,8 +16,7 @@
         </nav>
         <div class="col-md-8 col-md-offset-1">
 
-            <form class="form-horizontal alert alert-mm color-palette-set" name="formato" id="idForm"
-                  ng-submit="insertInfo(registro);" ng-show="AsistenteForm">
+            <form class="form-horizontal alert alert-mm color-palette-set" name="formato" id="idForm" ng-show="AsistenteForm">
 
                 <div class="form-group">
                     <label class="control-label milabel col-md-4" for="asistente_comiteId">{{form_asistente_comiteId}}</label>
@@ -71,7 +70,7 @@
                      <label class="control-label milabel col-md-4" for="asistente_titulo">{{form_asistente_titulo}}</label>
                      <div class="btn-group  col-md-8"  data-toggle="buttons">
                     <label>
-                       <input type="radio" name ="asistente_titulo" ng-model="registro.asistente_titulo" 
+                    <input type="radio" name ="asistente_titulo" ng-model="registro.asistente_titulo" 
                                class="btn media-bottom" value="P" >{{form_tituloP}}
                     </label>
                     <label>
@@ -83,8 +82,8 @@
                                class="btn media-bottom" value="T" >{{form_tituloT}}
                     </label>
                     <label>
-                       <input type="radio" name ="asistente_titulo" ng-checked="true" ng-model="registro.asistente_titulo" 
-                               class="btn media-bottom" value=" " >{{form_tituloN}}
+                       <input type="radio" name ="asistente_titulo"  ng-model="registro.asistente_titulo" 
+                               class="btn media-bottom" value="N" >{{form_tituloN}}
                     </label>                        
                      </div>
                  </div>      
@@ -108,20 +107,18 @@
                 </div> 
 
                 <div class="form-group">
-                    <div class="col-md-5">
+                    <div class="col-md-2">
                         <button type="button" value="Actualizar" class="btn btn-custom pull-right btn-xs" 
-                                 ng-click="updateInfo(registro)" id="actualizabtn">{{form_btnActualiza}}</button>
+                                ng-click="updateInfo(registro)" id="actualizabtn">{{form_btnActualiza}}</button>
                      </div>  
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <button type="button" value="Cerrar" class="btn btn-custom pull-right btn-xs" 
-                                 ng-click="clearInfo(registro)" 
-                                 id="cierrabtn">{{form_btnAnula}}</button> 
+                                ng-click="clearInfo(registro)"  id="cierrabtn">{{form_btnAnula}}</button> 
                     </div>
                 </div>       
                 <div style='display: none'>
                 <input type="text" ng-model="registro.asistente_id" id ='asistente_id'  name ='asistente_id' value="{{registro.asistente_id}}"/>
-
-   
+                <input type="text" ng-model="registro.asistente_titulo" id ='asistente_titulo'  name ='asistente_titulo' value="{{registro.asistente_titulo}}"/>
                 </div>
             </form>
 	</div>
@@ -149,7 +146,7 @@
                     <td>{{detail.asistente_nombre}}</td>
                     <td>{{detail.asistente_empresa}}</td>
                     <td>{{detail.asistente_cargo}}</td>
-                    <td>{{detail.asistente_titulo}}</td>
+                    <td>{{detail.asistente_Nomtitulo}}</td>
                     <td>{{detail.asistente_celuar}}</td>
                     <td>{{detail.asistente_email}}</td>
                     <td>
@@ -173,10 +170,7 @@
         </div>
 </div>
 <script src="js/angular-resources.js" type="text/javascript"></script>
-<script src="controller/min/mm_asistentes.ctrl.min.js" type="text/javascript"></script>
+<script src="controller/min/mm_asistentes.ctrl.min.js" type="text/javascript"></script>>
 
 
-<!-- >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Friday,Oct 27, 2017 7:40:45   <<<<<<< 
-<script src="controller/min/mm_asistentes.ctrl.min.js" type="text/javascript"></script>
-	 
--->
+<!-- >>>>>>>   Creado por: Alvaro Ortiz Castellanos   Friday,Oct 27, 2017 7:40:45   <<<<<<< --->
