@@ -356,7 +356,7 @@
     <form class="form-horizontal alert alert-mm color-palette-set" name="formato" id="idForm3"
     ng-submit="insertInfo(registro3);"  ng-show="modelTab3">
         <p>{{form_agenda_comiteId}} : {{comite_nombreResul}}</p>
-        <p>{{form_agenda_Descripcion}} : {{agenda_Descripcion}}</p>
+        <p>{{form_agenda_Descripcion}} : {{registro1.agenda_Descripcion}}</p>
         <p>{{form_agenda_salonId}} : {{salon_nombreResul}}</p>
        
         <button class="btn btn-primary btn-xs mibottom" ng-click="createNuevoInvitado(registro3)" title="{{form_btnAdd}}"  > {{form_nuevoinvitado}}</button>
@@ -403,7 +403,7 @@
         <form class="form-horizontal alert alert-mm color-palette-set" name="formato4" id="idForm4d"
                   ng-submit="insertInfo(registro4);"  ng-show="modelTab4" >
             <p>{{form_agenda_comiteId}} : {{comite_nombreResul}}</p>
-            <p>{{form_agenda_Descripcion}} : {{agenda_Descripcion}}</p>
+            <p>{{form_agenda_Descripcion}} : {{registro1.agenda_Descripcion}}</p>
             <p>{{form_agenda_salonId}} : {{salon_nombreResul}}</p>
 
             <button class="btn btn-primary btn-xs mibottom" ng-click="createNuevoTema(registro4)" title="{{form_btnAdd}}">{{form_nuevotema}}</button>

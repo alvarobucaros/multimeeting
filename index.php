@@ -18,10 +18,10 @@
                 <div class="container">
                     <nav class="navbar navbar-default">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="fh5co-navbar-brand">
-                                    <a class="fh5co-logo" href="http://www.atomingenieria.com">
-                                    <img src="app/img/atomInv.PNG" alt=""/>
+                                    <a class="fh5co-logo" href="https://www.appeinternet.com">
+                                    <img src="app/img/aei1.png"  width="200" height="100" alt=""/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -34,7 +34,7 @@
                             <div class="col-md-3">
                                 <ul class="social">
                                     <li><a href="https://www.facebook.com/fb.me/multimeeting" alt="facebook" title="facebook"><i class="icon-facebook"></i></a></li>
-                                    <li><a href="https://atomingenieria.blogspot.com/" alt="BlogSpot"  title="Blog"><i class="icon-bookmark"></i></a></li>
+                                    <li><a href="https://www.atomingenieria.blogspot.com/" alt="BlogSpot"  title="Blog"><i class="icon-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -138,15 +138,15 @@
                             <section id="intro">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+                                            <div class="col-lg-6 col-lg-offset-2  col-md-offset-2 text-center">
                                                 <div class="intro animate-box">
                                                     <h1>Acerca de nosotros</h1>
-                                                    <h4>Atomingenieria es una empresa dedicada al desarrollo y asesoria en procesos de informática</h4>
+                                                    <h4>En App e Internet nos dedicamos al desarrollo y asesoria en procesos de informática</h4>
 
                                                 </div>							
 
                                                 <div class="col-md-12 section-heading text-center">
-                                                    <h4>Sistemas de información disponibles para descarga y pruebas</h4>
+                                                    <h4>Sistemas de información disponibles para: descarga, prueba y uso gratis</h4>
                                                     <div class="row">
                                                         <div class="col-md-6 col-md-offset-3 subtext">
                                                                 <p></p>
@@ -191,8 +191,8 @@
                             <div class="row">
                                     <div class="col-md-12 text-center ">
                                             <div class="footer-widget border">
-                                                    <p class="pull-left"><small>&copy; Atomingeniería sas. 2018 - Derechos reservados</small></p>
-                                                    <p class="pull-right"><small> Diseño de Atomingeniería sas</p>
+                                                    <p class="pull-left"><small>&copy; App e Internet. 2018 - Derechos reservados</small></p>
+                                                    <p class="pull-right"><small> Diseño de App e Internet</p>
 
                                             </div>
                                     </div>

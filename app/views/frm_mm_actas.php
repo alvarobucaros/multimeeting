@@ -77,15 +77,13 @@
                             title="{{form_btnEdita}}"><span class="glyphicon glyphicon-edit"></span></button>
                     </td>
                     <td>
-                    <button class="btn btn-danger btn-xs" ng-click="toggleModal(detail)" id="boton"
+                    <button class="btn btn-danger btn-xs" ng-click="printInfo(detail)" id="boton"
                             title="{{form_btnPrint}}"><span class="glyphicon glyphicon-print"></span></button>
                     </td>
                 </tr>
             </table>
         </div>
-
-     
-                    
+            
     <div
         class="modal-container" ng-show="modalShown">
         <div class="modal-window">
@@ -95,7 +93,6 @@
                 title="{{form_btnRegreso}}">{{form_btnRegreso}} <span class="glyphicon glyphicon-collapse-down"></span></button></div>
             </div>
             <div class="modal-body">
-
                  <table class="table table-hover tablex">
                      <tr>
                          <th>ANEXO</th>

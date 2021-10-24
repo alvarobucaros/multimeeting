@@ -152,7 +152,7 @@ if (!isset($_GET['op'])){
           <ul class="treeview-menu">
             <li><a href="mm.php?op=agSgmnto"><i class="fa fa-circle-o"></i>Agenda a seguir</a></li>
             <li><a href="mm.php?op=loadActa"><i class="fa fa-upload"></i>Carga documentos</a></li>
-            <li><a href="mm.php?op=agActas"><i class="fa fa-pencil"></i>Acta de reunión</a></li>
+            <li><a href="mm.php?op=agActas"><i class="fa fa-pencil"></i>Acta o Minuta de reunión</a></li>
             <li><a href="mm.php?op=pndnte"><i class="fa fa-bell-o"></i>Temas pendientes</a></li>
           </ul>
         </li>
@@ -379,7 +379,7 @@ if (!isset($_GET['op'])){
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.2
     </div>
-    <strong>Copyright &copy; 2016 <a href="http://atomingenieria.com">Atominge sas.</a> </strong> Derechos reservados
+    <strong>Copyright &copy; 2016 <a href="http://appeinternet.com">App e Intenet.</a> </strong> Derechos reservados
   </footer>
 
 

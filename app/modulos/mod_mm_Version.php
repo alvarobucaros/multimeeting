@@ -61,7 +61,7 @@ function  leeRegistros($data){
                         $ctrl = $row['empresa_versionPrd'] . '||' . $row['empresa_versionBd'] . '||' .  
                         $row['empresa_clave'] . '||' . $row['empresa_nombre'] . '||' .  $row['empresa_nit'] . '||' .
                         $servidor . '||' . $baseDatos . '||' . $usuario . '||' . $clave;
-                        if ($version == 0 ) {$ctrl .= '||LITE';} else {$ctrl .= '||ONLINE';};
+                        if ($version == 0 ) {$ctrl .= '||BASICA';} else {$ctrl .= '||ESTANDARD';};
                     }
                 }              
             echo $ctrl;

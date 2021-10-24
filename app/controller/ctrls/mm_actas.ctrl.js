@@ -3,7 +3,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http, $modal
     $scope.form_title = 'Actas de reunión';
     
     $scope.form_btnEdita = 'Edita';
-    $scope.form_btnPrint = 'Imprime';
+    $scope.form_btnPrint = 'Imprime...';
     $scope.form_btnActualiza = 'Habilita';
     $scope.form_btnCierra = 'Cierra Acta';
     $scope.form_btnRegreso = 'Cancela';
@@ -153,31 +153,31 @@ app.controller('mainController', ['modalService',function(modalService){
             $scope.tituloFormulario='';
              });
         }
-    }
+    };
     
     $scope.editInfo = function (detail){ 
-        $scope.agenda_id =  detail.agenda_id
+        $scope.agenda_id =  detail.agenda_id;
         $scope.parametro = 'I';
-        $scope.aviso=''
+        $scope.aviso='';
         $scope.nota=detail.agenda_Descripcion;
         $scope.acta=detail.agenda_acta;
-        if(detail.agenda_cierraActa=='S'){$scope.aviso = "** ACTA CERRADA **";}
+        if(detail.agenda_cierraActa==='S'){$scope.aviso = "** ACTA CERRADA **";}
         $scope.tituloFormulario='Habilita ' + detail.agenda_Descripcion + ' para modificarla o enviar nuevamente la citación ';
-        if (detail.agenda_observa.trim() == ''){
+        if (detail.agenda_observa.trim() === ''){
             $scope.parametro = 'A';
             var fecha = detail.agenda_fechaDesde.substr(0,10);
             $scope.tituloFormulario='Acta: ' + detail.agenda_acta + ' del ' + fecha + '\n' +detail.agenda_Descripcion  ;
         }
             $scope.showEdit = true;
             $scope.btnActualiza = true;
-            if(detail.agenda_cierraActa=='S'){$scope.btnActualiza = false; }
+            if(detail.agenda_cierraActa==='S'){$scope.btnActualiza = false; }
     }; 
     
     $scope.anulaRegistro = function(){
         $scope.showEdit = false;
         $scope.btnActualiza = false;
         $scope.tituloFormulario='';
-    }
+    };
     
     $scope.actualizaRegistro = function(detail){
         agenda=$scope.agenda_id;        
@@ -202,10 +202,10 @@ app.controller('mainController', ['modalService',function(modalService){
         $scope.modalShown = false;
     };
     
-    $scope.printInfo = function(tipo){ 
-        desc = $scope.details[0].agenda_Descripcion;
+    $scope.printInfo = function(detail){ 
+        desc = $scope.detail[0].agenda_Descripcion;
         $scope.titVentana='IMPRIME ACTA '+ desc;
-        agenda = $scope.details[0].agenda_id;
+        agenda = $scope.detail[0].agenda_id;
         
         empresa=$scope.empresa;
         $http.post('modulos/mod_mm_agendamiento.php?op=rfa',{'op':'rfa','empresa':empresa,'agenda':agenda}).success(function(data){ 
