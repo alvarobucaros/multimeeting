@@ -1,15 +1,13 @@
-CREATE DATABASE  IF NOT EXISTS `atominge_mmeeting` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
-USE `atominge_mmeeting`;
--- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: atominge_mmeeting
+-- Host: localhost    Database: atominge_mmeeting
 -- ------------------------------------------------------
--- Server version	5.7.28
+-- Server version	5.7.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +21,7 @@ USE `atominge_mmeeting`;
 
 DROP TABLE IF EXISTS `cimaclientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cimaclientes` (
   `cliente_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `cliente_tipoDoc` char(1) DEFAULT NULL COMMENT 'TIPO_DOC',
@@ -62,7 +60,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_accesos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_accesos` (
   `acceso_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `acceso_empresa` int(11) DEFAULT NULL,
@@ -88,7 +86,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_agendaanexos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_agendaanexos` (
   `anexos_id` int(11) NOT NULL AUTO_INCREMENT,
   `anexos_empresa` int(11) DEFAULT NULL,
@@ -101,7 +99,7 @@ CREATE TABLE `mm_agendaanexos` (
   `anexos_fecha` datetime DEFAULT NULL,
   `anexos_anno` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`anexos_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +108,7 @@ CREATE TABLE `mm_agendaanexos` (
 
 LOCK TABLES `mm_agendaanexos` WRITE;
 /*!40000 ALTER TABLE `mm_agendaanexos` DISABLE KEYS */;
-INSERT INTO `mm_agendaanexos` VALUES (1,1,14,61,'4._PRESUPUESTO_2014-2015.pdf','Detalles ','../actas/E00001/2018/comite14/acta61/4._PRESUPUESTO_2014-2015.pdf','317','2018-03-23 11:12:00',NULL),(2,1,14,61,'3._Bance__Resultados_y_Notas_2014 (1).pdf','Otro ejemplo','../actas/E00001/2018/comite14/acta61/3._Bance__Resultados_y_Notas_2014 (1).pdf','317','2018-03-23 11:17:00',NULL),(5,1,14,61,'3._Bance__Resultados_y_Notas_2014 (1).pdf','Otro ejemplo','../actas/E00001/2018/comite14/acta61/3._Bance__Resultados_y_Notas_2014 (1).pdf','317','2018-03-23 11:17:00',NULL),(8,2,12,71,'Declaracion 2018.pdf','Declaracion','../actas/E00002/2020/comite12/acta71/Declaracion 2018.pdf','320','2020-05-13 02:16:00','2020'),(9,2,17,70,'ex14.pdf','Documento Extraño  Volumen14 de junio 12 de 2017','../actas/E00002/2020/comite17/acta70/ex14.pdf','320','2020-05-14 10:17:00','2020'),(10,2,12,76,'ex103.pdf','cotizaciones','../actas/E00002/2020/comite12/acta76/ex103.pdf','320','2020-05-14 03:54:00','2020'),(11,2,18,78,'ex27.pdf','Soporte de las cotizaciiones de matriales','../actas/E00002/2020/comite18/acta78/ex27.pdf','320','2020-05-21 08:35:00','2020'),(12,2,0,0,'ava1.png','Logo o avatar','../actas/../reports/images/ava1.png','320','2020-05-21 08:40:00','2020'),(13,2,0,0,'ava1.png','Logo o avatar','../actas/../reports/images/ava1.png','320','2020-05-21 08:40:00','2020');
+INSERT INTO `mm_agendaanexos` VALUES (1,1,14,61,'4._PRESUPUESTO_2014-2015.pdf','Detalles ','../actas/E00001/2018/comite14/acta61/4._PRESUPUESTO_2014-2015.pdf','317','2018-03-23 11:12:00',NULL),(2,1,14,61,'3._Bance__Resultados_y_Notas_2014 (1).pdf','Otro ejemplo','../actas/E00001/2018/comite14/acta61/3._Bance__Resultados_y_Notas_2014 (1).pdf','317','2018-03-23 11:17:00',NULL),(5,1,14,61,'3._Bance__Resultados_y_Notas_2014 (1).pdf','Otro ejemplo','../actas/E00001/2018/comite14/acta61/3._Bance__Resultados_y_Notas_2014 (1).pdf','317','2018-03-23 11:17:00',NULL),(8,2,12,71,'Declaracion 2018.pdf','Declaracion','../actas/E00002/2020/comite12/acta71/Declaracion 2018.pdf','320','2020-05-13 02:16:00','2020'),(9,2,17,70,'ex14.pdf','Documento Extraño  Volumen14 de junio 12 de 2017','../actas/E00002/2020/comite17/acta70/ex14.pdf','320','2020-05-14 10:17:00','2020'),(10,2,12,76,'ex103.pdf','cotizaciones','../actas/E00002/2020/comite12/acta76/ex103.pdf','320','2020-05-14 03:54:00','2020'),(11,2,18,78,'ex27.pdf','Soporte de las cotizaciiones de matriales','../actas/E00002/2020/comite18/acta78/ex27.pdf','320','2020-05-21 08:35:00','2020'),(12,2,0,0,'ava1.png','Logo o avatar','../actas/../reports/images/ava1.png','320','2020-05-21 08:40:00','2020'),(13,2,0,0,'ava1.png','Logo o avatar','../actas/../reports/images/ava1.png','320','2020-05-21 08:40:00','2020'),(14,1,0,0,'ava4.png','Logo o avatar','../actas/../reports/images/ava4.png','317','2021-10-30 09:58:00','2021'),(15,1,0,0,'ava4.png','Logo o avatar','../actas/../reports/images/ava4.png','317','2021-10-30 09:58:00','2021'),(16,1,0,0,'avaAoc.png','Logo o avatar','../actas/../reports/images/avaAoc.png','317','2021-10-30 10:00:00','2021'),(17,1,0,0,'avaAoc.png','Logo o avatar','../actas/../reports/images/avaAoc.png','317','2021-10-30 10:00:00','2021'),(18,1,0,0,'aei1.png','Logo o avatar','../actas/../reports/images/aei1.png','317','2021-10-30 10:04:00','2021'),(19,2,0,0,'ava3.png','Logo o avatar','../actas/../reports/images/ava3.png','322','2021-11-02 05:48:00','2021');
 /*!40000 ALTER TABLE `mm_agendaanexos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +118,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_agendainvitados`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_agendainvitados` (
   `invitado_id` int(11) NOT NULL AUTO_INCREMENT,
   `invitado_agendaId` int(11) DEFAULT NULL,
@@ -136,7 +134,7 @@ CREATE TABLE `mm_agendainvitados` (
   `invitado_empresaid` int(11) DEFAULT NULL,
   `invitado_comite` int(11) DEFAULT NULL,
   PRIMARY KEY (`invitado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=260 DEFAULT CHARSET=utf8 COMMENT='Invitados al comite';
+) ENGINE=InnoDB AUTO_INCREMENT=269 DEFAULT CHARSET=utf8 COMMENT='Invitados al comite';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +143,7 @@ CREATE TABLE `mm_agendainvitados` (
 
 LOCK TABLES `mm_agendainvitados` WRITE;
 /*!40000 ALTER TABLE `mm_agendainvitados` DISABLE KEYS */;
-INSERT INTO `mm_agendainvitados` VALUES (156,47,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','S','S',0,' ',1,NULL),(157,47,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','S','P',1,' ',1,NULL),(159,47,'Diana valentina','atom','secretaria','3422','alvaro.oycsoft@gmail.com','S','T',2,'',1,NULL),(160,48,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','P',1,' ',1,NULL),(161,48,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',8,' ',1,NULL),(163,48,'alvaro Martinez','Atom sas','analista','123123','alvaro.oycsoft@gmail.com','N','S',1,' ',1,NULL),(164,48,'Dora Castellanos','Atom sas','secretraia','456','alvaro.oycsoft@gmail.com','N','T',2,' ',1,NULL),(165,48,'Eduardo ruiz','Atom sas','diseñador','54535','alvaro.oycsoft@gmail.com','N','',3,' ',1,NULL),(166,48,'Maria Eugenia','datos','vendedor','3102525268','alvaro.oycsoft@gmail.com','N','',4,' ',1,NULL),(167,48,'Benjamin Bernal','atom','analista','3104545678','alvarobucaros@hotmail.com','N','',5,'',1,NULL),(174,49,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(175,49,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro@com.co','N','',0,'',1,NULL),(176,50,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(177,50,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(179,51,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(180,51,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(182,52,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(183,52,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(185,53,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(186,53,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(188,54,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(189,54,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(191,55,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(192,55,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(194,56,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(195,56,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(197,57,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(198,57,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro@com.co','N','',0,'',1,NULL),(200,58,'Juan Camilo','Atom sas','Contador','12345','contador@com.co','N','',0,'',1,NULL),(201,59,'Juan Camilo','Atom sas','Contador','12345','contador@com.co','N','',0,'',1,NULL),(202,60,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(203,60,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro@com.co','N','',0,'',1,NULL),(205,61,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','P',1,'razoon',1,NULL),(206,61,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','S','S',2,'',1,NULL),(207,62,'Juan Camilo','Atom sas','Contador','12345','contador@com.co','S','',1,'',1,NULL),(215,67,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co','S','S',1,'',17,2),(216,67,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com','S','N',2,'',17,2),(218,68,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co','S','S',1,'',17,2),(219,68,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com','S','N',2,'',17,2),(224,70,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co','S','S',1,'',2,17),(225,70,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com','S','T',2,'',2,17),(226,70,'Antonio Mejia','Copias','Jefe','465','alvaro.oycsoft@gmail.com','S','P',3,'',2,17),(227,70,'Alvaro','sas','no','2313','alvaro.oycsoft@gmail.com','S','',9,'',2,17),(228,71,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com','N','T',1,'',2,12),(229,71,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com','S','S',2,'',2,12),(231,71,'Don Alberto','SAS','Contador','789','alvaro.oycsoft@gmail.com','S','P',3,'',2,12),(232,71,'Invitado especial','sua','Jefe','4654','alvarobucaros@hotmail.com','S','',10,'',2,12),(233,71,'Transcriptor emergente','oio','piloto','6846','alvaro.oycsoft@gmail.com','S','T',11,'',2,12),(248,76,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com','S','T',1,'',2,12),(249,76,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com','S','S',2,'',2,12),(251,76,'Mary','sae','contadora','5656','dg','S','P',3,'',2,12),(252,77,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com','S','T',1,'',2,12),(253,77,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com','S','S',2,'',2,12),(254,78,'Jaime Salas','SAS','Jefe de Compras','123456','jsalas@sas.com','S','P',1,'',2,18),(255,78,'Juana Castaño','SAS','Secretara','9876','jcastano@sas.com','S','S',2,'',2,18),(257,78,'Roberto alvarez','SAS','Analista de compras','4345','alvaro.oycsoft@gmail.com','S','T',3,'',2,18),(258,78,'Doris Pelaez','SAS','Abogada','556676','alvaro.oycsoft@gmail.com','S','',4,'',2,18),(259,78,'Luis Suárez','SAS','Ingeniero','64565','alvaro.oycsoft@gmail.com','S','N',12,'',2,18);
+INSERT INTO `mm_agendainvitados` VALUES (156,47,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','S','S',0,' ',1,NULL),(157,47,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','S','P',1,' ',1,NULL),(159,47,'Diana valentina','atom','secretaria','3422','alvaro.oycsoft@gmail.com','S','T',2,'',1,NULL),(160,48,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','P',1,' ',1,NULL),(161,48,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',8,' ',1,NULL),(163,48,'alvaro Martinez','Atom sas','analista','123123','alvaro.oycsoft@gmail.com','N','S',1,' ',1,NULL),(164,48,'Dora Castellanos','Atom sas','secretraia','456','alvaro.oycsoft@gmail.com','N','T',2,' ',1,NULL),(165,48,'Eduardo ruiz','Atom sas','diseñador','54535','alvaro.oycsoft@gmail.com','N','',3,' ',1,NULL),(166,48,'Maria Eugenia','datos','vendedor','3102525268','alvaro.oycsoft@gmail.com','N','',4,' ',1,NULL),(167,48,'Benjamin Bernal','atom','analista','3104545678','alvarobucaros@hotmail.com','N','',5,'',1,NULL),(174,49,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(175,49,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro@com.co','N','',0,'',1,NULL),(176,50,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(177,50,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(179,51,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(180,51,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(182,52,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(183,52,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(185,53,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(186,53,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(188,54,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(189,54,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(191,55,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(192,55,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(194,56,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(195,56,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(197,57,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(198,57,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro@com.co','N','',0,'',1,NULL),(200,58,'Juan Camilo','Atom sas','Contador','12345','contador@com.co','N','',0,'',1,NULL),(201,59,'Juan Camilo','Atom sas','Contador','12345','contador@com.co','N','',0,'',1,NULL),(202,60,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com','N','',0,'',1,NULL),(203,60,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro@com.co','N','',0,'',1,NULL),(205,61,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com','N','P',1,'razoon',1,NULL),(206,61,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com','S','S',2,'',1,NULL),(207,62,'Juan Camilo','Atom sas','Contador','12345','contador@com.co','S','',1,'',1,NULL),(215,67,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co','S','S',1,'',17,2),(216,67,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com','S','N',2,'',17,2),(218,68,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co','S','S',1,'',17,2),(219,68,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com','S','N',2,'',17,2),(224,70,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co','S','S',1,'',2,17),(225,70,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com','S','T',2,'',2,17),(226,70,'Antonio Mejia','Copias','Jefe','465','alvaro.oycsoft@gmail.com','S','P',3,'',2,17),(227,70,'Alvaro','sas','no','2313','alvaro.oycsoft@gmail.com','S','',9,'',2,17),(228,71,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com','N','T',1,'',2,12),(229,71,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com','S','S',2,'',2,12),(231,71,'Don Alberto','SAS','Contador','789','alvaro.oycsoft@gmail.com','S','P',3,'',2,12),(232,71,'Invitado especial','sua','Jefe','4654','alvarobucaros@hotmail.com','S','',10,'',2,12),(233,71,'Transcriptor emergente','oio','piloto','6846','alvaro.oycsoft@gmail.com','S','T',11,'',2,12),(248,76,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com','S','T',1,'',2,12),(249,76,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com','S','S',2,'',2,12),(251,76,'Mary','sae','contadora','5656','dg','S','P',3,'',2,12),(252,77,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com','S','T',1,'',2,12),(253,77,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com','S','S',2,'',2,12),(254,78,'Jaime Salas','SAS','Jefe de Compras','123456','jsalas@sas.com','S','P',1,'',2,18),(255,78,'Juana Castaño','SAS','Secretara','9876','jcastano@sas.com','S','S',2,'',2,18),(257,78,'Roberto alvarez','SAS','Analista de compras','4345','alvaro.oycsoft@gmail.com','S','T',3,'',2,18),(258,78,'Doris Pelaez','SAS','Abogada','556676','alvaro.oycsoft@gmail.com','S','',4,'',2,18),(259,78,'Luis Suárez','SAS','Ingeniero','64565','alvaro.oycsoft@gmail.com','S','N',12,'',2,18),(260,79,'Luis Diaz','i empresa','Asesor','123','alvaro.oycsoft@gmail.com','S','',1,'',2,19),(261,79,'Diana Castillo','Mi empresa','Secretaria','777','alvaro.oycsoft@gmail.com','S','T',2,'',2,19),(262,79,'Pedrina Majíe','Mi empresa','Asesora','23555','alvaro.oycsoft@gmail.com','S','P',3,'',2,19),(263,79,'Lucia Fernánez','mi empresa','secretaria','777','alvaro.oycsoft@gmail.com','S','S',4,'',2,19),(264,79,'Pedro Emilio','mi empresa','Gerente','555','alvaro.oycsoft@gmail.com','S','',13,'',2,19),(265,80,'Carlos Gabriel Rodriguez','sya','Contador','555','contador@gmail.com','S','P',1,'',2,59),(266,80,'Marha Camila Pedroza','sya','Secretaria Financiera','4566','secretaria@gmail.com','S','S',2,'',2,59),(267,80,'Julia Tereza Zapata','sya','Auditora','4566','audit@gmail.com','S','N',3,'',2,59),(268,80,'Julio esteban Fulla','sya','asistente','555','alvaro.oycsoft@gmail.com','S','T',4,'',2,59);
 /*!40000 ALTER TABLE `mm_agendainvitados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +153,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_agendamiento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_agendamiento` (
   `agenda_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `agenda_empresa` int(11) DEFAULT NULL,
@@ -179,7 +177,7 @@ CREATE TABLE `mm_agendamiento` (
   KEY `agendaComites_idx` (`agenda_comiteId`),
   CONSTRAINT `agendaComite` FOREIGN KEY (`agenda_comiteId`) REFERENCES `mm_comites` (`comite_id`),
   CONSTRAINT `agendaSalones` FOREIGN KEY (`agenda_salonId`) REFERENCES `mm_salones` (`salon_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='Ocupacion de los salones';
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8 COMMENT='Ocupacion de los salones';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +186,7 @@ CREATE TABLE `mm_agendamiento` (
 
 LOCK TABLES `mm_agendamiento` WRITE;
 /*!40000 ALTER TABLE `mm_agendamiento` DISABLE KEYS */;
-INSERT INTO `mm_agendamiento` VALUES (46,1,13,'Análisis estados financieros 2017',16,'2018-02-08 08:00:00','2018-02-08 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(47,1,14,'Revisa pronostico de ventas 1er bimestre 2018',14,'2018-02-07 07:00:00','2018-02-07 07:30:00',0,317,'S','S',0,'A','',NULL,NULL,NULL),(48,1,14,'Reunión del mes de enero de 2018',14,'2018-02-08 08:00:00','2018-02-08 09:00:00',0,317,'S','S',0,'A','',NULL,NULL,NULL),(49,1,13,'reunión mensual febrero 2018',15,'2018-02-20 07:00:00','2018-02-20 09:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(50,1,13,'Facturacion del mes',14,'2018-03-09 07:30:00','2018-03-09 09:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(51,1,14,'Nuevos tratados',14,'2018-03-09 11:00:00','2018-03-09 12:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(52,1,13,'Mas temas comerciales',14,'2018-03-02 07:00:00','2018-03-02 16:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(53,1,13,'Mas temas comerciales',14,'2018-03-02 07:00:00','2018-03-02 16:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(54,1,13,'Mas temas comerciales',14,'2018-03-02 07:00:00','2018-03-02 16:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(55,1,14,'mas comerciales',14,'2018-03-02 09:00:00','2018-03-02 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(56,1,13,'comerciallll',14,'2018-03-02 08:00:00','2018-03-02 09:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(57,1,13,'Casos de gerencia',15,'2018-03-12 15:30:00','2018-03-12 17:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(58,1,14,'análisis de resulltados',16,'2018-03-07 08:30:00','2018-03-07 09:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(59,1,14,'niifs',16,'2018-03-10 08:00:00','2018-03-10 08:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(60,1,13,'bueno',15,'2018-03-16 07:00:00','2018-03-16 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(61,1,14,'uno bueno y otro malo',14,'2018-03-12 10:00:00','2018-03-12 12:00:00',0,317,'S','S',4,'A','','12 de Abril de 2018 10am.',NULL,NULL),(62,1,14,'balances',16,'2018-05-10 09:00:00','2018-05-10 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(70,2,15,'Comite paritario de salud ocupacional del primer trimestre de 2020',17,'2020-05-13 14:00:00','2020-05-13 15:00:00',0,320,'S','S',7,'A','','2020-05-14 - 11:30','0','S'),(71,2,15,'Compra elementos de aseo',12,'2020-05-15 08:00:00','2020-05-15 09:00:00',0,320,'S','S',0,'A','','2020-05-29 - 10:00','1','N'),(76,2,15,'compras cafeteria',12,'2020-05-18 12:00:00','2020-05-18 12:30:00',1,320,'S','S',2,'A','','2020-05-25 - 08:30','0','S'),(77,2,9,'Otra compra',12,'2020-05-25 14:30:00','2020-05-25 16:30:00',2,320,'N','N',0,'A','','','0','N'),(78,2,16,'Comité del mes de mayo',18,'2020-05-26 07:30:00','2020-05-26 08:30:00',0,320,'S','S',1,'A','','2020-06-19 - 07:30','0','S');
+INSERT INTO `mm_agendamiento` VALUES (46,1,13,'Análisis estados financieros 2017',16,'2018-02-08 08:00:00','2018-02-08 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(47,1,14,'Revisa pronostico de ventas 1er bimestre 2018',14,'2018-02-07 07:00:00','2018-02-07 07:30:00',0,317,'S','S',0,'A','',NULL,NULL,NULL),(48,1,14,'Reunión del mes de enero de 2018',14,'2018-02-08 08:00:00','2018-02-08 09:00:00',0,317,'S','S',0,'A','',NULL,NULL,NULL),(49,1,13,'reunión mensual febrero 2018',15,'2018-02-20 07:00:00','2018-02-20 09:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(50,1,13,'Facturacion del mes',14,'2018-03-09 07:30:00','2018-03-09 09:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(51,1,14,'Nuevos tratados',14,'2018-03-09 11:00:00','2018-03-09 12:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(52,1,13,'Mas temas comerciales',14,'2018-03-02 07:00:00','2018-03-02 16:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(53,1,13,'Mas temas comerciales',14,'2018-03-02 07:00:00','2018-03-02 16:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(54,1,13,'Mas temas comerciales',14,'2018-03-02 07:00:00','2018-03-02 16:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(55,1,14,'mas comerciales',14,'2018-03-02 09:00:00','2018-03-02 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(56,1,13,'comerciallll',14,'2018-03-02 08:00:00','2018-03-02 09:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(57,1,13,'Casos de gerencia',15,'2018-03-12 15:30:00','2018-03-12 17:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(58,1,14,'análisis de resulltados',16,'2018-03-07 08:30:00','2018-03-07 09:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(59,1,14,'niifs',16,'2018-03-10 08:00:00','2018-03-10 08:30:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(60,1,13,'bueno',15,'2018-03-16 07:00:00','2018-03-16 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(61,1,14,'uno bueno y otro malo',14,'2018-03-12 10:00:00','2018-03-12 12:00:00',0,317,'S','S',4,'A','','12 de Abril de 2018 10am.',NULL,NULL),(62,1,14,'balances',16,'2018-05-10 09:00:00','2018-05-10 10:00:00',0,317,'N','N',0,'A','',NULL,NULL,NULL),(70,2,15,'Comite paritario de salud ocupacional del primer trimestre de 2020',17,'2020-05-13 14:00:00','2020-05-13 15:00:00',0,320,'S','S',7,'A','','2020-05-14 - 11:30','0','S'),(71,2,15,'Compra elementos de aseo',12,'2020-05-15 08:00:00','2020-05-15 09:00:00',0,320,'S','S',0,'A','','2020-05-29 - 10:00','1','N'),(76,2,15,'compras cafeteria',12,'2020-05-18 12:00:00','2020-05-18 12:30:00',1,320,'S','S',2,'A','','2020-05-25 - 08:30','0','S'),(77,2,9,'Otra compra',12,'2020-05-25 14:30:00','2020-05-25 16:30:00',2,320,'N','N',0,'A','','','0','N'),(78,2,16,'Comité del mes de mayo',18,'2020-05-26 07:30:00','2020-05-26 08:30:00',0,320,'S','S',1,'A','','2020-06-19 - 07:30','0','S'),(79,2,16,'Planeación de actividades de fin de año',19,'2021-10-20 08:00:00','2021-10-20 09:00:00',0,321,'S','S',1,'A','','2021-10-26 - 10:00','0','S'),(80,2,15,'Estados financieros del mes de Julio',59,'2021-10-20 14:00:00','2021-10-20 15:30:00',0,321,'S','S',0,'A','','','0','N');
 /*!40000 ALTER TABLE `mm_agendamiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +196,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_agendapendientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_agendapendientes` (
   `pendiente_id` int(11) NOT NULL AUTO_INCREMENT,
   `pendiente_empresa` int(11) DEFAULT NULL,
@@ -210,7 +208,7 @@ CREATE TABLE `mm_agendapendientes` (
   `pendiente_fecha` date DEFAULT NULL,
   `pendiente_estado` char(1) DEFAULT NULL,
   PRIMARY KEY (`pendiente_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='Temas pendientes de la reunión';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='Temas pendientes de la reunión';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +217,7 @@ CREATE TABLE `mm_agendapendientes` (
 
 LOCK TABLES `mm_agendapendientes` WRITE;
 /*!40000 ALTER TABLE `mm_agendapendientes` DISABLE KEYS */;
-INSERT INTO `mm_agendapendientes` VALUES (7,2,12,71,85,'Se esta procesando por ahora','Don Pedro','2020-05-15','P'),(8,2,12,71,85,'Otra anotación antes de terminar','Juancho','2020-05-17','P'),(9,2,12,71,85,'Se cumplio con todo porque ya se hizo lo que faltaba','Juancho','2020-05-18','P'),(10,2,12,71,85,'Final','Juancho','2020-05-18','C'),(11,2,12,71,85,'DD','Don Pedro','2020-05-15','C'),(12,2,12,71,85,'d3','Juancho','2020-05-18','P'),(13,2,18,78,118,'Faltaron los soportes contables para analizar la situación de la empresa,','Jaime','2020-05-29','P');
+INSERT INTO `mm_agendapendientes` VALUES (7,2,12,71,85,'Se esta procesando por ahora','Don Pedro','2020-05-15','P'),(8,2,12,71,85,'Otra anotación antes de terminar','Juancho','2020-05-17','P'),(9,2,12,71,85,'Se cumplio con todo porque ya se hizo lo que faltaba','Juancho','2020-05-18','P'),(10,2,12,71,85,'Final','Juancho','2020-05-18','C'),(11,2,12,71,85,'DD','Don Pedro','2020-05-15','C'),(12,2,12,71,85,'d3','Juancho','2020-05-18','P'),(13,2,18,78,118,'Faltaron los soportes contables para analizar la situación de la empresa,','Jaime','2020-05-29','P'),(14,2,59,80,129,'No se dispuso de internet para que los participantes tuvieran los estados financieros a tiempo','secretaria','2021-10-11','P'),(15,2,59,80,129,'','secretaria','2021-10-11','P'),(16,2,59,80,131,'Hubo problemas con el Internet para hacer llegar los estados a los participantes','Presidente','2021-10-11','P');
 /*!40000 ALTER TABLE `mm_agendapendientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +227,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_agendatemas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_agendatemas` (
   `tema_id` int(11) NOT NULL AUTO_INCREMENT,
   `tema_agendaId` int(11) DEFAULT NULL,
@@ -245,7 +243,7 @@ CREATE TABLE `mm_agendatemas` (
   `tema_estado` char(1) DEFAULT NULL,
   `tema_orden` int(6) DEFAULT NULL,
   PRIMARY KEY (`tema_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8 COMMENT='Temas a tratar en la reunión';
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8 COMMENT='Temas a tratar en la reunión';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +252,7 @@ CREATE TABLE `mm_agendatemas` (
 
 LOCK TABLES `mm_agendatemas` WRITE;
 /*!40000 ALTER TABLE `mm_agendatemas` DISABLE KEYS */;
-INSERT INTO `mm_agendatemas` VALUES (47,47,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','Se dió lectura al acta y fué aprobada en su totalidad.','0000-00-00','0000-00-00','A',0),(48,48,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','0000-00-00','0000-00-00','A',0),(49,48,1,14,'Ventas','Estado de ventas del periodo','GRAL','','','0000-00-00','0000-00-00','A',0),(50,48,1,14,'Cartera','Estado actual de cartera','GRAL','','','0000-00-00','0000-00-00','A',0),(51,47,1,14,'Proyecto ventas','Análisis del proyecto de ventas del año 2018 propuesto por la Gerencia Comercial','GRAL','Gerente de ventas','El estudio del pryecto conta de tres etaoas, la primera a desarrollar de enero a semana santa y cmprende un total de $45\'000.000, el segundo para desarrollar hasta junio 30 y consnste en promocionar los productos avender y el terecro hasta fin de año y es darle todo para vender los cien millones',NULL,NULL,'A',1),(52,49,1,15,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','0000-00-00','0000-00-00','A',0),(56,56,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-02','0000-00-00','A',0),(57,56,1,14,'Ventas','Estado de ventas del periodo','GRAL','','','2018-03-02','0000-00-00','A',0),(58,56,1,14,'Cartera','Estado actual de cartera','GRAL','','','2018-03-02','0000-00-00','A',0),(59,56,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-02','0000-00-00','A',0),(60,56,1,14,'Ventas','Estado de ventas del periodo','GRAL','','','2018-03-02','0000-00-00','A',0),(61,56,1,14,'Cartera','Estado actual de cartera','GRAL','','','2018-03-02','0000-00-00','A',0),(62,57,1,15,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-12','0000-00-00','A',0),(63,58,1,16,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-07','0000-00-00','A',0),(64,59,1,16,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-10','0000-00-00','A',1),(65,60,1,15,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-16','0000-00-00','A',1),(66,61,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','Si se dedarrolla','2018-03-12','2018-03-07','A',1),(67,61,1,14,'Ventas','Estado de ventas del periodo','GRAL','','Se vendio bastante','2018-03-12','2018-03-07','A',2),(68,61,1,14,'Cartera','Estado actual de cartera','GRAL','','La cartera se encuentra desocupada..','2018-03-12','2018-03-07','A',3),(70,14,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','null',NULL,'2018-01-01','0000-00-00','A',1),(71,62,1,16,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-05-10','0000-00-00','A',1),(78,70,2,17,'VERIFICA ASISTENCIA','Verifica la asistencia','GRAL','','Todos asistieron, se reunieron y se fueron','2020-05-13','2020-05-11','A',1),(79,70,2,17,'oTRO','Estado actual del copmité','GRAL','pEPE','Este comité está muy bueno si se pude decir esto.','2020-05-11','2020-05-12','A',2),(80,70,2,17,'Nuevo tema','Este es un tema muy importante','GRAL','Luis',' ','2020-05-11',NULL,'A',3),(81,70,2,70,'Adicionado','Celebracion de compleaños','GRAL','','Como es fiesta de cumplaeños se celetró y se cantó','2020-05-11','2020-05-11','A',4),(82,71,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','GRAL','Luis Pinto','SE leyo en su totalidad y no quedo nada por leer','2020-05-15','2020-05-15','A',1),(83,71,2,12,'Cotizaciones','Análisis de las cotizaciones','PDNT','Yo soy','Se consiguierpn 33 cotizacines, uf.. que montón.','2020-05-15','2020-05-13','A',2),(84,71,2,12,'Estudio de mercado','Estudio de mercado para la compra','GRAL','Juan','Se estudio el mercado para comprar las cosas','2020-05-15','2020-05-22','A',3),(85,71,2,12,'Ppto','Análisis del presupuesto','GRAL','Don Pedro','Pendiente de consultas','2020-05-15','2020-05-15','A',4),(86,71,2,12,'Nombramiento','Nombrar el supervisor','GRAL','Dn Juan','Se nombre al usuario 1','2020-05-15','2020-05-15','A',5),(87,71,2,71,'tema emergente','Pora probar aplazamuie¿iento','GRAL','','Se deja pendiente','2020-05-13','2020-05-15','A',6),(109,76,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','GRAL','','Se leyo y no hubo observaciones pertinentes','2020-05-18','2020-05-18','A',1),(110,76,2,12,'Cotizaciones','Análisis de las cotizaciones','GRAL','','Se presentaron 4 cotizaciones todas aceptables','2020-05-18','2020-05-18','A',2),(111,76,2,12,'Estudio de mercado','Estudio de mercado para la compra','GRAL','Mary','Queda pendiente','2020-05-18','2020-05-18','A',3),(112,76,2,12,'Presupuesto','Analizar ppto de compras','PDNT','mary','No hay recursos para comprar por ahora, esperar hasta la siguiente semana','2020-05-18','2020-05-14','A',4),(113,77,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','GRAL','','','2020-05-25',NULL,'A',1),(114,77,2,12,'Cotizaciones','Análisis de las cotizaciones','GRAL','','','2020-05-25',NULL,'A',2),(115,77,2,12,'Estudio de mercado','Estudio de mercado para la compra','GRAL','','','2020-05-25',NULL,'A',3),(116,77,2,12,'Estudio de mercado','Estudio de mercado para la compra','PDNT','Mary','Queda pendiente','2020-05-18','2020-05-18','A',4),(117,78,2,18,'Acta Anterior','Lectura y verificacion del acta anterior','GRAL','Jaime','Se leyó el acta y todos los puntos de ésta están correctos, fue aprobada','2020-05-26','2020-05-21','A',1),(118,78,2,18,'Estado de la empresa','Estado de la empresa ala echa de la reunión','GRAL','','Queda pendiente','2020-05-26','2020-05-21','A',2),(120,78,2,18,'Contratos sin resolver','Analizar los contratos pendientes por ejecutar','GRAL','Doris','Los contratos 45 y 46 se van a ejecutar en su totalidad, ya se consiguieron las cotizaciones de materia prima y el cliente esta esperando los resultados.','2020-05-26','2020-05-21','A',3),(121,78,2,78,'Análisis de presupuesto','Abalizar el presupuesto de la empresa para los contratos pendientes','GRAL','Luis','Se acuerda solicitar un préstamo con banca mia para soportar los costos de personal adicional para desarrollo de los proyectos. Financiera, Juan pelaes,  esta´ra al tanto del monto y del valor a solicitar','2020-05-21','2020-05-21','A',4);
+INSERT INTO `mm_agendatemas` VALUES (47,47,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','Se dió lectura al acta y fué aprobada en su totalidad.','0000-00-00','0000-00-00','A',0),(48,48,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','0000-00-00','0000-00-00','A',0),(49,48,1,14,'Ventas','Estado de ventas del periodo','GRAL','','','0000-00-00','0000-00-00','A',0),(50,48,1,14,'Cartera','Estado actual de cartera','GRAL','','','0000-00-00','0000-00-00','A',0),(51,47,1,14,'Proyecto ventas','Análisis del proyecto de ventas del año 2018 propuesto por la Gerencia Comercial','GRAL','Gerente de ventas','El estudio del pryecto conta de tres etaoas, la primera a desarrollar de enero a semana santa y cmprende un total de $45\'000.000, el segundo para desarrollar hasta junio 30 y consnste en promocionar los productos avender y el terecro hasta fin de año y es darle todo para vender los cien millones',NULL,NULL,'A',1),(52,49,1,15,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','0000-00-00','0000-00-00','A',0),(56,56,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-02','0000-00-00','A',0),(57,56,1,14,'Ventas','Estado de ventas del periodo','GRAL','','','2018-03-02','0000-00-00','A',0),(58,56,1,14,'Cartera','Estado actual de cartera','GRAL','','','2018-03-02','0000-00-00','A',0),(59,56,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-02','0000-00-00','A',0),(60,56,1,14,'Ventas','Estado de ventas del periodo','GRAL','','','2018-03-02','0000-00-00','A',0),(61,56,1,14,'Cartera','Estado actual de cartera','GRAL','','','2018-03-02','0000-00-00','A',0),(62,57,1,15,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-12','0000-00-00','A',0),(63,58,1,16,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-07','0000-00-00','A',0),(64,59,1,16,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-10','0000-00-00','A',1),(65,60,1,15,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-03-16','0000-00-00','A',1),(66,61,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','Si se dedarrolla','2018-03-12','2018-03-07','A',1),(67,61,1,14,'Ventas','Estado de ventas del periodo','GRAL','','Se vendio bastante','2018-03-12','2018-03-07','A',2),(68,61,1,14,'Cartera','Estado actual de cartera','GRAL','','La cartera se encuentra desocupada..','2018-03-12','2018-03-07','A',3),(70,14,1,14,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','null',NULL,'2018-01-01','0000-00-00','A',1),(71,62,1,16,'Acta anterior','Lectura y aprobación del acta anterior','GRAL','','','2018-05-10','0000-00-00','A',1),(78,70,2,17,'VERIFICA ASISTENCIA','Verifica la asistencia','GRAL','','Todos asistieron, se reunieron y se fueron','2020-05-13','2020-05-11','A',1),(79,70,2,17,'oTRO','Estado actual del copmité','GRAL','pEPE','Este comité está muy bueno si se pude decir esto.','2020-05-11','2020-05-12','A',2),(80,70,2,17,'Nuevo tema','Este es un tema muy importante','GRAL','Luis',' ','2020-05-11',NULL,'A',3),(81,70,2,70,'Adicionado','Celebracion de compleaños','GRAL','','Como es fiesta de cumplaeños se celetró y se cantó','2020-05-11','2020-05-11','A',4),(82,71,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','GRAL','Luis Pinto','SE leyo en su totalidad y no quedo nada por leer','2020-05-15','2020-05-15','A',1),(83,71,2,12,'Cotizaciones','Análisis de las cotizaciones','PDNT','Yo soy','Se consiguierpn 33 cotizacines, uf.. que montón.','2020-05-15','2020-05-13','A',2),(84,71,2,12,'Estudio de mercado','Estudio de mercado para la compra','GRAL','Juan','Se estudio el mercado para comprar las cosas','2020-05-15','2020-05-22','A',3),(85,71,2,12,'Ppto','Análisis del presupuesto','GRAL','Don Pedro','Pendiente de consultas','2020-05-15','2020-05-15','A',4),(86,71,2,12,'Nombramiento','Nombrar el supervisor','GRAL','Dn Juan','Se nombre al usuario 1','2020-05-15','2020-05-15','A',5),(87,71,2,71,'tema emergente','Pora probar aplazamuie¿iento','GRAL','','Se deja pendiente','2020-05-13','2020-05-15','A',6),(109,76,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','GRAL','','Se leyo y no hubo observaciones pertinentes','2020-05-18','2020-05-18','A',1),(110,76,2,12,'Cotizaciones','Análisis de las cotizaciones','GRAL','','Se presentaron 4 cotizaciones todas aceptables','2020-05-18','2020-05-18','A',2),(111,76,2,12,'Estudio de mercado','Estudio de mercado para la compra','GRAL','Mary','Queda pendiente','2020-05-18','2020-05-18','A',3),(112,76,2,12,'Presupuesto','Analizar ppto de compras','PDNT','mary','No hay recursos para comprar por ahora, esperar hasta la siguiente semana','2020-05-18','2020-05-14','A',4),(113,77,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','GRAL','','','2020-05-25',NULL,'A',1),(114,77,2,12,'Cotizaciones','Análisis de las cotizaciones','GRAL','','','2020-05-25',NULL,'A',2),(115,77,2,12,'Estudio de mercado','Estudio de mercado para la compra','GRAL','','','2020-05-25',NULL,'A',3),(116,77,2,12,'Estudio de mercado','Estudio de mercado para la compra','PDNT','Mary','Queda pendiente','2020-05-18','2020-05-18','A',4),(117,78,2,18,'Acta Anterior','Lectura y verificacion del acta anterior','GRAL','Jaime','Se leyó el acta y todos los puntos de ésta están correctos, fue aprobada','2020-05-26','2020-05-21','A',1),(118,78,2,18,'Estado de la empresa','Estado de la empresa ala echa de la reunión','GRAL','','Queda pendiente','2020-05-26','2020-05-21','A',2),(120,78,2,18,'Contratos sin resolver','Analizar los contratos pendientes por ejecutar','GRAL','Doris','Los contratos 45 y 46 se van a ejecutar en su totalidad, ya se consiguieron las cotizaciones de materia prima y el cliente esta esperando los resultados.','2020-05-26','2020-05-21','A',3),(121,78,2,78,'Análisis de presupuesto','Abalizar el presupuesto de la empresa para los contratos pendientes','GRAL','Luis','Se acuerda solicitar un préstamo con banca mia para soportar los costos de personal adicional para desarrollo de los proyectos. Financiera, Juan pelaes,  esta´ra al tanto del monto y del valor a solicitar','2020-05-21','2020-05-21','A',4),(122,76,2,12,'Tema 1','Tema uno','GRAL','Luis',NULL,'2020-05-01','2021-07-30','A',10),(123,76,2,12,'Tema 2','Tema dos','GRAL','Luis',NULL,'2020-05-01','2021-07-30','A',11),(124,79,2,19,'Lista de asistentes','Verificar asistencia','GRAL','Pedrina','Se verifica la asistencia y todos están presentes','2021-10-20','2021-10-11','A',1),(125,79,2,19,'Preparativos','Lista de preparativos para el desarrollo de la actividad','GRAL','Presidente','Fernánda va a perparar la lista de actividades a desarrolloarm se va a encargar de la música y del evento en sí, en la galería debe colorase luces y algunos arreglos alusivos al ala seremiomina de esta forma sehará m+as llamativa','2021-10-20','2021-10-11','A',2),(126,79,2,19,'Galería de obras','Invitar a los niños a presentar sus obras','GRAL','Presidente','A través de los empleados se enviará invitación a cada uno de los niños para que preparen y diseñen su obra que se presenratrá en una galería, pued er una obra o un dibujo','2021-10-20','2021-10-11','A',3),(127,79,2,79,'Refrigerio','Cotizar el valor de un refrigerio ligero','GRAL','Pedro','Lucía fernández se encarga de cotizar un refrigerio consistente en una bebida y un ponquesito','2021-10-11','2021-10-11','A',4),(128,80,2,59,'Revisión de actas','Revisión del acta anterior','GRAL','secretaria','En el acta anterior no quedaron pendientes, fue aprobada en su momento','2021-10-20','2021-10-11','A',2),(129,80,2,59,'Estudio estados financieros','Estudio y análisis de los estados financieros','GRAL','secretaria','Por problemas en el Internet no e logró tener los estados a tiempo, se aplaza la reunión','2021-10-20','2021-10-11','A',2),(130,80,2,59,'Otras actividades','Proposiciones y actividades adicionales','GRAL','','No hay proposiciones','2021-10-20','2021-10-11','A',3),(131,80,2,59,'Estados financieros de Julio','Estudio y análisis de los estados financierpos de julio','GRAL','Presidente','No se trató este tema','2021-10-20','2021-10-11','A',4),(132,80,2,59,'Acciones  A  seguir','Conclusiones y Que acciones o recomendaciones deben seguirse en este estudio','GRAL','Contadaor','No se plantearon acciones a seguir','2021-10-20','2021-10-11','A',5),(133,80,2,80,'Asistencia','Revisión de asistencia','GRAL','secretaria','Todas las personas citadas llegaron puntuales a la reunión','2021-10-11','2021-10-11','A',1);
 /*!40000 ALTER TABLE `mm_agendatemas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +262,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_asistentes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_asistentes` (
   `asistente_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `asistente_comite` varchar(20) DEFAULT NULL COMMENT 'GRUPO',
@@ -278,7 +276,7 @@ CREATE TABLE `mm_asistentes` (
   `asistente_titulo` char(1) DEFAULT NULL,
   PRIMARY KEY (`asistente_id`),
   KEY `fk_asistente_grupo` (`asistente_comite`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='Asistentes a las reun iones';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='Asistentes a las reun iones';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +285,7 @@ CREATE TABLE `mm_asistentes` (
 
 LOCK TABLES `mm_asistentes` WRITE;
 /*!40000 ALTER TABLE `mm_asistentes` DISABLE KEYS */;
-INSERT INTO `mm_asistentes` VALUES (18,'16',0,'Juan Camilo','Atom sas','Contador','12345','contador@com.co',1,NULL),(19,'14',0,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com',1,NULL),(21,'15',0,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com',1,NULL),(25,'14',321,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com',1,NULL),(27,'17',320,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co',2,'S'),(28,'17',0,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com',2,'N'),(29,'12',0,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com',2,'T'),(30,'12',0,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com',2,'S'),(31,'18',0,'Jaime Salas','SAS','Jefe de Compras','123456','jsalas@sas.com',2,'P'),(32,'18',0,'Juana Castaño','SAS','Secretara','9876','jcastano@sas.com',2,'S');
+INSERT INTO `mm_asistentes` VALUES (18,'16',0,'Juan Camilo','Atom sas','Contador','12345','contador@com.co',1,NULL),(19,'14',0,'Clara María','Atom sas','Jefe de compras','34555','alvaro.oycsoft@gmail.com',1,NULL),(21,'15',0,'Jair Roriguez','atom sas','Gerente','4566','alvaro.oycsoft@gmail.com',1,NULL),(25,'14',321,'Alvaro Ortiz C','ATOM INGENIERIA SAS','socio','2200300','alvaro.oycsoft@gmail.com',1,NULL),(27,'17',320,'\nAlberto O','SOCIEDAD DE AMIGOS SAS','ter','3112540011','aoc@com.co',2,'S'),(28,'17',0,'Pedro Navarro','casa','bebe','0088','alvaro.oycsoft@gmail.com',2,'N'),(29,'12',0,'Usuario transcriptor','sas','secre','123','alvaro.oycsoft@gmail.com',2,'T'),(30,'12',0,'Usuario secretario','TOY','Doctor','456','alvaro.oycsoft@gmail.com',2,'S'),(31,'18',0,'Jaime Salas','SAS','Jefe de Compras','123456','jsalas@sas.com',2,'P'),(32,'18',0,'Juana Castaño','SAS','Secretara','9876','jcastano@sas.com',2,'S'),(33,'59',0,'Carlos Gabriel Rodriguez','sya','Contador','555','contador@gmail.com',2,'P'),(34,'59',0,'Marha Camila Pedroza','sya','Secretaria Financiera','4566','secretaria@gmail.com',2,'S'),(35,'59',0,'Julia Tereza Zapata','sya','Auditora','4566','audit@gmail.com',2,'N');
 /*!40000 ALTER TABLE `mm_asistentes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,7 +295,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_cargadocumentos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_cargadocumentos` (
   `carga_id` int(11) NOT NULL AUTO_INCREMENT,
   `carga_empresa` int(11) DEFAULT NULL,
@@ -327,7 +325,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_comites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_comites` (
   `comite_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `comite_empresa` int(11) DEFAULT NULL,
@@ -338,7 +336,7 @@ CREATE TABLE `mm_comites` (
   `comite_email` varchar(100) DEFAULT NULL,
   `comite_consecActa` int(11) DEFAULT NULL,
   PRIMARY KEY (`comite_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='Lista de comités';
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='Lista de comités';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +345,7 @@ CREATE TABLE `mm_comites` (
 
 LOCK TABLES `mm_comites` WRITE;
 /*!40000 ALTER TABLE `mm_comites` DISABLE KEYS */;
-INSERT INTO `mm_comites` VALUES (12,2,'Compras','Comite de compras','A','Juan David','jd@comercial.com',2),(14,1,'Comercial','Compra y venta de elementos','A','Administrador','admin@com.co',4),(15,1,'Gerencia','Comité semanal de direcciòn','A','Genernte','gerente@com.co',2),(16,1,'Financiero','Seguimiento a operaciones financieras','A','Contador','contador@com.co',2),(17,2,'COPASO','Comité de Salud Ocupacional','A','Recurso Humano','alvaro.oycsoft@gmail.com',7),(18,2,'Asesor','Comité asesor  comercial','A','Gerencia','gerencia@sas.com',1);
+INSERT INTO `mm_comites` VALUES (12,2,'Compras','Comite de compras','A','Juan David','jd@comercial.com',2),(14,1,'Comercial','Compra y venta de elementos','A','Administrador','admin@com.co',4),(15,1,'Gerencia','Comité semanal de direcciòn','A','Genernte','gerente@com.co',2),(16,1,'Financiero','Seguimiento a operaciones financieras','A','Contador','contador@com.co',2),(17,2,'COPASO','Comité de Salud Ocupacional','A','Recurso Humano','alvaro.oycsoft@gmail.com',7),(18,2,'Asesor','Comité asesor  comercial','A','Gerencia','gerencia@sas.com',1),(19,2,'Cultural','Comite cultural','A','Gerencia','ger@com',1),(59,2,'Financiero','Comité Financiero y de cartera','A','Gerencia Financiera','empresa@com.co',0);
 /*!40000 ALTER TABLE `mm_comites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -357,7 +355,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_empresa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_empresa` (
   `empresa_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `empresa_nombre` varchar(120) NOT NULL COMMENT 'NOMBRE',
@@ -391,7 +389,7 @@ CREATE TABLE `mm_empresa` (
 
 LOCK TABLES `mm_empresa` WRITE;
 /*!40000 ALTER TABLE `mm_empresa` DISABLE KEYS */;
-INSERT INTO `mm_empresa` VALUES (1,'ATOM INGENIERIA SAS','12345678','http://www.atomingenieria.com.co/','Av. 53 Nr. 54 - 55','3174142133','Bogotá  D.C.','logoEmpresa.png','M','ESP','V1.2 -Mar  08-2018','V1.2 - Mar 08-2018','A00-MZ18','alvarobucaros@hotmail.com',15,'L-M-M-J-V','7:00','18:00','M','Estandard','S',NULL),(2,'SOCIEDAD DE AMIGOS SAS','9800767643','http://www.sociamigosas.com/','Cra 9 · 104-44','3109984545','Bogota ','logoOyC.png','M','ESP',NULL,NULL,'AU3-ENE','alvarobucaros@hotmail.com',12,'L-M-M-J-V','7:30','18:000','M','Estandard','S',NULL);
+INSERT INTO `mm_empresa` VALUES (1,'ATOM INGENIERIA SAS','12345678','http://www.atomingenieria.com.co/','Av. 53 Nr. 54 - 55','3174142133','Bogotá  D.C.','aei1.png','M','ESP','V1.2 -Mar  08-2018','V1.2 - Mar 08-2018','A00-MZ18','alvarobucaros@hotmail.com',15,'L-M-M-J-V','7:00','18:00','M','Estandard','S',NULL),(2,'SOCIOS Y AMIGOS SAS','9800767643','http://www.sociosyamigos.com/','Cra 9 · 104-44','3109984545','Bogota ','sya.png','M','ESP','1.1.0','1.0.0','AU3-ENE','alvarobucaros@hotmail.com',12,'L-M-M-J-V','7:30','18:000','M','Estandard','S',NULL);
 /*!40000 ALTER TABLE `mm_empresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,7 +399,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_grupos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_grupos` (
   `grupo_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `grupo_empresa` int(11) DEFAULT NULL,
@@ -429,7 +427,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_invitados_comite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_invitados_comite` (
   `invitado_id` int(11) NOT NULL AUTO_INCREMENT,
   `invitado_agendaId` int(11) DEFAULT NULL,
@@ -453,7 +451,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_menu` (
   `menu_id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_codigo` int(11) DEFAULT NULL,
@@ -484,7 +482,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_parametros`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_parametros` (
   `param_Id` varchar(45) NOT NULL,
   `param_empresaid` int(11) NOT NULL,
@@ -513,7 +511,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_perfiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_perfiles` (
   `perfil_id` int(11) NOT NULL AUTO_INCREMENT,
   `perfil_empresa` int(11) DEFAULT NULL,
@@ -541,7 +539,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_popup`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_popup` (
   `popup_id` int(11) NOT NULL AUTO_INCREMENT,
   `popup_codigo` varchar(10) DEFAULT NULL,
@@ -567,7 +565,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_reservasalon`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_reservasalon` (
   `reservaSal_id` int(11) NOT NULL AUTO_INCREMENT,
   `reservaSal_idEmpresa` int(11) DEFAULT NULL,
@@ -599,7 +597,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_salones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_salones` (
   `salon_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID			',
   `salon_empresa` int(11) DEFAULT NULL,
@@ -630,7 +628,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_temasgrales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_temasgrales` (
   `temasGrales_id` int(11) NOT NULL AUTO_INCREMENT,
   `temasGrales_empresa` int(11) DEFAULT NULL,
@@ -639,7 +637,7 @@ CREATE TABLE `mm_temasgrales` (
   `temasGrales_detalle` varchar(1000) DEFAULT NULL,
   `temasGrales_estado` char(1) DEFAULT NULL,
   PRIMARY KEY (`temasGrales_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -648,7 +646,7 @@ CREATE TABLE `mm_temasgrales` (
 
 LOCK TABLES `mm_temasgrales` WRITE;
 /*!40000 ALTER TABLE `mm_temasgrales` DISABLE KEYS */;
-INSERT INTO `mm_temasgrales` VALUES (6,1,14,'Acta anterior','Lectura y aprobación del acta anterior','A'),(7,1,16,'Acta anterior','Lectura y aprobación del acta anterior','A'),(8,1,15,'Acta anterior','Lectura y aprobación del acta anterior','A'),(9,1,14,'Ventas','Estado de ventas del periodo','A'),(10,1,14,'Cartera','Estado actual de cartera','A'),(11,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','A'),(12,2,17,'VERIFICA ASISTENCIA','Verifica la asistencia','A'),(13,2,12,'Cotizaciones','Análisis de las cotizaciones','A'),(14,2,12,'Estudio de mercado','Estudio de mercado para la compra','A'),(15,2,18,'Acta Anterior','Lectura y verificacion del acta anterior','A'),(16,2,18,'Estado de la empresa','Estado de la empresa ala echa de la reunión','A');
+INSERT INTO `mm_temasgrales` VALUES (6,1,14,'Acta anterior','Lectura y aprobación del acta anterior','A'),(7,1,16,'Acta anterior','Lectura y aprobación del acta anterior','A'),(8,1,15,'Acta anterior','Lectura y aprobación del acta anterior','A'),(9,1,14,'Ventas','Estado de ventas del periodo','A'),(10,1,14,'Cartera','Estado actual de cartera','A'),(11,2,12,'ACTA ANTERIOR','Lectura del acta anterior y su aprobación','A'),(12,2,17,'VERIFICA ASISTENCIA','Verifica la asistencia','A'),(13,2,12,'Cotizaciones','Análisis de las cotizaciones','A'),(14,2,12,'Estudio de mercado','Estudio de mercado para la compra','A'),(15,2,18,'Acta Anterior','Lectura y verificacion del acta anterior','A'),(16,2,18,'Estado de la empresa','Estado de la empresa ala echa de la reunión','A'),(17,2,12,'Tema 1000','Mil y Mil','A'),(18,2,59,'Revisión de actas','Revisión del acta anterior','A'),(19,2,59,'Estudio estados financieros','Estudio y análisis de los estados financieros','A'),(20,2,59,'Otras actividades','Proposiciones y actividades adicionales','A');
 /*!40000 ALTER TABLE `mm_temasgrales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -658,7 +656,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_temp01`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_temp01` (
   `hora` varchar(10) COLLATE latin1_spanish_ci NOT NULL,
   `detalle` varchar(15) COLLATE latin1_spanish_ci DEFAULT NULL,
@@ -682,7 +680,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_tipoacta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_tipoacta` (
   `tipoActa_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `tipoActa_empresa` int(11) DEFAULT NULL,
@@ -707,14 +705,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_usuario_comites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_usuario_comites` (
   `uc_id` int(11) NOT NULL AUTO_INCREMENT,
   `uc_empresa` int(11) DEFAULT NULL,
   `uc_comiteId` int(11) DEFAULT NULL,
   `uc_usuarioId` int(11) DEFAULT NULL,
   PRIMARY KEY (`uc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -723,7 +721,7 @@ CREATE TABLE `mm_usuario_comites` (
 
 LOCK TABLES `mm_usuario_comites` WRITE;
 /*!40000 ALTER TABLE `mm_usuario_comites` DISABLE KEYS */;
-INSERT INTO `mm_usuario_comites` VALUES (1,2,12,317),(15,2,18,320),(16,2,12,320);
+INSERT INTO `mm_usuario_comites` VALUES (1,2,12,317),(17,2,18,320),(18,2,12,320),(19,2,17,320),(22,2,17,321),(23,2,19,321),(24,2,59,321),(25,1,14,317),(26,1,16,317),(27,1,15,317);
 /*!40000 ALTER TABLE `mm_usuario_comites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -733,7 +731,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_usuariomenu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_usuariomenu` (
   `usuarioMenu_id` int(11) NOT NULL AUTO_INCREMENT,
   `usuarioMenu_menu` int(11) DEFAULT NULL,
@@ -758,7 +756,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mm_usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mm_usuarios` (
   `usuario_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `usuario_nombre` varchar(100) NOT NULL COMMENT 'NOMBRE',
@@ -774,7 +772,7 @@ CREATE TABLE `mm_usuarios` (
   `usuario_user` varchar(20) DEFAULT NULL,
   `usuario_celular` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=322 DEFAULT CHARSET=utf8 COMMENT='Usuarios del sistema';
+) ENGINE=InnoDB AUTO_INCREMENT=323 DEFAULT CHARSET=utf8 COMMENT='Usuarios del sistema';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -783,7 +781,7 @@ CREATE TABLE `mm_usuarios` (
 
 LOCK TABLES `mm_usuarios` WRITE;
 /*!40000 ALTER TABLE `mm_usuarios` DISABLE KEYS */;
-INSERT INTO `mm_usuarios` VALUES (317,'Administrador',1,'admin@com.co','0192023a7bbd73250516f069df18b500','A','2016-01-01','2017-12-31','A','A','yo.jpg','admin','3174142133'),(318,'Usuario consultas',1,'aoc@mio.co','202cb962ac59075b964b07152d234b70','C','2016-01-01','2017-01-01','A','C','admin.png','consulta','123'),(320,'Alberto O',2,'aoc@com.co','202cb962ac59075b964b07152d234b70','A','2016-01-01','2017-12-31','A','A','avatar1.png','alvaro','3112540011'),(321,'Alvaro Ortiz C',1,'alvaro@com.co','bc022864f419e5f201abb67179ee4acf','C','2016-10-12','2016-12-31','A','A','avatar2.png','piti','2200300');
+INSERT INTO `mm_usuarios` VALUES (317,'Administrador',1,'admin@com.co','202cb962ac59075b964b07152d234b70','A','2016-01-01','2017-12-31','A','A','ava4.png','admin','3174142133'),(318,'Usuario consultas',1,'aoc@mio.co','202cb962ac59075b964b07152d234b70','C','2016-01-01','2017-01-01','A','C','admin.png','consulta','123'),(320,'Alberto O',2,'aoc@com.co','202cb962ac59075b964b07152d234b70','A','2016-01-01','2017-12-31','A','A','avatar1.png','alvaro','3112540011'),(321,'Alvaro Ortiz C',2,'alvaro@com.co','98db6b79acb71383b5a83e0bbc1cadd4','A','2016-10-12','2016-12-31','A','A','avatar2.png','piti','2200300'),(322,'Administrador',2,'admin@com','202cb962ac59075b964b07152d234b70','A','2021-10-01','2021-10-01','A','A','ava.png','Admin','123456');
 /*!40000 ALTER TABLE `mm_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -793,7 +791,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mn_privilegios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mn_privilegios` (
   `privilegio_id` int(11) NOT NULL AUTO_INCREMENT,
   `privilegio_perfil` int(11) DEFAULT NULL,
@@ -821,4 +819,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-19 18:36:39
+-- Dump completed on 2021-11-05 13:18:54

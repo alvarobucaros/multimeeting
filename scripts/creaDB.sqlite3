@@ -1,0 +1,448 @@
+
+
+--
+-- Table structure for table "mm_accesos"
+--
+
+DROP TABLE IF EXISTS "mm_accesos";
+
+CREATE TABLE "mm_accesos" (
+  "acceso_id" INTEGER NOT NULL UNIQUE,
+  "acceso_empresa" INTEGER NOT NULL,
+  "acceso_asistenteId" INTEGER NOT NULL ,
+  "acceso_comiteId" INTEGER NOT NULL,
+  "acceso_tipoAcceso" char(1) NOT NULL ,
+  PRIMARY KEY ("acceso_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_agendaanexos"
+--
+
+DROP TABLE IF EXISTS "mm_agendaanexos";
+
+CREATE TABLE "mm_agendaanexos" (
+  "anexos_id" INTEGER NOT NULL UNIQUE,
+  "anexos_empresa" INTEGER NOT NULL,
+  "anexos_comiteid" INTEGER NOT NULL,
+  "anexos_agendaid" INTEGER NOT NULL,
+  "anexos_anexo" varchar(100) NOT NULL,
+  "anexos_descripcion" varchar(100) NOT NULL,
+  "anexos_ruta" varchar(240) NOT NULL,
+  "anexos_usuario" varchar(45) NOT NULL,
+  "anexos_fecha" datetime NOT NULL,
+  "anexos_anno" varchar(10) NOT NULL,
+  PRIMARY KEY ("anexos_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_agendainvitados"
+--
+
+DROP TABLE IF EXISTS "mm_agendainvitados";
+
+CREATE TABLE "mm_agendainvitados" (
+  "invitado_id" INTEGER NOT NULL UNIQUE,
+  "invitado_agendaId" INTEGER NOT NULL,
+  "invitado_nombre" varchar(120) NOT NULL,
+  "invitado_empresa" varchar(120) NOT NULL,
+  "invitado_cargo" varchar(45) NOT NULL,
+  "invitado_celuar" varchar(20) NOT NULL,
+  "invitado_email" varchar(120) NOT NULL,
+  "invitado_asistio" char(1) NOT NULL,
+  "invitado_titulo" char(1) NOT NULL,
+  "invitado_orden" INTEGER NOT NULL,
+  "invitado_causa" varchar(45) NOT NULL,
+  "invitado_empresaid" INTEGER NOT NULL,
+  "invitado_comite" INTEGER NOT NULL,
+  PRIMARY KEY ("invitado_id" AUTOINCREMENT)
+) ;
+--
+-- Table structure for table "mm_salones"
+--
+
+DROP TABLE IF EXISTS "mm_salones";
+
+CREATE TABLE "mm_salones" (
+  "salon_id"  INTEGER NOT NULL UNIQUE,
+  "salon_empresa" INTEGER NOT NULL,
+  "salon_nombre" varchar(50) NOT NULL,
+  "salon_ubicacion" varchar(45) NOT NULL,
+  "salon_capacidad" INTEGER NOT NULL,
+  "salon_apoyovisual" varchar(120) NOT NULL,
+  "salon_responsable" varchar(45) NOT NULL,
+  "salon_activo" char(1) NOT NULL,
+  "salon_observaciones" varchar(512) NOT NULL,
+  PRIMARY KEY ("salon_id" AUTOINCREMENT)
+);
+--
+-- Table structure for table "mm_comites"
+--
+
+DROP TABLE IF EXISTS "mm_comites";
+
+CREATE TABLE "mm_comites" (
+  "comite_id"  INTEGER NOT NULL UNIQUE,
+  "comite_empresa" INTEGER NOT NULL,
+  "comite_nombre" varchar(120) NOT NULL,
+  "comite_descripcion" varchar(512) NOT NULL,
+  "comite_activo" char(1) NOT NULL,
+  "comite_lider" varchar(100) NOT NULL,
+  "comite_email" varchar(100) NOT NULL,
+  "comite_consecActa" INTEGER NOT NULL,
+  PRIMARY KEY ("comite_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_agendamiento"
+--
+
+DROP TABLE IF EXISTS "mm_agendamiento";
+
+CREATE TABLE "mm_agendamiento" (
+  "agenda_id" INTEGER   NOT NULL UNIQUE,
+  "agenda_empresa" INTEGER NOT NULL,
+  "agenda_salonId" INTEGER NOT NULL,
+  "agenda_Descripcion" varchar(500) NOT NULL,
+  "agenda_comiteId" INTEGER NOT NULL ,
+  "agenda_fechaDesde" datetime NOT NULL ,
+  "agenda_fechaHasta" datetime NOT NULL,
+  "agenda_comiteAnteriorId" INTEGER NOT NULL,
+  "agenda_usuario" INTEGER NOT NULL,
+  "agenda_enFirme" char(1) NOT NULL,
+  "agenda_conCitacion" char(1) NOT NULL,
+  "agenda_acta" INTEGER NOT NULL,
+  "agenda_estado" char(1) NOT NULL,
+  "agenda_causal" varchar(100) NOT NULL,
+  "agenda_ProxCitacion" varchar(100) NOT NULL,
+  "agenda_revisa" char(1) NOT NULL,
+  "agenda_cierraActa" char(1) NOT NULL,
+  PRIMARY KEY ("agenda_id" AUTOINCREMENT)
+--  KEY "agendaSalones_idx" ("agenda_salonId"),
+--  KEY "agendaComites_idx" ("agenda_comiteId"),
+--  CONSTRAINT "agendaComite" FOREIGN KEY ("agenda_comiteId") REFERENCES "mm_comites" ("comite_id"),
+--  CONSTRAINT "agendaSalones" FOREIGN KEY ("agenda_salonId") REFERENCES "mm_salones" ("salon_id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+
+--
+-- Table structure for table "mm_agendapendientes"
+--
+
+DROP TABLE IF EXISTS "mm_agendapendientes";
+
+CREATE TABLE "mm_agendapendientes" (
+  "pendiente_id" INTEGER NOT NULL UNIQUE,
+  "pendiente_empresa" INTEGER NOT NULL,
+  "pendiente_comite" INTEGER NOT NULL,
+  "pendiente_agendaId" INTEGER NOT NULL,
+  "pendiente_tema" INTEGER NOT NULL,
+  "pendiente_detalle" varchar(1024) NOT NULL,
+  "pendiente_responsable" varchar(128) NOT NULL,
+  "pendiente_fecha" date NOT NULL,
+  "pendiente_estado" char(1) NOT NULL,
+  PRIMARY KEY ("pendiente_id" AUTOINCREMENT)
+) ;
+
+
+DROP TABLE IF EXISTS "mm_agendatemas";
+
+CREATE TABLE "mm_agendatemas" (
+  "tema_id" INTEGER  NOT NULL UNIQUE,
+  "tema_agendaId" INTEGER NOT NULL,
+  "tema_empresa" INTEGER NOT NULL,
+  "tema_comite" INTEGER NOT NULL,
+  "tema_titulo" varchar(128) NOT NULL,
+  "tema_detalle" varchar(1024) NOT NULL,
+  "tema_tipo" varchar(5) NOT NULL,
+  "tema_responsable" varchar(45) NOT NULL,
+  "tema_desarrollo" varchar(2048) NOT NULL,
+  "tema_fechaAsigna" date NOT NULL,
+  "tema_fechaCumple" date NOT NULL,
+  "tema_estado" char(1) NOT NULL,
+  "tema_orden" int(6) NOT NULL,
+  PRIMARY KEY ("tema_id" AUTOINCREMENT)
+) ;
+
+--
+-- Table structure for table "mm_asistentes"
+--
+
+DROP TABLE IF EXISTS "mm_asistentes";
+
+CREATE TABLE "mm_asistentes" (
+  "asistente_id" INTEGER  NOT NULL UNIQUE,
+  "asistente_comite" varchar(20) NOT NULL ,
+  "asistente_usuarioId" INTEGER NOT NULL ,
+  "asistente_nombre" varchar(120) NOT NULL ,
+  "asistente_empresa" varchar(120) NOT NULL ,
+  "asistente_cargo" varchar(45) NOT NULL ,
+  "asistente_celuar" varchar(20) NOT NULL ,
+  "asistente_email" varchar(120) NOT NULL,
+  "asistente_empresaId" INTEGER NOT NULL,
+  "asistente_titulo" char(1) NOT NULL,
+  PRIMARY KEY ("asistente_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_cargadocumentos"
+--
+
+DROP TABLE IF EXISTS "mm_cargadocumentos";
+
+CREATE TABLE "mm_cargadocumentos" (
+  "carga_id" INTEGER NOT NULL UNIQUE,
+  "carga_empresa" INTEGER NOT NULL,
+  "carga_comite" INTEGER NOT NULL,
+  "carga_agendaId" INTEGER NOT NULL,
+  "carga_titulo" varchar(45) NOT NULL,
+  "carga_descripcion" varchar(500) NOT NULL,
+  "carga_tipo" varchar(20) NOT NULL,
+  "carga_documento" varchar(500) NOT NULL,
+  "carga_ruta" varchar(500) NOT NULL,
+  PRIMARY KEY ("carga_id" AUTOINCREMENT)
+) ;
+
+--
+-- Table structure for table "mm_empresa"
+--
+
+DROP TABLE IF EXISTS "mm_empresa";
+
+CREATE TABLE "mm_empresa" (
+  "empresa_id" INTEGER NOT NULL UNIQUE,
+  "empresa_nombre" varchar(120) NOT NULL,
+  "empresa_nit" varchar(45) NOT NULL,
+  "empresa_web" varchar(120) NOT NULL ,
+  "empresa_direccion" varchar(120) NOT NULL,
+  "empresa_telefonos" varchar(45) NOT NULL,
+  "empresa_ciudad" varchar(45) NOT NULL,
+  "empresa_logo" varchar(45) NOT NULL,
+  "empresa_autentica" char(1) NOT NULL,
+  "empresa_lenguaje" char(3) NOT NULL,
+  "empresa_versionPrd" varchar(100) NOT NULL,
+  "empresa_versionBd" varchar(100) NOT NULL,
+  "empresa_clave" varchar(50) NOT NULL,
+  "empresa_email" varchar(50) NOT NULL,
+  "empresa_registrsoXpagina" INTEGER NOT NULL,
+  "empresa_diasTrabaja" varchar(45) NOT NULL,
+  "empresa_horarioInicio" varchar(45) NOT NULL,
+  "empresa_horarioTermina" varchar(45) NOT NULL,
+  "empresa_intervaloCalendario" char(1) NOT NULL,
+  "empresa_FormatoActa" varchar(45) NOT NULL,
+  "empresa_cresidencial" char(1) NOT NULL,
+  "empresa_ctrl" varchar(45) NOT NULL,
+  PRIMARY KEY ("empresa_id" AUTOINCREMENT)
+);
+
+
+INSERT INTO "mm_empresa" VALUES (1,'SOCIOS Y AMIGOS SAS','9800767643','http://www.appeinternet.com/','Cra 9 · 104-44','3109984545','Bogota ','sya.png','M','ESP','1.1.0','1.0.0','AU3-ENE','alvarobucaros@hotmail.com',12,'L-M-M-J-V','7:30','18:000','M','Estandard','S','L');
+
+--
+-- Table structure for table "mm_grupos"
+--
+
+DROP TABLE IF EXISTS "mm_grupos";
+
+CREATE TABLE "mm_grupos" (
+  "grupo_id" INTEGER NOT NULL UNIQUE,
+  "grupo_empresa" INTEGER NOT NULL,
+  "grupo_nombre" varchar(45) NOT NULL ,
+  "grupo_detalle" varchar(120) NOT NULL ,
+  "grupo_comite" INTEGER NOT NULL,
+  "grupo_activo" char(1) NOT NULL,
+  PRIMARY KEY ("grupo_id" AUTOINCREMENT)
+) ;
+
+--
+-- Table structure for table "mm_invitados_comite"
+--
+
+DROP TABLE IF EXISTS "mm_invitados_comite";
+
+CREATE TABLE "mm_invitados_comite" (
+  "invitado_id" INTEGER NOT NULL UNIQUE,
+  "invitado_agendaId" INTEGER NOT NULL,
+  "invitado_empresa" INTEGER NOT NULL,
+  PRIMARY KEY ("invitado_id" AUTOINCREMENT)
+) ;
+
+--
+-- Table structure for table "mm_menu"
+--
+
+DROP TABLE IF EXISTS "mm_menu";
+
+CREATE TABLE "mm_menu" (
+  "menu_id" INTEGER NOT NULL UNIQUE,
+  "menu_codigo" INTEGER NOT NULL,
+  "menu_op" varchar(10) NOT NULL,
+  "menu_descripcion" varchar(45) NOT NULL,
+  "menu_class" varchar(45) NOT NULL,
+  "menu_nodo" INTEGER NOT NULL,
+  "menu_nodoPadre" INTEGER NOT NULL,
+  "menu_modulo" varchar(45) NOT NULL,
+  "menu_orden" INTEGER NOT NULL,
+  PRIMARY KEY ("menu_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_parametros"
+--
+
+DROP TABLE IF EXISTS "mm_parametros";
+
+CREATE TABLE "mm_parametros" (
+  "param_Id" INTEGER  NOT NULL UNIQUE,
+  "param_empresaid" INTEGER NOT NULL,
+  "param_registrsoXpagina" INTEGER NOT NULL,
+  "param_diasTrabaja" varchar(45) NOT NULL,
+  "param_horarioInicio" varchar(45) NOT NULL,
+  "param_horarioTermina" varchar(45) NOT NULL,
+  "param_intervaloCalendario" char(1) NOT NULL,
+  PRIMARY KEY ("param_Id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_perfiles"
+--
+
+DROP TABLE IF EXISTS "mm_perfiles";
+
+CREATE TABLE "mm_perfiles" (
+  "perfil_id" INTEGER NOT NULL UNIQUE,
+  "perfil_empresa" INTEGER NOT NULL,
+  "perfil_numero" INTEGER NOT NULL,
+  "perfil_codigo" varchar(10) NOT NULL,
+  "perfil_nombre" varchar(45) NOT NULL,
+  "perfil_activo" char(1) NOT NULL,
+  PRIMARY KEY ("perfil_id" AUTOINCREMENT)
+);
+
+
+--
+-- Table structure for table "mm_reservasalon"
+--
+
+DROP TABLE IF EXISTS "mm_reservasalon";
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE "mm_reservasalon" (
+  "reservaSal_id" INTEGER NOT NULL UNIQUE,
+  "reservaSal_idEmpresa" INTEGER NOT NULL,
+  "reservaSal_idSalon" INTEGER NOT NULL,
+  "reservaSal_idComite" INTEGER NOT NULL,
+  "reservaSal_FechaDesde" datetime NOT NULL,
+  "reservaSal_FechaHasta" datetime NOT NULL,
+  "reservaSal_reservadoPor" varchar(60) NOT NULL,
+  "reservaSal_FechaReserva" datetime NOT NULL,
+  "reservaSal_Confirmado" char(1) NOT NULL,
+  "reservaSal_Observaciones" varchar(500) NOT NULL,
+  PRIMARY KEY ("reservaSal_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_temasgrales"
+--
+
+DROP TABLE IF EXISTS "mm_temasgrales";
+
+CREATE TABLE "mm_temasgrales" (
+  "temasGrales_id" INTEGER NOT NULL UNIQUE,
+  "temasGrales_empresa" INTEGER NOT NULL,
+  "temasGrales_comiteId" INTEGER NOT NULL,
+  "temasGrales_titulo" varchar(60) NOT NULL,
+  "temasGrales_detalle" varchar(1000) NOT NULL,
+  "temasGrales_estado" char(1) NOT NULL,
+  PRIMARY KEY ("temasGrales_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_temp01"
+--
+
+DROP TABLE IF EXISTS "mm_temp01";
+CREATE TABLE "mm_temp01" (
+  "id" INTEGER NOT NULL UNIQUE,
+  "hora" varchar(10) NOT NULL,
+  "detalle" varchar(15) NOT NULL,
+  PRIMARY KEY ("id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_tipoacta"
+--
+
+DROP TABLE IF EXISTS "mm_tipoacta";
+
+CREATE TABLE "mm_tipoacta" (
+  "tipoActa_id" INTEGER NOT NULL UNIQUE,
+  "tipoActa_empresa" INTEGER NOT NULL,
+  "tipoActa_nombre" varchar(45) NOT NULL,
+  "tipoActa_formato" varchar(100) NOT NULL,
+  PRIMARY KEY ("tipoActa_id" AUTOINCREMENT)
+) ;
+
+--
+-- Table structure for table "mm_usuario_comites"
+--
+
+DROP TABLE IF EXISTS "mm_usuario_comites";
+
+CREATE TABLE "mm_usuario_comites" (
+  "uc_id" INTEGER NOT NULL UNIQUE,
+  "uc_empresa" INTEGER NOT NULL,
+  "uc_comiteId" INTEGER NOT NULL,
+  "uc_usuarioId" INTEGER NOT NULL,
+  PRIMARY KEY ("uc_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mm_usuariomenu"
+--
+
+DROP TABLE IF EXISTS "mm_usuariomenu";
+
+CREATE TABLE "mm_usuariomenu" (
+  "usuarioMenu_id" INTEGER NOT NULL UNIQUE,
+  "usuarioMenu_menu" INTEGER NOT NULL,
+  "usuarioMenu_empresa" INTEGER NOT NULL,
+  "usuarioMenu_perfil" INTEGER NOT NULL,
+  PRIMARY KEY ("usuarioMenu_id" AUTOINCREMENT)
+);
+--
+-- Table structure for table "mm_usuarios"
+--
+
+DROP TABLE IF EXISTS "mm_usuarios";
+
+CREATE TABLE "mm_usuarios" (
+  "usuario_id" INTEGER NOT NULL UNIQUE,
+  "usuario_nombre" varchar(100) NOT NULL,
+  "usuario_empresa" INTEGER NOT NULL,
+  "usuario_email" varchar(80) NOT NULL ,
+  "usuario_password" varchar(45) NOT NULL ,
+  "usuario_tipo_acceso" char(1) NOT NULL,
+  "usuario_fechaCreado" date NOT NULL,
+  "usuario_fechaActualizado" date NOT NULL,
+  "usuario_estado" char(1) NOT NULL,
+  "usuario_perfil" varchar(10) NOT NULL,
+  "usuario_avatar" varchar(45) NOT NULL,
+  "usuario_user" varchar(20) NOT NULL,
+  "usuario_celular" varchar(12) NOT NULL,
+  PRIMARY KEY ("usuario_id" AUTOINCREMENT)
+);
+
+--
+-- Table structure for table "mn_privilegios"
+--
+
+DROP TABLE IF EXISTS "mn_privilegios";
+
+CREATE TABLE "mn_privilegios" (
+  "privilegio_id" INTEGER NOT NULL UNIQUE,
+  "privilegio_perfil" INTEGER NOT NULL,
+  "privilegio_menu" INTEGER NOT NULL,
+  PRIMARY KEY ("privilegio_id" AUTOINCREMENT)
+);
+

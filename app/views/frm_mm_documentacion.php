@@ -38,7 +38,7 @@
     
     <div class="col-md-6">
         <ul>        
-            <a href="../documentation/ingreso.pdf" class="external">
+            <a href="../documentation/Ingreso.pdf" class="external">
             <img src="img/pdf-dist.png" alt="Ingreso"/> Ingreso a la aplicación</a>
         </ul>
     </div> 

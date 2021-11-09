@@ -7,12 +7,14 @@ if( isset($_GET['pas']) ) {
 
 $rec=explode('||',$pas);
 
+//echo $pas; // emp+'||'+com+'||'+acta+'||'+anno+'||'+desc+'||'+usu+'||'+dibujo; 2||0||0||2021||Logo o avatar||322||undefined
+
 if ($rec[6]=='C'){
     $anterior= '../actas';
     $carpeta = 'E'.zerofill(trim($rec[0]),5).'/'.trim($rec[3]).'/comite'.trim($rec[1]).'/acta'.trim($rec[2]);
     CreaCarpeta($anterior,$carpeta);
 }
-else if($rec[6]=='A'){
+else if($rec[6]==='A'){
     $carpeta='../photo';
 }   
 else{
@@ -65,6 +67,7 @@ else
             if($rec[6]=='A'){
                 $query = "UPDATE mm_usuarios SET usuario_avatar = '". $_FILES["file"]["name"] .
                          "' WHERE usuario_id = '" . $rec[5] . "' AND usuario_empresa = '".$rec[0] . "'";
+     //           echo $query;
                 mysqli_query($con, $query);
             } 
             if($rec[6]=='L')

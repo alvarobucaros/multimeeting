@@ -12,7 +12,7 @@ $(document).ready(function (e) {
     acta= $('#actaId').val();
     desc= $('#anexos_descripcion').val();
     anno= $('#anno').val();
-    dibujo = $('#Dibujo').val();
+    dibujo = $('#dibujo').val();
     ctrl= $('#control').val();
     if(dibujo !=='C'){
         anno = new Date().getFullYear();
