@@ -60,8 +60,9 @@
                                 <div class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 text-justify">
                                     <p>{{tit02}}</p>
                                     <p>{{tit03}}</p>
+                                    
                                     <p>{{tit04}}</p>
-                                    <p>{{tit05}}</p>
+                                    <p>{{tit04a}}{{tit05}}</p>
                                     <p>{{tit06}}</p>
                                     <p>{{tit07}}</p>
                                     <p>{{tit08}}</p>
@@ -213,7 +214,7 @@
 	<script src="app/js/jquery.waypoints.min.js"></script>
 	<!-- Main JS (Do not remove) -->
 	<script src="app/js/main.js"></script>
-        
-        <script src="app/controller/min/mm_contactoIni.ctrl.min.js" type="text/javascript"></script>
+        <script src="app/controller/ctrls/mm_contactoIni.ctrl.js" type="text/javascript"></script>
+       
 	</body>
 </html>

@@ -46,7 +46,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     $scope.form_tema_responsable = 'RESPONSABLE';
     $scope.form_tema_fechaAsigna = 'FECHA ASIGNA';
     $scope.form_tema_estado = 'ESTADO';
-
+    $scope.form_agenda_observaciones='';
     $scope.form_Activo90 = 'INACTIVO';
     $scope.form_Activo91 = 'ACTIVO';
 
@@ -128,13 +128,18 @@ function getIni()
 }
 
     function getCombos(empresa){
+        $scope.form_agenda_observaciones='';
         var user = $('#u').val();
         $http.post('modulos/mod_mm_agendamiento.php?op=0',{'op':'0','empresa':empresa}).success(function(data){
          $scope.operators0 = data;
          });  
  
         $http.post('modulos/mod_mm_agendamiento.php?op=1',{'op':'1','empresa':empresa,'user': user}).success(function(data){
-         $scope.operators1 = data;
+          if(data.length === 0){
+              $scope.form_agenda_observaciones='Este usuario no tiene comites asociados';
+          } else{
+          $scope.operators1 = data;
+         }
          });
          
         $http.post('modulos/mod_mm_agendamiento.php?op=hr',{'op':'hr','empresaId':empresa}).success(function(data){

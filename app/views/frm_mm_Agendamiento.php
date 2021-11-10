@@ -220,11 +220,15 @@
                     ng-change="updateComite()">
              <option ng-repeat='operator1 in operators1' value = " {{operator1.comite_id}}">{{operator1.comite_nombre}}</option>
             </select>
-                <button type="button" value="Busca" class="btn btn-sm btn-custom pull-right btn"  ng-show="btnBuscaReg"
+            <div>
+             <label class=" milabel-err col-md-6 " >{{form_agenda_observaciones}}</label>
+         </div>
+            <button type="button" value="Busca" class="btn btn-sm btn-custom pull-right btn"  ng-show="btnBuscaReg"
                 ng-click="buscaRegistros()" id="scan_btn" >{{form_btnBuscar}}
             </button>   
             </div>
         </div> 
+
          
          <div class="form-group" ng-show="listaComite">
             <label class=" milabel col-md-2" for="traeComiteLista">{{form_agenda_reunionId}}</label>
@@ -313,7 +317,9 @@
                  ng-model="registro1.agenda_comiteAnteriorId" required Placeholder="{{form_Phagenda_comiteAnteriorId}}" 
                  value="{{registro1.agenda_comiteAnteriorId}}" />
             </div>
-        </div>    
+        </div> 
+         
+
    
     <div ng-show="ppal"> 
         <input type="text" ng-model="registro1.invitado_id" id ='invitado_id'  name ='invitado_id' value="{{registro1.invitado_id}}"/> 
