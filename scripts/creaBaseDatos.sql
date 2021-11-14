@@ -2,7 +2,7 @@
 --
 -- Host: localhost
 -- Database:mmeetingu
--- Script date Wednesday,Oct 13, 2021 2:43:11
+-- Script date Saturday,Nov 13, 2021 9:13:42
 -- by AtomIngenieria sas
 
 --
@@ -27,7 +27,7 @@ USE mmeetingu;
 
    SELECT 'Tabla mm_instala creada';
 	
-   INSERT INTO mmeetingu.mm_instala (servidor,basedatos, usuario, password, estado) VALUES ( 'localhost','mmeetingu','root','','1');
+   INSERT INTO mmeetingu.mm_instala (servidor,basedatos, usuario, password, estado) VALUES ( 'localhost','mmeetingu','root','','0');
    
    SELECT 'Datos de instalacion creados' ;
    
@@ -213,7 +213,7 @@ empresa_telefonos, empresa_ciudad, empresa_logo, empresa_autentica, empresa_leng
 empresa_versionPrd, empresa_versionBd, empresa_clave, empresa_email, empresa_registrsoXpagina, 
 empresa_diasTrabaja, empresa_horarioInicio, empresa_horarioTermina, empresa_intervaloCalendario,  
 empresa_FormatoActa, empresa_cresidencial, empresa_ctrl) 
-VALUES ('1', 'ATOM INGENIERIA SAS', '12345678', 'http://www.atomingenieria.com', 
+VALUES ('1', 'EMPRESA PARA PRUEBAS', '12345678', 'http://www.appeingenieria.com', 
 'Cra 54 55-44 Ap 412', '3174142133', 'Bogota DC', 'logoEmpresa.png', 'M', 'ESP',  
 'TEST-201806', 'TEST-201806', 'TEST', 'info@atomingenieria.com', '10', 'L-M-M-J-V',  
 '7:00', '19:00', 'M', 'Estandard', 'N','wefB875s13846s12518refd8624A12'); 
@@ -414,10 +414,18 @@ VALUES ('1', 'ATOM INGENIERIA SAS', '12345678', 'http://www.atomingenieria.com',
 		 usuario_password, usuario_tipo_acceso, usuario_fechaCreado, 
 		 usuario_fechaActualizado, usuario_estado, usuario_perfil, 
 		 usuario_avatar, usuario_user, usuario_celular) 
-		  VALUES ('admin', '1', 'admin@com.co', md5('admin123'), 'A', 
+		  VALUES ('admin', '1', 'admin@com.co', md5('Admin123'), 'A', 
 		 '2018-12-31', '2018-12-31', 'A', '1', 'AVATAR.PNG', 'admin', '3101231231'); 
  
    SELECT 'Usuario admin@com.co y su contraseña admin123 creado'; 
+ 
+ CREATE TABLE IF NOT EXISTS mmeetingu.mm_usuario_comites (
+  uc_id int(11) NOT NULL AUTO_INCREMENT,
+  uc_empresa int(11) DEFAULT NULL,
+  uc_comiteId int(11) DEFAULT NULL,
+  uc_usuarioId int(11) DEFAULT NULL,
+  PRIMARY KEY (uc_id)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
  
    CREATE TABLE IF NOT EXISTS mmeetingu.mn_privilegios ( 
 		 privilegio_id int(11) NOT NULL AUTO_INCREMENT, 

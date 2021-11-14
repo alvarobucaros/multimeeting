@@ -57,6 +57,7 @@ switch ($op)
                      $empresa . "  AND uc_usuarioId = " . $usuario . ")".
                     " ORDER BY pendiente_estado DESC,  pendiente_fecha ";          
             $result = mysqli_query($con, $query); 
+    echo $query;
             $arr = array(); 
             if(mysqli_num_rows($result) != 0)  
                 { 

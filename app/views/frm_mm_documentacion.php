@@ -92,8 +92,8 @@
 
 	<div class="col-md-6">    
 		 <ul>   
-			 <a href="../documentation/listaInvitadosPermanantes.pdf">
-			<img src="img/pdf-dist.png" alt="Invitados"/> Invitados Recurrentes</a>     
+			 <a href="../documentation/listaUsuarios.pdf">
+			<img src="img/pdf-dist.png" alt="Invitados"/> Los usuarios</a>     
 		</ul> 
 	</div>
    <div class="col-md-6">
@@ -105,8 +105,8 @@
 	
     <div class="col-md-6">    
           <ul>   
-             <a href="../documentation/listaTemasPermanantes.pdf">
-            <img src="img/pdf-dist.png" alt="Temas"/> Temas Recurrentes</a>     
+             <a href="../documentation/listaInvitadosYtemasPermanantes.pdf">
+            <img src="img/pdf-dist.png" alt="Temas"/> Invitados y Temas Recurrentes</a>     
         </ul>
     </div>
     <div class="col-md-6">

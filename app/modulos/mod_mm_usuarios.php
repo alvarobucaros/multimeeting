@@ -197,7 +197,7 @@ switch ($op)
             $query = " SELECT COUNT(*) as Nr FROM mm_usuario_comites  WHERE  uc_comiteId = '".
                     $comite_id . "' AND uc_empresa = '". $empresa . "' AND uc_usuarioId = '" . $usuario ."' ";
             $result2 = mysqli_query($con, $query);
-   
+
             while($rec = mysqli_fetch_assoc($result2)) {
                if ($rec['Nr'] != '0'){$chk='checked';}  
             }            

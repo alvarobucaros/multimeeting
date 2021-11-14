@@ -56,7 +56,7 @@ app.controller('mainController',['$scope','$http', function($scope,$http){
     getInfo($scope.empresa);
     
     function getInfo(empresa){
-         var user = $('#u').val();
+        var user = $('#u').val();
         $http.post('modulos/mod_mm_agendapendientes.php?op=r',{'op':'r', 'empresa':empresa, 'user': user}).success(function(data){
         $scope.details = data;
         $scope.configPages();   

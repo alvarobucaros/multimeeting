@@ -203,10 +203,10 @@ app.controller('mainController', ['modalService',function(modalService){
     };
     
     $scope.printInfo = function(detail){ 
-        desc = $scope.detail[0].agenda_Descripcion;
+        desc = $scope.details[0].agenda_Descripcion;
         $scope.titVentana='IMPRIME ACTA '+ desc;
-        agenda = $scope.detail[0].agenda_id;
-        
+        agenda = $scope.details[0].agenda_id;
+        tipo='A';
         empresa=$scope.empresa;
         $http.post('modulos/mod_mm_agendamiento.php?op=rfa',{'op':'rfa','empresa':empresa,'agenda':agenda}).success(function(data){ 
         $scope.formato = data; 
