@@ -20,8 +20,8 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="fh5co-navbar-brand">
-                                    <a class="fh5co-logo" href="https://www.appeinternet.com">
-                                    <img src="app/img/aei1.png"  width="200" height="100" alt=""/>
+                                    <a class="fh5co-logo" href="https://www.aortizc.com">
+                                    <img src="app/img/logo.png"  width="100" height="50" alt=""/></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -142,7 +142,7 @@
                                             <div class="col-lg-6 col-lg-offset-2  col-md-offset-2 text-center">
                                                 <div class="intro animate-box">
                                                     <h1>Acerca de nosotros</h1>
-                                                    <h4>En App e Internet nos dedicamos al desarrollo y asesoria en procesos de informática</h4>
+                                                    <h4>Nos dedicamos al desarrollo y asesoria en procesos de informática</h4>
 
                                                 </div>							
 
@@ -192,8 +192,9 @@
                             <div class="row">
                                     <div class="col-md-12 text-center ">
                                             <div class="footer-widget border">
-                                                    <p class="pull-left"><small>&copy; App e Internet. 2018 - Derechos reservados</small></p>
-                                                    <p class="pull-right"><small> Diseño de App e Internet</p>
+                                                    <p class="pull-left"><small>&copy; AortizC. 2018, 2020, 2022 - Derechos reservados</small></p>
+                                                    <p class="pull-right"> 
+                                                        <a class="fh5co-logo" href="https://www.aortizc.com"><img src="app/img/logoChiq.png"  width="80" height="30" alt=""/></a>
 
                                             </div>
                                     </div>

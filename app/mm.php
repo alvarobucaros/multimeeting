@@ -377,9 +377,9 @@ if (!isset($_GET['op'])){
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0.2
+      <b>Version</b> 1.0.8
     </div>
-    <strong>Copyright &copy; 2016 <a href="http://appeinternet.com">App e Intenet.</a> </strong> Derechos reservados
+    <strong>Copyright &copy; 2016, 2020, 2022 <a href="http://aortizc.com">AortizC</a> </strong> Derechos reservados
   </footer>
 
 
