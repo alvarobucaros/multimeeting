@@ -115,7 +115,7 @@ switch ($op)
         graba($file,"-- Host: ".$servername);    
         graba($file,"-- Database:".$BaseDatos);
         graba($file,"-- Script date ".$hoy); 
-        graba($file,"-- by AtomIngenieria sas");
+        graba($file,"-- by AORTIZC");
         graba($file,"");
         graba($file,"--");
         graba($file,"-- Crea Base de datos");

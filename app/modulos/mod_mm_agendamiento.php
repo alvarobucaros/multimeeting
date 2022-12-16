@@ -74,8 +74,6 @@ switch ($op)
     case 'ha':
         habilitaAgenda($data);
         break;
-    
-
     case 'ctl':
         cambiaTercerosLista($data);
         break;  
@@ -88,27 +86,21 @@ switch ($op)
     case 'sel':
         siguenteEnLista($data);
         break;
-    
     case 'lur':
         leeUnRegistro($data);
         break;
-    
     case 'ti':
         traeInvitados($data);
         break;
     case 'tc':
         traeComites($data);
         break;
-    
     case 'tt':
         traeTemas($data);
         break;
-    
     case 'rfa':
         recuperaFormatoActa($data);
         break;
-
-    
     case 'reor':
         reorganiza($data);
         break;

@@ -85,10 +85,9 @@ if (!isset($_GET['op'])){
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
-    
+     <span class="logo logoApp"><?php echo $datos[5] ?></span>
       <div id='titbar' class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-            
+        <ul class="nav navbar-nav">            
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="usuario();">

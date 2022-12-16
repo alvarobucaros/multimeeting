@@ -12,7 +12,7 @@
                      " INNER JOIN mm_salones  ON agenda_salonId = salon_id " .
                      " WHERE agenda_id = " . $agenda_id;
             $result = mysqli_query($con, $query); 
- echo $query;                     
+ //echo $query;                     
             
             while($reg = mysqli_fetch_assoc($result)) { 
                 $retorno = $reg['comite_nombre'].'||'.$reg['comite_consecActa'].'||'.

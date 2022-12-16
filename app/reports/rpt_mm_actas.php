@@ -161,7 +161,6 @@
         while($row = mysqli_fetch_assoc($resultado))
         {    
             $ln=$pdf->GetY();
-
             if($row['invitado_asistio']  == 'N'){
                 $noAsistio+=1;
             }

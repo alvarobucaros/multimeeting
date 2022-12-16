@@ -34,7 +34,7 @@
                             <div class="col-md-3">
                                 <ul class="social">
                                     <li><a href="https://www.facebook.com/fb.me/multimeeting" alt="facebook" title="facebook"><i class="icon-facebook"></i></a></li>
-                                    <li><a href="https://www.atomingenieria.blogspot.com/" alt="BlogSpot"  title="Blog"><i class="icon-instagram"></i></a></li>
+                                    <li><a href="https://www.aortizc.blogspot.com/" alt="BlogSpot"  title="Blog"><i class="icon-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>

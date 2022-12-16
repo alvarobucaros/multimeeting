@@ -40,7 +40,7 @@ app.controller('mainController',['$scope','$http',  function($scope,$http){
     $scope.pageSize = 10;
     $scope.pages = [];
     
-    
+    alert('eee'+ $scope.empresa + '000');
     getCombos($scope.empresa);
     
     getInfo($scope.empresa);

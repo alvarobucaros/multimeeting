@@ -225,8 +225,7 @@ app.controller('mainController',['$scope','$http','$modal', function($scope,$htt
     };
 
 
-    $scope.createDetailTema = function(){
-        
+    $scope.createDetailTema = function(){        
         $scope.form_titleaddTema='Adiciona un nuevo tema';
         $scope.registroAddTema={};
         $scope.registroAddTema.tema_estado = 'A';
@@ -345,8 +344,7 @@ app.controller('mainController',['$scope','$http','$modal', function($scope,$htt
         });
     };
 
- 
-    
+
      $scope.updateInfoTema = function (registroTema) {
         desarrollo = $scope.registroAddTema.tema_desarrollo;
         if(desarrollo===undefined){desarrollo='';}
@@ -451,7 +449,7 @@ app.controller('mainController',['$scope','$http','$modal', function($scope,$htt
                 'pendiente_comite':pendiente_comite,'pendiente_empresa':pendiente_empresa,'pendiente_tema':pendiente_tema,
                 'pendiente_detalle':pendiente_detalle,'pendiente_responsable':pendiente_responsable,'pendiente_fecha':pendiente_fecha,
                 'pendiente_estado':pendiente_estado}).success(function(data){
- alert(data);
+ //alert(data);
                 });
                 $modalInstance.dismiss();
             };
@@ -476,8 +474,7 @@ app.controller('mainController',['$scope','$http','$modal', function($scope,$htt
             $scope.titulin= 'Fecha y hora  próxima reunión';
             $scope.form_convocatoriaFecha = 'Fecha';
             $scope.form_convocatoriaHora = 'Hora';
-            $scope.form_btnAcepta = 'Continuar';
-            
+            $scope.form_btnAcepta = 'Continuar';            
             $http.post('modulos/mod_mm_agendamiento.php?op=hr',{'op':'hr','empresaId':empresa}).success(function(data){
             $scope.operatorshd = data;
             }); 

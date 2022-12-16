@@ -116,7 +116,7 @@ class DBconexion{
                         " empresa_ctrl,usuario_celular FROM mm_usuarios " .
                         " INNER JOIN mm_empresa ON empresa_id = usuario_empresa WHERE " . $where;
                 $result = ''; 
-echo $strSql;                
+// echo $strSql;                
                 $resultado =  mysqli_query($con, $strSql);
                 $totRec =   $resultado->num_rows;  ///$número_filas = mysql_num_rows($resultado);  
                 if ($totRec > 0) {
@@ -389,7 +389,7 @@ echo $strSql;
             $con = $obj->conectar();
             if($con==true)
             { 
-                echo $where.'  ';
+  //              echo $where.'  ';
 //                print_r($data);
             }
             
